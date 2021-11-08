@@ -1347,9 +1347,18 @@ class SpotSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now()
             ],
+            [
+                'name' => 'オアシス21',
+                'converted_name' => 'おあしす21',
+                'thumbnail_url' => 'a',
+                'pref' => '愛知',
+                'spot_type_id' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
         ];
         Spot::insert($data);
-        // 竹島水族館	伊良湖岬	香嵐渓	名古屋港水族館	東山動植物園	有松旧街道	ノリタケの森	オアシス21	苅谷ハイウェイオアシス	八町蔵通り	やきもの散歩道	平和公園
+        // 苅谷ハイウェイオアシス	八町蔵通り	やきもの散歩道	平和公園
         // 三重	伊勢神宮	おかげ横丁	猿田彦神社	二見ヶ浦	竹神社	椿大神社	アクアイグニス	にぎわいの森	おはらい町	地中海村	鳥羽水族館	なばなの里										
         // 滋賀	竹生島	びわ湖バレイ	延暦寺																			
 
