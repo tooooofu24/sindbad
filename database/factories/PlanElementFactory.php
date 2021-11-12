@@ -21,13 +21,21 @@ class PlanElementFactory extends Factory
      */
     public function definition()
     {
+        $type = $this->faker->numberBetween(0, 2); // 0 => blank, 1 => spot, 2 => transportation
+        // typeによってリレーション先が変わる
+        if ($type == 0) { // blank
+            $child_id = null;
+        } elseif ($type == 1) { // spot
+            $child_id = $this->faker->numberBetween(1, 150);
+        } else { // transportation
+            $child_id = $this->faker->numberBetween(1, 7);
+        }
         return [
-            'type' => $this->faker->randomElement(['spot', 'transportation']),
-            'plan_id' => $this->faker->randomElement([1, 2, 3, 4, 5]),
-            'spot_id' => $this->faker->numberBetween(1, 100),
-            'transportation_id' => $this->faker->numberBetween(1, 100),
-            'duration_min' => $this->faker->randomElement([30, 60, 90, 120]),
-            'memo' => $this->faker->realText(20),
+            'type' => $type, // 0 => blank, 1 => spot, 2 => transportation
+            // 'plan_id' => $this->faker->numberBetween(1, 10),
+            'child_id' => $child_id,
+            'duration_min' => $this->faker->randomElement([10, 20, 30, 40, 50, 60, 70, 80, 90]),
+            'memo' => $this->faker->boolean(50) ? $this->faker->realText(20) : null,
         ];
     }
 }

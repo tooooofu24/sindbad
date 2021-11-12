@@ -25,13 +25,14 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $signed_flag = $this->faker->boolean(20);
         return [
             'uid' => $this->faker->unique()->sha1(),
-            'signed_flag' => true,
+            'signed_flag' => $signed_flag,
             'icon_url' => $this->faker->imageUrl(),
             'name' => $this->faker->name(),
-            'email' => $this->faker->unique()->safeEmail(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'email' => $signed_flag ? $this->faker->unique()->safeEmail() : null,
+            'password' =>  $signed_flag ? bycrypt('password') : null, // password
         ];
     }
 

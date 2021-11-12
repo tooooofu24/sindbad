@@ -26,6 +26,7 @@ class FavoriteFactory extends Factory
         $user_ids = User::all()->pluck('id');
         $plan_ids = Plan::all()->pluck('id');
         $arr = $user_ids->crossJoin($plan_ids);
+        // ユニークなuser_idとplan_idの組み合わせを生成
         $pair = $this->faker->unique()->randomElement($arr);
         return [
             'user_id' => $pair[0],

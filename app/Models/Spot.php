@@ -9,23 +9,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Spot extends Model
 {
     use HasFactory;
-    use SoftDeletes;
 
     protected $fillable = [
-        'name',
-        'converted_name	',
-        'thumbnail_url',
-        'pref',
-        'spot_type_id',
+        'name', 'converted_name	', 'thumbnail_url', 'pref',
     ];
-
-    public function pref()
-    {
-        return $this->belongsTo(Pref::class);
-    }
-
-    public function spot_type()
-    {
-        return $this->belongsTo(Spot_type::class);
-    }
+    protected $guarded = ['spot_type_id'];
 }

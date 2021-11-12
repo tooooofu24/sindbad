@@ -8,12 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class PlanElement extends Model
 {
     use HasFactory;
+
+    protected $table = 'plan_elements';
     protected $fillable = [
-        'plan_id',
-        'spot_id',
-        'memo',
-        'transportation_id',
-        'type',
+        'plan_id', 'spot_id', 'memo', 'transportation_id', 'type',
     ];
     public function spot()
     {

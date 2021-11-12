@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDestinationsTable extends Migration
+class CreatePlanElementsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,14 +15,12 @@ class CreateDestinationsTable extends Migration
     {
         Schema::create('plan_elements', function (Blueprint $table) {
             $table->id();
-            $table->enum('type', ['spot', 'transportation']);
+            $table->unsignedTinyInteger('type')->comment('0 => blank, 1 => spot, 2 => transportation');
             $table->unsignedBigInteger('plan_id');
-            $table->unsignedBigInteger('spot_id')->nullable();
-            $table->unsignedBigInteger('transportation_id')->nullable();
+            $table->unsignedBigInteger('child_id')->nullable();
             $table->integer('duration_min');
-            $table->string('memo')->nullable();
+            $table->text('memo')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -33,7 +31,6 @@ class CreateDestinationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('destinations');
         Schema::dropIfExists('plan_elements');
     }
 }

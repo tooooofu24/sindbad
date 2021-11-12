@@ -17,10 +17,7 @@ class Plan extends Model
         'thumbnail_url',
         'start_date_time',
         'public_flag',
-        'prefs'
     ];
-
-    protected $casts = ['prefs' => 'json'];
 
     public function user()
     {
@@ -30,8 +27,8 @@ class Plan extends Model
     {
         return $this->hasMany(Favorite::class);
     }
-    public function destinations()
+    public function planElements()
     {
-        return $this->hasMany(Destination::class);
+        return $this->hasMany(PlanElement::class);
     }
 }

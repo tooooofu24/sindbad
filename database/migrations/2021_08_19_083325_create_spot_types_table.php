@@ -13,10 +13,10 @@ class CreateSpotTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('spot_types', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-        });
+        // Schema::create('spot_types', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->string('name');
+        // });
     }
 
     /**

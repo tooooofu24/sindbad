@@ -17,12 +17,10 @@ class CreatePlansTable extends Migration
             $table->id();
             $table->bigInteger('user_id');
             $table->string('title');
-            $table->longText('prefs');
             $table->string('thumbnail_url')->nullable();
             $table->dateTime('start_date_time');
-            $table->boolean('public_flag');
+            $table->boolean('public_flag')->default(false);
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

@@ -20,7 +20,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'はこだてやま',
                 'thumbnail_url' => 'a',
                 'pref' => '北海道',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -29,7 +28,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'らっきーぴえろ',
                 'thumbnail_url' => 'a',
                 'pref' => '北海道',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -38,7 +36,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'かむいみさき',
                 'thumbnail_url' => 'a',
                 'pref' => '北海道',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -47,7 +44,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'ほとけがうら',
                 'thumbnail_url' => 'a',
                 'pref' => '青森',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -56,7 +52,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'しらかみさんち',
                 'thumbnail_url' => 'a',
                 'pref' => '青森',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -65,7 +60,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'おいらせけいりゅう',
                 'thumbnail_url' => 'a',
                 'pref' => '青森',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -74,7 +68,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'ひろさきじょう',
                 'thumbnail_url' => 'a',
                 'pref' => '青森',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -83,7 +76,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'あおもりびじゅつかん',
                 'thumbnail_url' => 'a',
                 'pref' => '青森',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -92,7 +84,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'じょうどがはま',
                 'thumbnail_url' => 'a',
                 'pref' => '岩手',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -101,7 +92,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'おいらせけいりゅう',
                 'thumbnail_url' => 'a',
                 'pref' => '岩手',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -110,7 +100,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'げいびけい',
                 'thumbnail_url' => 'a',
                 'pref' => '岩手',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -119,7 +108,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'りゅうせんどう',
                 'thumbnail_url' => 'a',
                 'pref' => '岩手',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -128,7 +116,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'みやざわけんじどうわむら',
                 'thumbnail_url' => 'a',
                 'pref' => '岩手',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -137,7 +124,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'やけはしり',
                 'thumbnail_url' => 'a',
                 'pref' => '岩手',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -146,7 +132,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'さらだふぁーむ',
                 'thumbnail_url' => 'a',
                 'pref' => '岩手',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -155,7 +140,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'ふどうのたき',
                 'thumbnail_url' => 'a',
                 'pref' => '岩手',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -164,7 +148,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'たてがもりあーくぼくじょう',
                 'thumbnail_url' => 'a',
                 'pref' => '岩手',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -173,7 +156,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'ちゅうそんじ',
                 'thumbnail_url' => 'a',
                 'pref' => '岩手',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -182,7 +164,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'たてがもりあーくぼくじょう',
                 'thumbnail_url' => 'a',
                 'pref' => '岩手',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -191,7 +172,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'たかしみずこうえん',
                 'thumbnail_url' => 'a',
                 'pref' => '岩手',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -200,7 +180,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'こいわいのうじょう',
                 'thumbnail_url' => 'a',
                 'pref' => '岩手',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -209,7 +188,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'たてがもりあーくぼくじょう',
                 'thumbnail_url' => 'a',
                 'pref' => '岩手',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -218,7 +196,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'かまいしだいかんのん',
                 'thumbnail_url' => 'a',
                 'pref' => '岩手',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -227,7 +204,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'まつしま',
                 'thumbnail_url' => 'a',
                 'pref' => '宮城',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -236,7 +212,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'せんだいうみのもりすいぞくかん',
                 'thumbnail_url' => 'a',
                 'pref' => '宮城',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -245,7 +220,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'ずいほうでん',
                 'thumbnail_url' => 'a',
                 'pref' => '宮城',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -254,7 +228,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'ほったいのたき',
                 'thumbnail_url' => 'a',
                 'pref' => '秋田',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -263,7 +236,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'ぶけやしき',
                 'thumbnail_url' => 'a',
                 'pref' => '秋田',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -272,7 +244,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'たまがわおんせん',
                 'thumbnail_url' => 'a',
                 'pref' => '秋田',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -281,7 +252,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'かもすいぞくかん',
                 'thumbnail_url' => 'a',
                 'pref' => '山形',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -290,7 +260,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'まるいけさま',
                 'thumbnail_url' => 'a',
                 'pref' => '山形',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -299,7 +268,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'うえすぎじんじゃ',
                 'thumbnail_url' => 'a',
                 'pref' => '山形',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -308,7 +276,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'ごしきぬま',
                 'thumbnail_url' => 'a',
                 'pref' => '福島',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -317,7 +284,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'じょうどだいら',
                 'thumbnail_url' => 'a',
                 'pref' => '福島',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -326,7 +292,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'すぱりぞーとはわいあんず',
                 'thumbnail_url' => 'a',
                 'pref' => '福島',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -335,7 +300,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'ひたちかいひんこうえん',
                 'thumbnail_url' => 'a',
                 'pref' => '茨城',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -344,7 +308,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'うしくだいぶつ',
                 'thumbnail_url' => 'a',
                 'pref' => '茨城',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -353,7 +316,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'かしまじんじゃ',
                 'thumbnail_url' => 'a',
                 'pref' => '茨城',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -362,7 +324,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'あしかがふらわーぱーく',
                 'thumbnail_url' => 'a',
                 'pref' => '栃木',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -371,7 +332,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => '大谷資料館',
                 'thumbnail_url' => 'a',
                 'pref' => '栃木',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -380,7 +340,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'けごんのたき',
                 'thumbnail_url' => 'a',
                 'pref' => '栃木',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -389,7 +348,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'いかほおんせん',
                 'thumbnail_url' => 'a',
                 'pref' => '群馬',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -398,7 +356,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'くさつおんせん',
                 'thumbnail_url' => 'a',
                 'pref' => '群馬',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -407,7 +364,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'しまおんせん',
                 'thumbnail_url' => 'a',
                 'pref' => '群馬',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -416,7 +372,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'おおたほくぶうんどうおんせん',
                 'thumbnail_url' => 'a',
                 'pref' => '群馬',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -425,7 +380,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'あかぎじょう',
                 'thumbnail_url' => 'a',
                 'pref' => '群馬',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -434,7 +388,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'おぜ',
                 'thumbnail_url' => 'a',
                 'pref' => '群馬',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -443,7 +396,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'のぞりこ',
                 'thumbnail_url' => 'a',
                 'pref' => '群馬',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -452,7 +404,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'かくまんぶち',
                 'thumbnail_url' => 'a',
                 'pref' => '群馬',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -461,7 +412,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'まんざおんせん',
                 'thumbnail_url' => 'a',
                 'pref' => '群馬',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -470,7 +420,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'ひかわじんじゃ',
                 'thumbnail_url' => 'a',
                 'pref' => '埼玉',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -479,7 +428,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'かさもりじんじゃ',
                 'thumbnail_url' => 'a',
                 'pref' => '埼玉',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -488,7 +436,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'むーみんぱーく',
                 'thumbnail_url' => 'a',
                 'pref' => '埼玉',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -497,7 +444,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'かわごえ',
                 'thumbnail_url' => 'a',
                 'pref' => '埼玉',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -506,7 +452,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'ところざわ',
                 'thumbnail_url' => 'a',
                 'pref' => '埼玉',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -515,7 +460,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'ちちぶ',
                 'thumbnail_url' => 'a',
                 'pref' => '埼玉',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -524,7 +468,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'せいぶゆうえんち',
                 'thumbnail_url' => 'a',
                 'pref' => '埼玉',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -533,7 +476,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'ひつじやまこうえん',
                 'thumbnail_url' => 'a',
                 'pref' => '埼玉',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -542,7 +484,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'みつみねじんじゃ',
                 'thumbnail_url' => 'a',
                 'pref' => '埼玉',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -551,7 +492,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'とうぶどうぶつこうえん',
                 'thumbnail_url' => 'a',
                 'pref' => '埼玉',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -560,7 +500,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'とうろうざかだいしのきりとおしとんねる',
                 'thumbnail_url' => 'a',
                 'pref' => '千葉',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -569,7 +508,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'とうきょうでぃずにーらんど',
                 'thumbnail_url' => 'a',
                 'pref' => '千葉',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -578,7 +516,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'かとりじんぐう',
                 'thumbnail_url' => 'a',
                 'pref' => '千葉',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -587,7 +524,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'さくらまなーはうす',
                 'thumbnail_url' => 'a',
                 'pref' => '千葉',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -596,7 +532,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'れきしはくぶつかん',
                 'thumbnail_url' => 'a',
                 'pref' => '千葉',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -605,7 +540,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'さくらふるさとひろば',
                 'thumbnail_url' => 'a',
                 'pref' => '千葉',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -614,7 +548,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'つばきもりこむな',
                 'thumbnail_url' => 'a',
                 'pref' => '千葉',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -623,7 +556,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'あくあぱらだいす',
                 'thumbnail_url' => 'a',
                 'pref' => '千葉',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -632,7 +564,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'ぱてぃお',
                 'thumbnail_url' => 'a',
                 'pref' => '千葉',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -641,7 +572,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'じょんそんたうん',
                 'thumbnail_url' => 'a',
                 'pref' => '千葉',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -650,7 +580,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'せいねのゆ',
                 'thumbnail_url' => 'a',
                 'pref' => '千葉',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -659,7 +588,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'ちばふぉるにあ',
                 'thumbnail_url' => 'a',
                 'pref' => '千葉',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -668,7 +596,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'とうきょうすかいつりー',
                 'thumbnail_url' => 'a',
                 'pref' => '東京',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -677,7 +604,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'かみなりもん',
                 'thumbnail_url' => 'a',
                 'pref' => '東京',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -686,7 +612,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'おだいば',
                 'thumbnail_url' => 'a',
                 'pref' => '東京',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -695,7 +620,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'かぐらざか',
                 'thumbnail_url' => 'a',
                 'pref' => '東京',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -704,7 +628,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'とうきょうたわー',
                 'thumbnail_url' => 'a',
                 'pref' => '東京',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -713,7 +636,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'たまがわ',
                 'thumbnail_url' => 'a',
                 'pref' => '東京',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -722,7 +644,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'すぱじあむじゃぽん',
                 'thumbnail_url' => 'a',
                 'pref' => '東京',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -731,7 +652,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'とどろきけいこく',
                 'thumbnail_url' => 'a',
                 'pref' => '東京',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -740,7 +660,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'たかおさん',
                 'thumbnail_url' => 'a',
                 'pref' => '東京',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -749,7 +668,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'いのがしらおんしこうえん',
                 'thumbnail_url' => 'a',
                 'pref' => '東京',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -758,7 +676,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'えどとうきょうたてもの',
                 'thumbnail_url' => 'a',
                 'pref' => '東京',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -767,7 +684,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'しょうわきねんこうえん',
                 'thumbnail_url' => 'a',
                 'pref' => '東京',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -776,7 +692,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'ぽぴーはっぴーすくえあ',
                 'thumbnail_url' => 'a',
                 'pref' => '東京',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -785,7 +700,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'かどかわむさしのみゅーじあむ',
                 'thumbnail_url' => 'a',
                 'pref' => '東京',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -794,7 +708,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'みなとみらい',
                 'thumbnail_url' => 'a',
                 'pref' => '神奈川',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -803,7 +716,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'あかれんがそうこ',
                 'thumbnail_url' => 'a',
                 'pref' => '神奈川',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -812,7 +724,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'みなとのみえるおかこうえん',
                 'thumbnail_url' => 'a',
                 'pref' => '神奈川',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -821,7 +732,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'えのしま',
                 'thumbnail_url' => 'a',
                 'pref' => '神奈川',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -830,7 +740,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'よこはまいんぐりっしゅがーでん',
                 'thumbnail_url' => 'a',
                 'pref' => '神奈川',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -839,7 +748,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'はっけいじましーぱらだいす',
                 'thumbnail_url' => 'a',
                 'pref' => '神奈川',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -848,7 +756,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'くりはまはなのくに',
                 'thumbnail_url' => 'a',
                 'pref' => '神奈川',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -857,7 +764,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'きよつきょうけいこく',
                 'thumbnail_url' => 'a',
                 'pref' => '新潟',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -866,7 +772,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'さどがしま',
                 'thumbnail_url' => 'a',
                 'pref' => '新潟',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -875,7 +780,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'せんみがわけいこく',
                 'thumbnail_url' => 'a',
                 'pref' => '新潟',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -884,7 +788,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'ささがわながれ',
                 'thumbnail_url' => 'a',
                 'pref' => '新潟',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -893,7 +796,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'ももがわのおたきさま',
                 'thumbnail_url' => 'a',
                 'pref' => '新潟',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -902,7 +804,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'ささがみね',
                 'thumbnail_url' => 'a',
                 'pref' => '新潟',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -911,7 +812,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'かんすいこうえん',
                 'thumbnail_url' => 'a',
                 'pref' => '富山',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -920,7 +820,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'ちゅーりっぷこうえん',
                 'thumbnail_url' => 'a',
                 'pref' => '富山',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -929,7 +828,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'くろべだむ',
                 'thumbnail_url' => 'a',
                 'pref' => '富山',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -938,7 +836,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'かなざわえき',
                 'thumbnail_url' => 'a',
                 'pref' => '石川',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -947,7 +844,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'けんろくえん',
                 'thumbnail_url' => 'a',
                 'pref' => '石川',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -956,7 +852,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'ひがしちゃやがい',
                 'thumbnail_url' => 'a',
                 'pref' => '石川',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -965,7 +860,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'しろよねせんまいだ',
                 'thumbnail_url' => 'a',
                 'pref' => '石川',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -974,7 +868,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'かんみちゃやこうめ',
                 'thumbnail_url' => 'a',
                 'pref' => '石川',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -983,7 +876,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'ぎょはん',
                 'thumbnail_url' => 'a',
                 'pref' => '石川',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -992,7 +884,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'けーきはこはな',
                 'thumbnail_url' => 'a',
                 'pref' => '石川',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1001,7 +892,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'きょうりゅうはくぶつかん',
                 'thumbnail_url' => 'a',
                 'pref' => '福井',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1010,7 +900,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'しばまさわーるど',
                 'thumbnail_url' => 'a',
                 'pref' => '福井',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1019,7 +908,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'ふるーつこうえん',
                 'thumbnail_url' => 'a',
                 'pref' => '山梨',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1028,7 +916,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'さんごくとうげ',
                 'thumbnail_url' => 'a',
                 'pref' => '山梨',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1037,7 +924,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'ふじさん',
                 'thumbnail_url' => 'a',
                 'pref' => '山梨',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1046,7 +932,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'やまなかこ',
                 'thumbnail_url' => 'a',
                 'pref' => '山梨',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1055,7 +940,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'ならいじゅく',
                 'thumbnail_url' => 'a',
                 'pref' => '長野',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1064,7 +948,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'とがくしじんじゃ',
                 'thumbnail_url' => 'a',
                 'pref' => '長野',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1073,7 +956,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'あちむら',
                 'thumbnail_url' => 'a',
                 'pref' => '長野',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1082,7 +964,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'うつくしがはらこうげん',
                 'thumbnail_url' => 'a',
                 'pref' => '長野',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1091,7 +972,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'しらいとのたき',
                 'thumbnail_url' => 'a',
                 'pref' => '長野',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1100,25 +980,22 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'しばまさわーるど',
                 'thumbnail_url' => 'a',
                 'pref' => '長野',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
-            // [
-            //     'name' => '阿智の花桃',
-            //     'converted_name' => 'しばまさわーるど',
-            //     'thumbnail_url' => 'a',
-            //     'pref' => '長野',
-            //     'spot_type_id' => 1,
-            //     'created_at' => now(),
-            //     'updated_at' => now()
-            // ],
+            [
+                'name' => '阿智の花桃',
+                'converted_name' => 'しばまさわーるど',
+                'thumbnail_url' => 'a',
+                'pref' => '長野',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
             [
                 'name' => '郡上',
                 'converted_name' => 'ぐじょう',
                 'thumbnail_url' => 'a',
                 'pref' => '岐阜',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1127,7 +1004,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'かぐやひめのさんぽみち',
                 'thumbnail_url' => 'a',
                 'pref' => '岐阜',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1136,7 +1012,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'げろおんせん',
                 'thumbnail_url' => 'a',
                 'pref' => '岐阜',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1145,7 +1020,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'まつざきまち',
                 'thumbnail_url' => 'a',
                 'pref' => '静岡',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1154,7 +1028,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'おおむろやま',
                 'thumbnail_url' => 'a',
                 'pref' => '静岡',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1163,7 +1036,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'じょうがさきかいがん',
                 'thumbnail_url' => 'a',
                 'pref' => '静岡',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1172,7 +1044,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'おおいがわてつどう',
                 'thumbnail_url' => 'a',
                 'pref' => '静岡',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1181,7 +1052,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'げんべえがわ',
                 'thumbnail_url' => 'a',
                 'pref' => '静岡',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1190,7 +1060,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'なごやじょう',
                 'thumbnail_url' => 'a',
                 'pref' => '愛知',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1199,7 +1068,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'なごやすいぞくかん',
                 'thumbnail_url' => 'a',
                 'pref' => '愛知',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1208,7 +1076,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'おおすしょうてんがい',
                 'thumbnail_url' => 'a',
                 'pref' => '愛知',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1217,7 +1084,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'いぬやまじょう',
                 'thumbnail_url' => 'a',
                 'pref' => '愛知',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1226,7 +1092,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'たいへいはちまんぐう',
                 'thumbnail_url' => 'a',
                 'pref' => '愛知',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1235,7 +1100,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'さくしま',
                 'thumbnail_url' => 'a',
                 'pref' => '愛知',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1244,7 +1108,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'ひまかじま',
                 'thumbnail_url' => 'a',
                 'pref' => '愛知',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1253,7 +1116,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'いぬやまじょうかまち',
                 'thumbnail_url' => 'a',
                 'pref' => '愛知',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1262,7 +1124,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'めいじむら',
                 'thumbnail_url' => 'a',
                 'pref' => '愛知',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1271,7 +1132,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'リトルワールド',
                 'thumbnail_url' => 'a',
                 'pref' => '愛知',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1280,7 +1140,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'たけしますいぞくかん',
                 'thumbnail_url' => 'a',
                 'pref' => '愛知',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1289,7 +1148,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'いらごみさき',
                 'thumbnail_url' => 'a',
                 'pref' => '愛知',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1298,7 +1156,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'こうらんけい',
                 'thumbnail_url' => 'a',
                 'pref' => '愛知',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1307,7 +1164,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'なごやこうすいぞくかん',
                 'thumbnail_url' => 'a',
                 'pref' => '愛知',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1316,7 +1172,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'ひがしやまどうしょくぶつえん',
                 'thumbnail_url' => 'a',
                 'pref' => '愛知',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1325,7 +1180,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'ありまつきゅうかいどう',
                 'thumbnail_url' => 'a',
                 'pref' => '愛知',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1334,7 +1188,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'のりたけのもり',
                 'thumbnail_url' => 'a',
                 'pref' => '愛知',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1343,7 +1196,6 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'おあしす21',
                 'thumbnail_url' => 'a',
                 'pref' => '愛知',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1352,13 +1204,20 @@ class SpotSeeder extends Seeder
                 'converted_name' => 'おあしす21',
                 'thumbnail_url' => 'a',
                 'pref' => '愛知',
-                'spot_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
+            // ↓見本
+            [
+                'name' => '苅谷ハイウェイオアシス',
+                'converted_name' => 'かりやはいうぇいおあしす',
+                'thumbnail_url' => 'https://image.jimcdn.com/app/cms/image/transf/dimension=940x10000:format=jpg/path/s08e2ef4e2044f5be/image/i3a24eb77ee401e46/version/1581681754/image.jpg',
+                'pref' => '愛知',
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
         ];
-        Spot::insert($data);
-        // 苅谷ハイウェイオアシス	八町蔵通り	やきもの散歩道	平和公園
+        // 	八町蔵通り	やきもの散歩道	平和公園
         // 三重	伊勢神宮	おかげ横丁	猿田彦神社	二見ヶ浦	竹神社	椿大神社	アクアイグニス	にぎわいの森	おはらい町	地中海村	鳥羽水族館	なばなの里										
         // 滋賀	竹生島	びわ湖バレイ	延暦寺																			
 
@@ -1383,8 +1242,7 @@ class SpotSeeder extends Seeder
         // 大分	別府地獄めぐり	城島高原パーク	竹瓦温泉																			
         // 宮崎	高千穂峡	青島神社	照葉大吊橋																			
         // 鹿児島	桜島	天文館	仙厳園	むじゃきの白熊	指宿の砂蒸し風呂	霧島温泉郷	生駒高原	佐多岬														
-        // 沖縄	星砂の浜	ひめゆりの塔	竜宮城展望台																			
-
-
+        // 沖縄	星砂の浜	ひめゆりの塔	竜宮城展望台	
+        Spot::insert($data);
     }
 }
