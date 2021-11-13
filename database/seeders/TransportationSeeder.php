@@ -16,6 +16,9 @@ class TransportationSeeder extends Seeder
     {
         $data = [
             [
+                'name' => 'その他'
+            ],
+            [
                 'name' => '徒歩'
             ],
             [
@@ -33,9 +36,6 @@ class TransportationSeeder extends Seeder
             [
                 'name' => '自転車'
             ],
-            [
-                'name' => 'その他'
-            ]
         ];
         Transportation::insert($data);
     }

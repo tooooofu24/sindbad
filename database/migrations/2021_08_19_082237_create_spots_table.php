@@ -15,9 +15,9 @@ class CreateSpotsTable extends Migration
     {
         Schema::create('spots', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->longText('converted_name');
-            $table->string('thumbnail_url');
+            $table->text('name');
+            $table->text('converted_name');
+            $table->text('thumbnail_url');
             $table->enum('pref', [
                 "北海道", "青森", "岩手", "宮城", "秋田", "山形", "福島", "茨城", "栃木", "群馬",
                 "埼玉", "千葉", "東京", "神奈川", "新潟", "富山", "石川", "福井", "山梨", "長野",

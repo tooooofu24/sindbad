@@ -13,8 +13,15 @@ class PlanElement extends Model
     protected $fillable = [
         'plan_id', 'spot_id', 'memo', 'transportation_id', 'type',
     ];
-    public function spot()
+
+    public function child() // 0 => blank, 1 => spot, 2 => transportation
     {
-        return $this->belongsTo(Spot::class);
+        if ($this->type = 0) {
+            return null;
+        } elseif ($this->type = 1) {
+            return $this->belongsTo(Spot::class, 'child_id');
+        } else {
+            return $this->belongsTo(Transportation::class, 'child_id');
+        }
     }
 }

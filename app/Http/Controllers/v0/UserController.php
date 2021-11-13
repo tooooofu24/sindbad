@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\v0;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\PlanResource;
-use App\Models\Plan;
 use Illuminate\Http\Request;
 
-class PlanController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +14,7 @@ class PlanController extends Controller
      */
     public function index()
     {
-        return PlanResource::collection(
-            Plan::with(['user', 'favorites', 'planElements'])->get()
-        );
+        //
     }
 
     /**

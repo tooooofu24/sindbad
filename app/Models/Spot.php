@@ -13,5 +13,4 @@ class Spot extends Model
     protected $fillable = [
         'name', 'converted_name	', 'thumbnail_url', 'pref',
     ];
-    protected $guarded = ['spot_type_id'];
 }
