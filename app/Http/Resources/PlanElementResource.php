@@ -16,20 +16,20 @@ class PlanElementResource extends JsonResource
      */
     public function toArray($request)
     {
-        if ($this->child instanceof Spot) { // spot
-            $child = new SpotResource($this->child);
-        } elseif ($this->child instanceof Transportation) { //transportation
-            $child = new TransportationResource($this->child);
-        } else { // blank
+        if ($this->type == 0) {
             $child = null;
+        } elseif ($this->type == 1) {
+            $child = new SpotResource($this->child);
+        } else {
+            $child = new TransportationResource($this->child);
         }
         return [
             'id' => $this->id,
             'plan_id' => $this->plan_id,
             'type' => $this->type, // 0 => blank, 1 => spot, 2 => transportation
             'duration_min' => $this->duration_min,
+            'memo' => $this->when($this->type > 0, $this->memo), // blankは表示しない
             'child' => $child,
-            'memo' => $this->when($this->type !== 0, $this->memo), // blankは表示しない
         ];
     }
 }

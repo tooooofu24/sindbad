@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\v0;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\PlanElementResource;
 use App\Http\Resources\PlanResource;
 use App\Models\Plan;
+use App\Models\PlanElement;
 use Illuminate\Http\Request;
 
 class PlanController extends Controller
@@ -29,7 +31,15 @@ class PlanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $plan = new Plan;
+        $plan->fill($request->all());
+        $plan->user_id = $request->user()->id;
+        $plan->save();
+        PlanElement::createFromRequest(
+            json_decode($request->plan_elements, true),
+            $plan->id
+        );
+        return new PlanResource($plan);
     }
 
     /**
@@ -40,7 +50,9 @@ class PlanController extends Controller
      */
     public function show($id)
     {
-        //
+        return new PlanResource(
+            Plan::findOrFail($id)
+        );
     }
 
     /**
@@ -52,7 +64,16 @@ class PlanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $plan = Plan::findOrFail($id)
+            ->with(['user', 'favorites', 'planElements']);
+        if ($plan->user_id !== $request->user()->id) {
+            return response('削除する権限がありません', 403);
+        }
+        $plan->deletePlanElements();
+        PlanElement::createFromRequest(
+            json_decode($request->plan_elements, true),
+            $plan->id
+        );
     }
 
     /**
@@ -61,8 +82,14 @@ class PlanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $plan = Plan::findOrFail($id)
+            ->with(['user', 'favorites', 'planElements']);
+        if ($plan->user_id !== $request->user()->id) {
+            return response('削除する権限がありません', 403);
+        }
+        $plan->deletePlanElements();
+        $plan->delete();
     }
 }

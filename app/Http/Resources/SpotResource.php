@@ -20,6 +20,7 @@ class SpotResource extends JsonResource
             'converted_name' => $this->converted_name,
             'thumbnail_url' => $this->thumbnail_url,
             'pref' => $this->pref,
+            'count' => $this->count(),
         ];
     }
 }

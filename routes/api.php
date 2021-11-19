@@ -23,9 +23,11 @@ Route::group(['prefix' => 'v0'], function () {
 
     // 認証が必要なルート
     Route::middleware('auth:sanctum')->group(function () {
-        // Route::apiResource('users', App\Http\Controllers\v0\UserController::class)->only(['update']);
+        Route::apiResource('users', App\Http\Controllers\v0\UserController::class);
         Route::apiResource('favorites', App\Http\Controllers\v0\FavoriteController::class);
         Route::apiResource('plans', App\Http\Controllers\v0\PlanController::class);
+        Route::apiResource('spots', App\Http\Controllers\v0\SpotController::class);
+        Route::post('signup', App\Http\Controllers\v0\SignUpController::class);
     });
 });
 

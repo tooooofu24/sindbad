@@ -3,20 +3,24 @@
 namespace App\Http\Controllers\v0;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\UserResource;
-use App\Models\User;
+use App\Http\Resources\SpotResource;
+use App\Models\Spot;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class SpotController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $spots = Spot::all();
+        $spots = $spots->sortByDesc(function ($item, $key) {
+            return $item->count();
+        });
+        return SpotResource::collection($spots);
     }
 
     /**
@@ -27,7 +31,11 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $spot = new Spot();
+        $spot->fill([
+            $request->only(['name', 'converted_name', 'thumbnail_url', 'pref'])
+        ])->save();
+        return new SpotResource($spot);
     }
 
     /**
@@ -38,7 +46,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return new UserResource(User::findOrFail($id));
+        //
     }
 
     /**
@@ -50,12 +58,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::findOrFail($id);
-        if ($user->id !== $request->user()->id) {
-            return response('更新する権限がありません', 403);
-        }
-        $user->fill($request->only(['name', 'icon_url']))->save();
-        return new UserResource($user);
+        //
     }
 
     /**
@@ -64,12 +67,8 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id)
+    public function destroy($id)
     {
-        $user = User::findOrFail($id);
-        if ($user->id !== $request->user()->id) {
-            return response('削除する権限がありません', 403);
-        }
-        $user->delete();
+        //
     }
 }

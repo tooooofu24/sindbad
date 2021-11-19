@@ -12,7 +12,6 @@ class Plan extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
         'title',
         'thumbnail_url',
         'start_date_time',
@@ -30,5 +29,15 @@ class Plan extends Model
     public function planElements()
     {
         return $this->hasMany(PlanElement::class);
+    }
+    /**
+     * 小要素のplan_elementsを全て削除するメソッド
+     * @return void
+     */
+    public function deletePlanElements(): void
+    {
+        foreach ($this->planElements as $planElement) {
+            $planElement->delete();
+        }
     }
 }

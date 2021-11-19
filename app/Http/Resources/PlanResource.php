@@ -19,7 +19,11 @@ class PlanResource extends JsonResource
             "title" => $this->title,
             "thumbnail_url" => $this->thumbnail_url,
             "favorites_count" => $this->favorites->count(),
-            "user" => new UserResource($this->user),
+            "user" => [
+                'id' => $this->user->id,
+                'name' => $this->user->name,
+                'icon_url' => $this->user->name
+            ],
             "planElements" => PlanElementResource::collection($this->planElements),
         ];
     }

@@ -13,4 +13,12 @@ class Spot extends Model
     protected $fillable = [
         'name', 'converted_name	', 'thumbnail_url', 'pref',
     ];
+
+    public function count()
+    {
+        $count = PlanElement::where('type', 1)
+            ->where('child_id', $this->id)
+            ->count();
+        return $count;
+    }
 }
