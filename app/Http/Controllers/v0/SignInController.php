@@ -15,6 +15,9 @@ class SignInController extends Controller
         if ($user->password !== $request->password) {
             return response('パスワードが違います', 401);
         }
+        if (!$user->hasVerifiedEmail()) {
+            return response('認証が済んでいません', 401);
+        }
         return new UserResource($user);
     }
 }

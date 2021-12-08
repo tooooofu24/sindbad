@@ -27,6 +27,6 @@ class DatabaseSeeder extends Seeder
             TransportationSeeder::class
         ]);
         // Favoriteは最後に作成
-        Favorite::factory()->count(20)->create();
+        // Favorite::factory()->count(20)->create();
     }
 }

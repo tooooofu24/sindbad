@@ -12,7 +12,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Str;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens;
     use HasFactory;
@@ -20,12 +20,13 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
 
-    function __construct()
+    function __construct($attributes = [])
     {
         // ユニークなIDを作成
         $this->uid = Str::uuid();
         // ランダムなパスワードのハッシュ値を生成
         $this->password = Hash::make(Str::random());
+        parent::__construct($attributes);
     }
 
     /**

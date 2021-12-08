@@ -41,6 +41,9 @@ class Handler extends ExceptionHandler
 
     protected function prepareResponse($request, Throwable $e)
     {
-        return parent::prepareJsonResponse($request, $e);
+        if (substr($request->path(), 0, 3) == 'api') {
+            return parent::prepareJsonResponse($request, $e);
+        }
+        return parent::prepareResponse($request, $e);
     }
 }

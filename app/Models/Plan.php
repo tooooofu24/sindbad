@@ -4,12 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use PHPUnit\Util\Json;
-use Psy\Util\Json as UtilJson;
+use Illuminate\Support\Str;
+
 
 class Plan extends Model
 {
     use HasFactory;
+    function __construct($attributes = [])
+    {
+        $uid = Str::random(25);
+        // 重複チェック
+        while (self::where('uid', $uid)->exists()) {
+            $uid = Str::random(25);
+        }
+        $this->uid = $uid;
+        parent::__construct($attributes);
+    }
 
     protected $fillable = [
         'title',

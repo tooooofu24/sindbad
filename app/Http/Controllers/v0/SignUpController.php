@@ -12,6 +12,7 @@ class SignUpController extends Controller
     {
         $user = $request->user();
         $user->fill($request->only(['email', 'password']))->save();
+        $user->sendEmailVerificationNotification();
         return new UserResource($user);
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\EmailVerifyController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -27,3 +28,10 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
+
+Auth::routes(['verify' => true]);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/completeVerification', [EmailVerifyController::class, 'completeVerification'])->name('completeVerification');
+Route::get('/failVerification', [EmailVerifyController::class, 'failVerification'])->name('failVerification');

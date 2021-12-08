@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Jetstream\Features;
+use Illuminate\Support\Str;
 
 class UserFactory extends Factory
 {

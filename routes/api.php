@@ -1,7 +1,11 @@
 <?php
 
 use App\Http\Controllers\RedirectController;
+use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +24,7 @@ Route::group(['prefix' => 'v0'], function () {
     // 認証不要ルート
     Route::post('register', App\Http\Controllers\v0\RegisterController::class)->name('register');
     Route::post('login', App\Http\Controllers\v0\LoginController::class)->name('login');
+    Route::post('signin', App\Http\Controllers\v0\SignInController::class);
 
     // 認証が必要なルート
     Route::middleware('auth:sanctum')->group(function () {
@@ -29,6 +34,11 @@ Route::group(['prefix' => 'v0'], function () {
         Route::apiResource('spots', App\Http\Controllers\v0\SpotController::class);
         Route::post('signup', App\Http\Controllers\v0\SignUpController::class);
     });
+});
+
+Route::get('emailTest', function () {
+    $user = User::find(1);
+    $user->sendEmailVerificationNotification();
 });
 
 // 認証時のリダイレクト用ルート
