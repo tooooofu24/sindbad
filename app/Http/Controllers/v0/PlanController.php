@@ -16,10 +16,14 @@ class PlanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $plan = Plan::query()->with(['user', 'favorites', 'planElements']);
+        if ($request->is_mine) {
+            $plan->where('user_id', $request->user()->id);
+        }
         return PlanResource::collection(
-            Plan::with(['user', 'favorites', 'planElements'])->get()
+            $plan->get()
         );
     }
 
