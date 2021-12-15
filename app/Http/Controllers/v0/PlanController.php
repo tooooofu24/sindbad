@@ -89,8 +89,8 @@ class PlanController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        $plan = Plan::findOrFail($id)
-            ->with(['user', 'favorites', 'planElements']);
+        $plan = Plan::with(['user', 'favorites', 'planElements'])
+            ->where('id', $id)->firstOrFail();
         if ($plan->user_id !== $request->user()->id) {
             return response('削除する権限がありません', 403);
         }

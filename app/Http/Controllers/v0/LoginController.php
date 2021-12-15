@@ -11,7 +11,7 @@ class LoginController extends Controller
 {
     public function __invoke(Request $request)
     {
-        $user = User::findOrFail($request->id);
+        $user = User::where('uid', $request->uid)->firstOrFail();
         $user->tokens()->delete();
         if ($user->password == $request->password) {
             return new UserResource($user);

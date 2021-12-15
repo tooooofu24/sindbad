@@ -33,6 +33,7 @@ Route::group(['prefix' => 'v0'], function () {
         Route::apiResource('plans', App\Http\Controllers\v0\PlanController::class);
         Route::apiResource('spots', App\Http\Controllers\v0\SpotController::class);
         Route::post('signup', App\Http\Controllers\v0\SignUpController::class);
+        Route::post('uploadImage', App\Http\Controllers\v0\UploadImageController::class);
     });
 });
 

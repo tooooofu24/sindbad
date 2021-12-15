@@ -20,10 +20,11 @@ class UserSeeder extends Seeder
         $user = new User;
         $user->fill([
             'name' => 'toya',
-            'uid' => Str::uuid(),
+            'uid' => 'uid',
             'password' => 'password',
             'email' => 'toya24xxx@i.softbank.jp',
             'icon_url' => 'https://pbs.twimg.com/profile_images/1362640108965437445/n1SvYSbT.jpg',
         ])->save();
+        User::factory()->count(20)->create();
     }
 }
