@@ -22,8 +22,9 @@ class PlanController extends Controller
         if ($request->is_mine) {
             $plan->where('user_id', $request->user()->id);
         }
+        $size = $request->size ?: 20;
         return PlanResource::collection(
-            $plan->get()
+            $plan->paginate($size)
         );
     }
 

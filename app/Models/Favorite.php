@@ -13,4 +13,14 @@ class Favorite extends Model
         'user_id',
         'plan_id',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function plan()
+    {
+        return $this->belongsTo(Plan::class);
+    }
 }

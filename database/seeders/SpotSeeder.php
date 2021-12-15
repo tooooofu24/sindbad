@@ -14,6 +14,7 @@ class SpotSeeder extends Seeder
      */
     public function run()
     {
+        Spot::factory()->count(100)->create();
         $data = [
             [
                 'name' => '函館山',
@@ -1243,6 +1244,6 @@ class SpotSeeder extends Seeder
         // 宮崎	高千穂峡	青島神社	照葉大吊橋																			
         // 鹿児島	桜島	天文館	仙厳園	むじゃきの白熊	指宿の砂蒸し風呂	霧島温泉郷	生駒高原	佐多岬														
         // 沖縄	星砂の浜	ひめゆりの塔	竜宮城展望台	
-        Spot::insert($data);
+        // Spot::insert($data);
     }
 }

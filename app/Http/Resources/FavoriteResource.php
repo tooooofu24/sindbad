@@ -16,9 +16,9 @@ class FavoriteResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'created_at' => $this->created_at,
             'user_id' => $this->user_id,
-            'plan_id' => $this->plan_id,
-            'created_at' => $this->created_at
+            'plan' => new PlanResource($this->plan),
         ];
     }
 }

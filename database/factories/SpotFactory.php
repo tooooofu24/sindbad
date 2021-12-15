@@ -1,41 +1,29 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+namespace Database\Factories;
 
-class CreateSpotsTable extends Migration
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class SpotFactory extends Factory
 {
     /**
-     * Run the migrations.
+     * Define the model's default state.
      *
-     * @return void
+     * @return array
      */
-    public function up()
+    public function definition()
     {
-        Schema::create('spots', function (Blueprint $table) {
-            $table->id();
-            $table->text('name');
-            $table->text('converted_name');
-            $table->text('thumbnail_url');
-            $table->enum('pref', [
+        return [
+            'name' => $this->faker->realText($this->faker->numberBetween(10, 100)),
+            'converted_name' => $this->faker->realText($this->faker->numberBetween(10, 100)),
+            'pref' => $this->faker->randomElement([
                 "北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県", "茨城県", "栃木県", "群馬県",
                 "埼玉県", "千葉県", "東京都", "神奈川県", "新潟県", "富山県", "石川県", "福井県", "山梨県", "長野県",
                 "岐阜県", "静岡県", "愛知県", "三重県", "滋賀県", "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県",
                 "鳥取県", "島根県", "岡山県", "広島県", "山口県", "徳島県", "香川県", "愛媛県", "高知県", "福岡県",
                 "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県"
-            ]);
-            $table->timestamps();
-        });
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('spots');
+            ]),
+            'thumbnail_url' => $this->faker->imageUrl(),
+        ];
     }
 }
