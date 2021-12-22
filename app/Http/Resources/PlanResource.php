@@ -24,7 +24,7 @@ class PlanResource extends JsonResource
             "user" => [
                 'id' => $this->user->id,
                 'name' => $this->user->name,
-                'icon_url' => $this->user->name
+                'icon_url' => $this->user->icon_url,
             ],
             "planElements" => PlanElementResource::collection($this->planElements),
         ];
