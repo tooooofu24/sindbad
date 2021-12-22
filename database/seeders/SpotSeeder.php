@@ -14,6 +14,19 @@ class SpotSeeder extends Seeder
      */
     public function run()
     {
+        $data = [
+            ['name' => '東山慈照寺', 'converted_name' => 'ひがしやまじしょうじ', 'thumbnail_url' => 'https://www.shokoku-ji.jp/wp-content/themes/shokokuji/assets/img/ginkakuji/about/imgSlide01@2x.jpg', 'pref' => '京都府'],
+            ['name' => '鹿苑寺', 'converted_name' => 'ろくおんじ', 'thumbnail_url' => 'https://s3-ap-northeast-1.amazonaws.com/thegate/2021/07/15/12/17/21/Kinkakuji_Temple.jpg', 'pref' => '京都府'],
+            ['name' => '東京スカイツリー', 'converted_name' => 'とうきょうすかいつりー', 'thumbnail_url' => 'https://www.timesclub.jp/sp/tanomachi_ex/tokyo/oshiage/images/001_ph002.jpg', 'pref' => '東京都'],
+            ['name' => '東京駅', 'converted_name' => 'とうきょうえき', 'thumbnail_url' => 'https://cdn-mapple.net/g/v3/?u=https://www.mapple.net/cms/wp-content/uploads/2020/03/13027398_00028-640x480.jpg', 'pref' => '東京都'],
+            ['name' => '神威岬', 'converted_name' => 'かむいみさき', 'thumbnail_url' => 'https://i2.wp.com/hokkaido-travel.com/wp-content/uploads/2017/05/HO002901.jpg?fit=1200%2C791&ssl=1', 'pref' => '北海道'],
+            ['name' => '高屋神社', 'converted_name' => 'たかやじんじゃ', 'thumbnail_url' => 'https://www.my-kagawa.jp/image/rendering/attraction_image/7027/trim/3/2?v=33c5f0811280d90ba448d3fdbe6323d12b9984ce', 'pref' => '香川県'],
+            ['name' => '琴弾公園', 'converted_name' => 'ことひきこうえん', 'thumbnail_url' => 'https://www.my-kagawa.jp/image/rendering/attraction_image/7267/trim/3/2?v=9d7794f2e5443a4092eda026c3c4257fdaa2069e', 'pref' => '香川県'],
+            ['name' => '世界のコイン館', 'converted_name' => 'せかいのこいんかん', 'thumbnail_url' => 'https://www.my-kagawa.jp/image/rendering/attraction_image/6118/trim/3/2?v=46db80baa77d4f1af4b77dd82d5ae6a03883de47', 'pref' => '香川県'],
+            ['name' => '東京ドイツ村', 'converted_name' => 'とうきょうどいつむら', 'thumbnail_url' => 'https://lh3.googleusercontent.com/proxy/JkyQ5Qk9WWppPU5xM1snWtkx9mjg2a5vA97-EpRcilkbNeeEXDXAY42lmx0-lr4JApJJxlPLIiEOf_kx7hvWoYa5LwA4Kg', 'pref' => '千葉県'],
+            ['name' => '恵比寿LIQUIDROOM', 'converted_name' => 'えびすりきっどるーむ', 'thumbnail_url' => 'https://resize2-icotto.k-img.com/-yaNMR3tTmQiFmvJmAP8LHhotC3YnPKqVHJwtOqyAFY/rs:fill:700:525/plain/https://icotto.k-img.com/system/press_images/000/359/458/995425ed820f0f223f473161ef860c5d323c9713.jpeg', 'pref' => '東京都'],
+        ];
+        Spot::insert($data);
         Spot::factory()->count(100)->create();
         $data = [
             [
@@ -1243,7 +1256,6 @@ class SpotSeeder extends Seeder
         // 大分	別府地獄めぐり	城島高原パーク	竹瓦温泉																			
         // 宮崎	高千穂峡	青島神社	照葉大吊橋																			
         // 鹿児島	桜島	天文館	仙厳園	むじゃきの白熊	指宿の砂蒸し風呂	霧島温泉郷	生駒高原	佐多岬														
-        // 沖縄	星砂の浜	ひめゆりの塔	竜宮城展望台	
-        // Spot::insert($data);
+        // 沖縄	星砂の浜	ひめゆりの塔	竜宮城展望台
     }
 }
