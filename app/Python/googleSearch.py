@@ -1,3 +1,5 @@
+# coding: UTF-8
+
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
@@ -6,15 +8,36 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
 import sys
 import time
-
+import platform
 
 try:
-    # driverの設定
-    s = Service('/Users/kawakamiriko/Downloads/chromedriver')
-    options = webdriver.ChromeOptions()
-    # options.add_argument("--headless")
-    options.add_argument("--window-size=1080x1280")
-    driver = webdriver.Chrome(service=s, options=options)
+    # lambdaで起動したときの処理
+    if platform.system() == 'Linux':
+        s = Service('/usr/local/bin/chromedriver')
+        # ブラウザ(Chrome)の設定
+        options = webdriver.ChromeOptions()
+        options.add_argument("--headless")
+        options.add_argument("--window-size=1080x1280")
+        options.add_argument("--disable-gpu")
+        options.add_argument("--disable-application-cache")
+        options.add_argument("--disable-infobars")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--hide-scrollbars")
+        options.add_argument("--enable-logging")
+        options.add_argument("--log-level=0")
+        options.add_argument("--single-process")
+        options.add_argument("--ignore-certificate-errors")
+        options.add_argument("--homedir=/tmp")
+        options.add_argument(
+                '--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1 Safari/605.1.15')
+        driver = webdriver.Chrome(service=s, options=options)
+    else:
+        # ローカルで起動したときの処理
+        s = Service('/Users/kawakamiriko/Downloads/chromedriver')
+        options = webdriver.ChromeOptions()
+        # options.add_argument("--headless")
+        options.add_argument("--window-size=1080x1280")
+        driver = webdriver.Chrome(service=s, options=options)
 
     # 引数を検索ワードに指定
     word = sys.argv[1]
