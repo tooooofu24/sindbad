@@ -25,6 +25,7 @@ Route::group(['prefix' => 'v0'], function () {
     Route::post('register', App\Http\Controllers\v0\RegisterController::class)->name('register');
     Route::post('login', App\Http\Controllers\v0\LoginController::class)->name('login');
     Route::post('signin', App\Http\Controllers\v0\SignInController::class);
+    Route::get('searchGoogle', App\Http\Controllers\v0\SearchGoogle::class);
 
     // 認証が必要なルート
     Route::middleware('auth:sanctum')->group(function () {
