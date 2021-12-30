@@ -11,7 +11,7 @@ class Spot extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'converted_name	', 'thumbnail_url', 'pref',
+        'name', 'converted_name', 'thumbnail_url', 'pref',
     ];
 
     public function count()

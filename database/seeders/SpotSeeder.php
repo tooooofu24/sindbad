@@ -27,7 +27,7 @@ class SpotSeeder extends Seeder
             ['name' => '恵比寿LIQUIDROOM', 'converted_name' => 'えびすりきっどるーむ', 'thumbnail_url' => 'https://resize2-icotto.k-img.com/-yaNMR3tTmQiFmvJmAP8LHhotC3YnPKqVHJwtOqyAFY/rs:fill:700:525/plain/https://icotto.k-img.com/system/press_images/000/359/458/995425ed820f0f223f473161ef860c5d323c9713.jpeg', 'pref' => '東京都'],
         ];
         Spot::insert($data);
-        Spot::factory()->count(100)->create();
+        // Spot::factory()->count(100)->create();
         $data = [
             [
                 'name' => '函館山',
