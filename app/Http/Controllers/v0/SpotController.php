@@ -16,11 +16,19 @@ class SpotController extends Controller
      */
     public function index(Request $request)
     {
-        $spots = Spot::all();
-        $spots = $spots->sortByDesc(function ($item, $key) {
-            return $item->count();
-        });
-        return SpotResource::collection($spots);
+        $query = Spot::query();
+        if ($request->q) {
+            // スペース区切りの検索文字を配列にする
+            $words = preg_split('/[\s|\x{3000}]+/u', $request->q);
+            foreach ($words as $word) {
+                $query->where(function ($q) use ($word) {
+                    $q->orWhere('name', 'like', "%$word%")
+                        ->orWhere('converted_name', 'like', "%$word%");
+                });
+            }
+        }
+        $size = $request->size ?: 20;
+        return SpotResource::collection($query->paginate($size));
     }
 
     /**

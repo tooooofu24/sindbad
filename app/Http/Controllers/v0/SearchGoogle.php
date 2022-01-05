@@ -9,15 +9,14 @@ class SearchGoogle extends Controller
 {
     function __invoke(Request $request)
     {
-        if (app()->isProduction()){
+        if (app()->isProduction()) {
             $python = '/opt/rh/rh-python38/root/usr/bin/python';
-        }else{
+        } else {
             $python = 'python3';
         }
         $filePath = __DIR__ . '/../../../Python/googleSearch.py';
-        $word = $request->word;
 
-        $command = $python . ' ' . $filePath . ' ' . $word;
+        $command = $python . ' ' . $filePath . ' ' . $request->q;
         exec($command, $response);
         return $response[0];
     }

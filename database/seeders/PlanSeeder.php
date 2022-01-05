@@ -15,8 +15,8 @@ class PlanSeeder extends Seeder
      */
     public function run()
     {
-        Plan::factory()->count(20)->create()->each(function ($plan) {
-            PlanElement::factory()->count(mt_rand(3, 10))->create(['plan_id' => $plan->id]);
+        Plan::factory()->count(100)->create()->each(function ($plan) {
+            PlanElement::factory()->count(mt_rand(10, 20))->create(['plan_id' => $plan->id]);
         });
     }
 }

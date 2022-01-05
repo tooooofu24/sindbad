@@ -18,13 +18,14 @@ class PlanController extends Controller
      */
     public function index(Request $request)
     {
-        $plan = Plan::query()->with(['user', 'favorites', 'planElements']);
+        $plans = Plan::query()
+            ->with(['user', 'favorites', 'planElements'])->latest();
         if ($request->is_mine) {
-            $plan->where('user_id', $request->user()->id);
+            $plans->where('user_id', $request->user()->id);
         }
         $size = $request->size ?: 20;
         return PlanResource::collection(
-            $plan->paginate($size)
+            $plans->paginate($size)
         );
     }
 

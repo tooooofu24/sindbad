@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Plan;
+use App\Models\Spot;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PlanFactory extends Factory
@@ -21,14 +22,10 @@ class PlanFactory extends Factory
      */
     public function definition()
     {
-        $categories = [
-            'abstract', 'animals', 'business', 'cats', 'city', 'food', 'nightlife',
-            'fashion', 'people', 'nature', 'sports', 'technics', 'transport'
-        ];
         return [
             'user_id' => $this->faker->numberBetween(1, 5),
-            'title' => $this->faker->realText(10),
-            'thumbnail_url' => $this->faker->boolean(50) ? $this->faker->imageUrl($width = 640, $height = 480, $category = $categories[mt_rand(0, 12)]) : null,
+            'title' => $this->faker->realText($this->faker->numberBetween(10, 30)),
+            'thumbnail_url' => Spot::inRandomOrder()->first()->thumbnail_url,
             'start_date_time' => $this->faker->dateTime(),
             'public_flag' => $this->faker->boolean(),
         ];

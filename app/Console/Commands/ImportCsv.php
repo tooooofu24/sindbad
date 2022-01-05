@@ -40,7 +40,7 @@ class ImportCsv extends Command
      */
     public function handle()
     {
-        $reader = Reader::createFromPath(__DIR__ . '/test.csv', 'r');
+        $reader = Reader::createFromPath(__DIR__ . '/spotData.csv', 'r');
         $records = $reader->getRecords();
         foreach ($records as $record) {
             $spot = new Spot();

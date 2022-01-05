@@ -34,7 +34,7 @@ class PlanElementFactory extends Factory
             'type' => $type, // 0 => blank, 1 => spot, 2 => transportation
             'child_id' => $child_id,
             'duration_min' => $this->faker->randomElement([10, 20, 30, 40, 50, 60, 70, 80, 90]),
-            'memo' => $this->faker->boolean(50) ? $this->faker->realText($this->faker->numberBetween(20, 100)) : null,
+            'memo' => $this->faker->boolean(80) ? $this->faker->realText($this->faker->numberBetween(20, 150)) : null,
         ];
     }
 }

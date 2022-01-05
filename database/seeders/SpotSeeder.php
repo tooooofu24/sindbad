@@ -27,8 +27,7 @@ class SpotSeeder extends Seeder
             ['name' => '恵比寿LIQUIDROOM', 'converted_name' => 'えびすりきっどるーむ', 'thumbnail_url' => 'https://resize2-icotto.k-img.com/-yaNMR3tTmQiFmvJmAP8LHhotC3YnPKqVHJwtOqyAFY/rs:fill:700:525/plain/https://icotto.k-img.com/system/press_images/000/359/458/995425ed820f0f223f473161ef860c5d323c9713.jpeg', 'pref' => '東京都'],
         ];
         Spot::insert($data);
-        // Spot::factory()->count(100)->create();
-        $data = [
+        /*$data = [
             [
                 'name' => '函館山',
                 'converted_name' => 'はこだてやま',
@@ -1230,7 +1229,7 @@ class SpotSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now()
             ]
-        ];
+        ];*/
         // 	八町蔵通り	やきもの散歩道	平和公園
         // 三重	伊勢神宮	おかげ横丁	猿田彦神社	二見ヶ浦	竹神社	椿大神社	アクアイグニス	にぎわいの森	おはらい町	地中海村	鳥羽水族館	なばなの里										
         // 滋賀	竹生島	びわ湖バレイ	延暦寺																			

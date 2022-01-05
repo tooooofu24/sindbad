@@ -17,7 +17,7 @@ class CreatePlansTable extends Migration
             $table->id();
             $table->bigInteger('user_id');
             $table->string('title');
-            $table->string('thumbnail_url')->nullable();
+            $table->longText('thumbnail_url')->nullable();
             $table->dateTime('start_date_time');
             $table->string('uid')->unique();
             $table->boolean('public_flag')->default(false);
