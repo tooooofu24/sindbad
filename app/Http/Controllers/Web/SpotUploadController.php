@@ -28,8 +28,13 @@ class SpotUploadController extends Controller
         $reader = Reader::createFromPath($request->file('csv')->getPathname(), 'r');
         $records = $reader->getRecords();
 
+        $data = [];
+        foreach ($records as $record) {
+            $data[] = $record;
+        }
+
         // Spotを保存(非同期)
-        CsvSpotUpload::dispatch($records);
+        CsvSpotUpload::dispatch($data);
 
         return redirect()->route('spotUpload.index')->with('message', '登録しました！(反映に時間がかかることがあります)');
     }
