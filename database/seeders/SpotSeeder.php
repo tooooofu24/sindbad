@@ -3,7 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Spot;
+use Exception;
 use Illuminate\Database\Seeder;
+use League\Csv\Reader;
 
 class SpotSeeder extends Seeder
 {
@@ -27,6 +29,24 @@ class SpotSeeder extends Seeder
             ['name' => '恵比寿LIQUIDROOM', 'converted_name' => 'えびすりきっどるーむ', 'thumbnail_url' => 'https://resize2-icotto.k-img.com/-yaNMR3tTmQiFmvJmAP8LHhotC3YnPKqVHJwtOqyAFY/rs:fill:700:525/plain/https://icotto.k-img.com/system/press_images/000/359/458/995425ed820f0f223f473161ef860c5d323c9713.jpeg', 'pref' => '東京都'],
         ];
         Spot::insert($data);
+
+        // csvでインポート
+        $reader = Reader::createFromPath(__DIR__ . '/spotData.csv', 'r');
+        $records = $reader->getRecords();
+        foreach ($records as $record) {
+            $spot = new Spot();
+            try {
+                $spot->fill([
+                    'name' => $record[0],
+                    'converted_name' => $record[1],
+                    'thumbnail_url' => $record[2],
+                    'pref' => $record[3]
+                ])->save();
+            } catch (Exception $e) {
+                dump($e->getMessage());
+            }
+        }
+
         /*$data = [
             [
                 'name' => '函館山',

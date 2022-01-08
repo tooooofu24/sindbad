@@ -40,9 +40,9 @@ class SpotController extends Controller
     public function store(Request $request)
     {
         $spot = new Spot();
-        $spot->fill([
+        $spot->fill(
             $request->only(['name', 'converted_name', 'thumbnail_url', 'pref'])
-        ])->save();
+        )->save();
         return new SpotResource($spot);
     }
 

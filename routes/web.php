@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Web\EmailVerifyController;
+use App\Http\Controllers\Web\SpotUploadController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -35,3 +36,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/completeVerification', [EmailVerifyController::class, 'completeVerification'])->name('completeVerification');
 Route::get('/failVerification', [EmailVerifyController::class, 'failVerification'])->name('failVerification');
+
+Route::get('/spotUpload', [SpotUploadController::class, 'index'])->name('spotUpload.index');
+Route::post('/spotUpload/csv', [SpotUploadController::class, 'csvUpload'])->name('spotUpload.csv');
+Route::post('/spotUpload', [SpotUploadController::class, 'upload'])->name('spotUpload.upload');

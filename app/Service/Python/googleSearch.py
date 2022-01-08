@@ -9,11 +9,12 @@ from selenium.webdriver.support import expected_conditions as EC
 import sys
 import time
 import platform
+import urllib.parse
 
 try:
     # lambdaで起動したときの処理
-    if platform.system() == 'Linux':
-        s = Service('/usr/local/bin/chromedriver')
+    if platform.system() == "Linux":
+        s = Service("/usr/local/bin/chromedriver")
         # ブラウザ(Chrome)の設定
         options = webdriver.ChromeOptions()
         options.add_argument("--headless")
@@ -29,29 +30,44 @@ try:
         options.add_argument("--ignore-certificate-errors")
         options.add_argument("--homedir=/tmp")
         options.add_argument(
-                '--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1 Safari/605.1.15')
+            "--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1 Safari/605.1.15"
+        )
         driver = webdriver.Chrome(service=s, options=options)
     else:
         # ローカルで起動したときの処理
-        s = Service('/Users/kawakamiriko/Downloads/chromedriver')
+        s = Service("/Users/kawakamiriko/Downloads/chromedriver")
         options = webdriver.ChromeOptions()
         # options.add_argument("--headless")
         options.add_argument("--window-size=1080x1280")
         driver = webdriver.Chrome(service=s, options=options)
 
     # 引数を検索ワードに指定
-    word = sys.argv[1]
+    q = sys.argv[1]
 
-    # 検索情報
-    url = "https://www.google.com/search?hl=jp&q=" + \
-        word + "&btnG=Google+Search&tbs=0&safe=off&tbm=isch"
+    url = "https://www.google.com/search?"
 
-    # ページにアクセス
-    driver.get(url)
+    # 検索パラメータ
+    query = urllib.parse.urlencode(
+        {
+            "tbm": "isch",  # 画像検索
+            "q": q,  # 検索文字列
+            "hl": "ja",  # 言語
+            "tbs": "il:cl",  # クリエイティブ・コモンズ・ライセンス
+        }
+    )
+
+    # 検索
+    driver.get(url + query)
 
     #  Google検索の最初の画像をクリック
-    img_tag = WebDriverWait(driver, 10).until(EC.visibility_of_element_located(
-        (By.CSS_SELECTOR, "#islmp img")))
+    try:
+        img_tag = WebDriverWait(driver, 2).until(
+            EC.visibility_of_element_located((By.CSS_SELECTOR, "#islmp img"))
+        )
+    except:
+        print("")
+        driver.quit()
+        sys.exit()
     actions = ActionChains(driver)
     actions.move_to_element(img_tag)
     actions.click(img_tag)
@@ -61,15 +77,14 @@ try:
     time.sleep(2)
 
     # 右側に表示されたimgタグを取得
-    images = WebDriverWait(driver, 10).until(EC.visibility_of_any_elements_located(
-        (By.CSS_SELECTOR, "#islsp img")))
+    images = WebDriverWait(driver, 10).until(
+        EC.visibility_of_any_elements_located((By.CSS_SELECTOR, "#islsp img"))
+    )
 
     # httpsで始まるものを取得
     for img in images:
-        img_url = img.get_attribute('src')
-        width = int(img.get_attribute('width'))
-        height = int(img.get_attribute('height'))
-        if(img_url.startswith('https')):
+        img_url = img.get_attribute("src")
+        if img_url.startswith("https"):
             break
 
     # ブラウザを終了
@@ -78,4 +93,6 @@ try:
     print(img_url)
 
 except:
-    print('error')
+    print("")
+    if "driver" in locals():
+        driver.quit()
