@@ -84,6 +84,9 @@ try:
     # httpsで始まるものを取得
     for img in images:
         img_url = img.get_attribute("src")
+        style = img.get_attribute("style")
+        if "display: inline" in style:
+            continue
         if img_url.startswith("https"):
             break
 
