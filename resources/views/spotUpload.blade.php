@@ -8,7 +8,7 @@
     </div>
     @endif
     <div class="row">
-        <div class="col-md-6 px-3">
+        <div class="col-md-6 p-3">
             <div class="mx-auto h-100">
                 <div class="card h-100">
                     <div class="card-header">
@@ -37,7 +37,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6 px-3">
+        <div class="col-md-6 p-3">
             <div class="mx-auto">
                 <div class="card">
                     <div class="card-header">
