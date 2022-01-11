@@ -16,7 +16,7 @@ use Illuminate\Queue\SerializesModels;
 /**
  * CSVアップロードの非同期処理
  */
-class CsvSpotUpload implements ShouldQueue
+class CsvSpotUploadJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 

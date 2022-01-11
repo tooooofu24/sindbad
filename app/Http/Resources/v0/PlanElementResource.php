@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\v0;
 
 use App\Models\Spot;
 use App\Models\Transportation;

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\v0;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\PlanElementResource;
-use App\Http\Resources\PlanResource;
+use App\Http\Resources\v0\PlanElementResource;
+use App\Http\Resources\v0\PlanResource;
 use App\Models\Plan;
 use App\Models\PlanElement;
 use Illuminate\Http\Request;

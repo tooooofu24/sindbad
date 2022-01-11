@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\v0;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\SpotResource;
+use App\Http\Resources\v0\SpotResource;
 use App\Models\Spot;
 use Illuminate\Http\Request;
 
