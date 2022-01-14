@@ -24,8 +24,9 @@ Route::group(['prefix' => 'v0'], function () {
     // 認証不要ルート
     Route::post('register', App\Http\Controllers\v0\RegisterController::class)->name('register');
     Route::post('login', App\Http\Controllers\v0\LoginController::class)->name('login');
-    Route::post('signin', App\Http\Controllers\v0\SignInController::class);
+    Route::post('login-with-email', App\Http\Controllers\v0\LoginWithEmailController::class);
     Route::get('searchGoogle', App\Http\Controllers\v0\SearchGoogle::class);
+    Route::get('search-google', App\Http\Controllers\v0\SearchGoogle::class);
 
     // 認証が必要なルート
     Route::middleware('auth:sanctum')->group(function () {
@@ -33,8 +34,9 @@ Route::group(['prefix' => 'v0'], function () {
         Route::apiResource('favorites', App\Http\Controllers\v0\FavoriteController::class);
         Route::apiResource('plans', App\Http\Controllers\v0\PlanController::class);
         Route::apiResource('spots', App\Http\Controllers\v0\SpotController::class);
-        Route::post('signup', App\Http\Controllers\v0\SignUpController::class);
+        Route::post('register-with-email', App\Http\Controllers\v0\RegisterWithEmailController::class);
         Route::post('uploadImage', App\Http\Controllers\v0\UploadImageController::class);
+        Route::post('upload-image', App\Http\Controllers\v0\UploadImageController::class);
     });
 });
 

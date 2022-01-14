@@ -5,6 +5,7 @@ namespace App\Http\Controllers\v0;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\v0\SpotResource;
 use App\Models\Spot;
+use App\Service\ConvertTextService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -45,8 +46,10 @@ class SpotController extends Controller
     {
         $spot = new Spot();
         $spot->fill(
-            $request->only(['name', 'converted_name', 'thumbnail_url', 'pref'])
-        )->save();
+            $request->only(['name', 'thumbnail_url', 'pref'])
+        );
+        $spot->converted_name = ConvertTextService::convert($request->name);
+        $spot->save();
         return new SpotResource($spot);
     }
 

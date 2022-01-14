@@ -7,7 +7,7 @@ use App\Http\Resources\v0\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class SignInController extends Controller
+class LoginWithEmailController extends Controller
 {
     public function __invoke(Request $request)
     {

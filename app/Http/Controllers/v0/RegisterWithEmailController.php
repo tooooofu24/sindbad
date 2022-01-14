@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\v0\UserResource;
 use Illuminate\Http\Request;
 
-class SignUpController extends Controller
+class RegisterWithEmailController extends Controller
 {
     public function __invoke(Request $request)
     {
