@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\v0\SpotResource;
 use App\Models\Spot;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SpotController extends Controller
 {
@@ -16,20 +17,21 @@ class SpotController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Spot::query();
+        $query = Spot::query()
+            ->withCount('planElements')
+            ->orderBy('plan_elements_count', 'desc');
         $size = $request->size ?: 20;
         if ($request->q) {
             // スペース区切りの検索文字を配列にする
             $words = preg_split('/[\s|\x{3000}]+/u', $request->q);
             foreach ($words as $word) {
-                $query->where(function ($q) use ($word) {
-                    $q->orWhere('name', 'like', "%$word%")
+                $query->where(function ($query) use ($word) {
+                    $query->orWhere('name', 'like', "%$word%")
                         ->orWhere('converted_name', 'like', "%$word%");
                 });
             }
         }
-        $query = Spot::where('id', 1);
-        return $query->paginate($size);
+
         return SpotResource::collection($query->paginate($size));
     }
 

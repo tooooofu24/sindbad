@@ -14,11 +14,8 @@ class Spot extends Model
         'name', 'converted_name', 'thumbnail_url', 'pref',
     ];
 
-    public function count()
+    public function planElements()
     {
-        $count = PlanElement::where('type', 1)
-            ->where('child_id', $this->id)
-            ->count();
-        return $count;
+        return $this->hasMany(PlanElement::class, 'child_id')->where('type', 1);
     }
 }
