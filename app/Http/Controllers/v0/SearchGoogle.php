@@ -12,6 +12,6 @@ class SearchGoogle extends Controller
     {
         $python = new PythonService;
         $response = $python->googleSearch($request->q);
-        return $response;
+        return response($response, 200)->header('Content-Type', 'text/plain');
     }
 }

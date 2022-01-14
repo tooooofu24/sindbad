@@ -17,6 +17,7 @@ class SpotController extends Controller
     public function index(Request $request)
     {
         $query = Spot::query();
+        $size = $request->size ?: 20;
         if ($request->q) {
             // スペース区切りの検索文字を配列にする
             $words = preg_split('/[\s|\x{3000}]+/u', $request->q);
@@ -27,7 +28,8 @@ class SpotController extends Controller
                 });
             }
         }
-        $size = $request->size ?: 20;
+        $query = Spot::where('id', 1);
+        return $query->paginate($size);
         return SpotResource::collection($query->paginate($size));
     }
 
