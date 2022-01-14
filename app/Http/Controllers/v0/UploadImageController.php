@@ -30,6 +30,6 @@ class UploadImageController extends Controller
         $image = $request->file('image');
         $image_path = Storage::disk('s3')->put('/test', $image, 'public');
         $url = env('AWS_BASE_URL') . $image_path;
-        return $url;
+        return response($url,200)->header('Content-Type', 'text/plain');
     }
 }
