@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\v0;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\FavoriteResource;
+use App\Http\Resources\v0\FavoriteResource;
 use App\Models\Favorite;
 use Illuminate\Http\Request;
 

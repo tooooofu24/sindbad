@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SpotCsvUploadRequst;
 use App\Http\Requests\SpotUploadRequst;
-use App\Jobs\CsvSpotUpload;
-use App\Jobs\SpotUpload;
+use App\Jobs\CsvSpotUploadJob;
+use App\Jobs\SpotUploadJob;
 use App\Models\Spot;
 use App\Service\ConvertTextService;
 use App\Service\PythonService;
@@ -34,7 +34,7 @@ class SpotUploadController extends Controller
         }
 
         // Spotを保存(非同期)
-        CsvSpotUpload::dispatch($data);
+        CsvSpotUploadJob::dispatch($data);
 
         return redirect()->route('spotUpload.index')->with('message', '登録しました！(反映に時間がかかることがあります)');
     }
@@ -42,7 +42,7 @@ class SpotUploadController extends Controller
     public function upload(SpotUploadRequst $request)
     {
         // Spotを保存(非同期)
-        SpotUpload::dispatch($request->all());
+        SpotUploadJob::dispatch($request->all());
 
         return redirect()->route('spotUpload.index')->with('message', '登録しました！');
     }
