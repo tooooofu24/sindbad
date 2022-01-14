@@ -1,15 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\v0;
+namespace App\Http\Controllers\v001;
 
-use App\Http\Controllers\Controller;
-use App\Http\Resources\v0\PlanElementResource;
 use App\Http\Resources\v0\PlanResource;
 use App\Models\Plan;
 use App\Models\PlanElement;
 use Illuminate\Http\Request;
 
-class PlanController extends Controller
+class PlanController extends \App\Http\Controllers\v0\PlanController
 {
     /**
      * Display a listing of the resource.
@@ -22,13 +20,6 @@ class PlanController extends Controller
             ->with(['user', 'favorites', 'planElements']);
         if ($request->is_mine) {
             $plans->where('user_id', $request->user()->id);
-        }
-        if ($request->spots && is_array($request->spots)) {
-            foreach ($request->spots as $spot_id) {
-                $plans->whereHas('planElements', function ($query) use ($spot_id) {
-                    $query->where('child_id', $spot_id)->where('type', 1);
-                });
-            }
         }
         $plans->latest();
         $size = $request->size ?: 20;
