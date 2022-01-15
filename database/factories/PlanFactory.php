@@ -25,7 +25,7 @@ class PlanFactory extends Factory
     {
         return [
             'user_id' => $this->faker->numberBetween(1, 20),
-            'title' => $this->faker->randomElement(Consts::PREF_LIST),
+            'title' => $this->faker->randomElement(Consts::PREF_LIST) . $this->faker->randomElement(['旅行', 'の旅', 'を巡る旅', '温泉旅行', ' グルメの旅', ' ナンパの旅', 'のラーメンを巡る', ' 美術館巡り', ' カフェ巡り', ' 卒業旅行']),
             'thumbnail_url' => Spot::where('thumbnail_url', '<>', '')->inRandomOrder()->first()->thumbnail_url,
             'start_date_time' => $this->faker->dateTime(),
             'public_flag' => true,
