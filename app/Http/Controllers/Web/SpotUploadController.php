@@ -20,7 +20,7 @@ class SpotUploadController extends Controller
 {
     public function index()
     {
-        return view('spotUpload');
+        return view('spots.upload');
     }
 
     public function csvUpload(SpotCsvUploadRequst $request)

@@ -28,17 +28,14 @@
 </head>
 
 <body>
-    <div id="app">
+    <main id="app">
         <nav class="navbar navbar-light bg-light">
             <div class="container-fluid">
                 <span class="navbar-brand mb-0 h1">シンドバッド</span>
             </div>
         </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
+        @yield('content')
+    </main>
 </body>
 
 </html>

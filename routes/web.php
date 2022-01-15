@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Web\EmailVerifyController;
+use App\Http\Controllers\Web\SpotController;
 use App\Http\Controllers\Web\SpotUploadController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -34,9 +35,15 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/completeVerification', [EmailVerifyController::class, 'completeVerification'])->name('completeVerification');
-Route::get('/failVerification', [EmailVerifyController::class, 'failVerification'])->name('failVerification');
+Route::get('/complete-verification', [EmailVerifyController::class, 'completeVerification'])->name('completeVerification');
+Route::get('/fail-verification', [EmailVerifyController::class, 'failVerification'])->name('failVerification');
 
-Route::get('/spotUpload', [SpotUploadController::class, 'index'])->name('spotUpload.index');
-Route::post('/spotUpload/csv', [SpotUploadController::class, 'csvUpload'])->name('spotUpload.csv');
-Route::post('/spotUpload', [SpotUploadController::class, 'upload'])->name('spotUpload.upload');
+// スポットアップロード
+Route::get('/spot-upload', [SpotUploadController::class, 'index'])->name('spotUpload.index');
+Route::get('/spotUpload', function () {
+    return redirect()->route('spotUpload.index');
+});
+Route::post('/spot-upload/csv', [SpotUploadController::class, 'csvUpload'])->name('spotUpload.csv');
+Route::post('/spot-upload', [SpotUploadController::class, 'upload'])->name('spotUpload.upload');
+
+Route::get('/spots', [SpotController::class, 'index'])->name('spots.index');

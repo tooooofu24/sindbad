@@ -23,6 +23,8 @@ class PlanController extends Controller
         if ($request->is_mine) {
             $plans->where('user_id', $request->user()->id);
         }
+
+        // spotsのidでの絞り込み
         if ($request->spots && is_array($request->spots)) {
             foreach ($request->spots as $spot_id) {
                 $plans->whereHas('planElements', function ($query) use ($spot_id) {
