@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Consts\Consts;
 use App\Models\Plan;
 use App\Models\Spot;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -23,11 +24,11 @@ class PlanFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => $this->faker->numberBetween(1, 5),
-            'title' => $this->faker->realText($this->faker->numberBetween(10, 30)),
-            'thumbnail_url' => Spot::inRandomOrder()->first()->thumbnail_url,
+            'user_id' => $this->faker->numberBetween(1, 20),
+            'title' => $this->faker->randomElement(Consts::PREF_LIST),
+            'thumbnail_url' => Spot::where('thumbnail_url', '<>', '')->inRandomOrder()->first()->thumbnail_url,
             'start_date_time' => $this->faker->dateTime(),
-            'public_flag' => $this->faker->boolean(),
+            'public_flag' => true,
         ];
     }
 }

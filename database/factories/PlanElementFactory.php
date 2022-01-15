@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\PlanElement;
+use App\Models\Spot;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PlanElementFactory extends Factory
@@ -26,7 +27,7 @@ class PlanElementFactory extends Factory
         if ($type == 0) { // blank
             $child_id = null;
         } elseif ($type == 1) { // spot
-            $child_id = $this->faker->numberBetween(1, 100);
+            $child_id = Spot::inRandomOrder()->first()->id;
         } else { // transportation
             $child_id = $this->faker->numberBetween(1, 7);
         }
