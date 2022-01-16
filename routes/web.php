@@ -38,13 +38,20 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/complete-verification', [EmailVerifyController::class, 'completeVerification'])->name('completeVerification');
 Route::get('/fail-verification', [EmailVerifyController::class, 'failVerification'])->name('failVerification');
 
-// スポットアップロード
-Route::get('/spot-upload', [SpotUploadController::class, 'index'])->name('spotUpload.index');
-Route::get('/spotUpload', function () {
-    return redirect()->route('spotUpload.index');
+// スポット
+Route::group(['prefix' => 'spots', 'as' => 'spots.'], function () {
+    // スポット一覧
+    Route::get('/', [SpotController::class, 'index'])->name('index');
+    // スポット更新
+    Route::post('/{id}/update-image', [SpotController::class, 'updateImage'])->name('updateImage');
+    // スポット追加画面
+    Route::group(['prefix' => 'create', 'as' => 'create.'], function () {
+        Route::get('/', [SpotController::class, 'create'])->name('index');
+        Route::post('/', [SpotController::class, 'store'])->name('store');
+        Route::post('/csv', [SpotController::class, 'storeWithCsv'])->name('csv');
+    });
 });
-Route::post('/spot-upload/csv', [SpotUploadController::class, 'csvUpload'])->name('spotUpload.csv');
-Route::post('/spot-upload', [SpotUploadController::class, 'upload'])->name('spotUpload.upload');
 
-Route::get('/spots', [SpotController::class, 'index'])->name('spots.index');
-Route::post('/spots/{id}/update-image', [SpotController::class, 'updateImage'])->name('spots.updateImage');
+Route::get('/spotUpload', function () {
+    return redirect()->route('spots.create.index');
+});

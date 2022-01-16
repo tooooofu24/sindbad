@@ -29,9 +29,24 @@
 
 <body>
     <main id="app">
-        <nav class="navbar navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <span class="navbar-brand mb-0 h1">シンドバッド</span>
+                <a class="navbar-brand" href="">
+                    <img src="/img/test-icon.png" alt="アイコン" width="30" height="30">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link @if(request()->route()->getName() == 'spots.index') active @endif" href="{{ route('spots.index') }}">スポット一覧</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @if(request()->route()->getName() == 'spots.create.index') active @endif" href="{{ route('spots.create.index') }}">スポット登録</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
         @yield('content')

@@ -15,7 +15,7 @@
                         スポット一括登録
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('spotUpload.csv') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('spots.create.csv') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <label for="csv" class="form-label">csvファイルをアップロードしてください</label>
                             <div class="input-group">
@@ -44,7 +44,7 @@
                         スポット登録(1件ずつ)
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('spotUpload.upload') }}" method="POST">
+                        <form action="{{ route('spots.create.store') }}" method="POST">
                             @csrf
                             <label for="name" class="form-label">観光地名</label>
                             <div class="input-group">
