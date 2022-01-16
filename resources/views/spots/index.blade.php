@@ -46,7 +46,7 @@
                             </div>
                         </div>
                         <div class="text-center">
-                            <button class="btn btn-primary">検索</button>
+                            <button class="btn btn-primary btn-sm">検索</button>
                         </div>
                     </form>
                 </div>
@@ -90,7 +90,7 @@
         </div>
         @endforeach
     </div>
-    <div class="d-flex justify-content-center table-responsive mt-4">
+    <div class="table-responsive mt-4">
         {{ $spots->links() }}
     </div>
 </div>

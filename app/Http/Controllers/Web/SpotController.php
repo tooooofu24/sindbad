@@ -11,7 +11,7 @@ class SpotController extends Controller
     public function index(Request $request)
     {
         $query = Spot::query();
-        $spots = $query->paginate(12);
+        $spots = $query->paginate(24);
         return view('spots.index', compact(['spots']));
     }
 }
