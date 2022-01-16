@@ -2,7 +2,23 @@
 
 @section('content')
 <div class="container">
-    <div class="accordion my-2" id="accordion-search">
+    @if(session('message'))
+    <div class="px-1 pt-3">
+        <div class="alert alert-success" role="alert">
+            {{ session('message') }}
+        </div>
+    </div>
+    @endif
+    @if(session('error_message'))
+    <div class="px-1 pt-3">
+        <div class="alert alert-danger" role="alert">
+            エラーが発生しました。<br>
+            画面をキャプチャして開発者までお問い合わせください。
+            <div style="white-space: pre-wrap;">{{ session('error_message') }}</div>
+        </div>
+    </div>
+    @endif
+    <div class="accordion my-2 px-1" id="accordion-search">
         <div class="accordion-item">
             <div class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-search" aria-expanded="false">
@@ -11,16 +27,16 @@
                     </div>
                 </button>
             </div>
-            <div id="collapse-search" class="accordion-collapse collapse" data-bs-parent="#accordion-search">
+            <div id="collapse-search" class="accordion-collapse collapse @if(request()->q || request()->pref || request()->is_null ) show @endif" data-bs-parent="#accordion-search">
                 <div class="accordion-body">
-                    <form action="">
+                    <form action="{{ route('spots.index') }}">
                         <div class="row">
                             <div class="col px-1">
                                 <div class="input-group">
                                     <span class="input-group-text d-flex justify-content-center" style="width: 40px;">
                                         <i class="fas fa-search"></i>
                                     </span>
-                                    <input type="text" name="q" class="form-control" placeholder="検索">
+                                    <input type="text" name="q" class="form-control" placeholder="検索" value="{{ request()->q }}">
                                 </div>
                             </div>
                             <div class="col px-1">
@@ -28,7 +44,7 @@
                                     <span class="input-group-text d-flex justify-content-center" style="width: 40px;">
                                         <i class="fas fa-map-marker-alt"></i>
                                     </span>
-                                    <input class="form-control" list="pref-list" id="pref" name="pref" placeholder="都道府県">
+                                    <input class="form-control" list="pref-list" id="pref" name="pref" placeholder="都道府県" value="{{ request()->pref }}">
                                     <datalist id="pref-list">
                                         @foreach(App\Consts\Consts::PREF_LIST as $pref)
                                         <option value="{{ $pref }}">
@@ -40,7 +56,7 @@
                         <div class="py-2">
                             <div class="input-group">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" id="is_null" name="is_null">
+                                    <input class="form-check-input" type="checkbox" id="is_null" name="is_null" @if(request()->is_null) checked @endif>
                                     <label class="form-check-label" for="is_null">画像が未設定のスポットに絞る</label>
                                 </div>
                             </div>
@@ -73,9 +89,10 @@
                             </div>
                             <div id="collapse-{{$spot->id}}" class="accordion-collapse collapse" data-bs-parent="#accordion-{{$spot->id}}">
                                 <div class="accordion-body">
-                                    <form action="">
+                                    <form action="{{ route('spots.updateImage', request()->query() + ['id' => $spot->id] ) }}" method="POST" enctype="multipart/form-data">
+                                        @csrf
                                         <div class="input-group mb-2">
-                                            <input class="form-control" type="file" accept="image/*" name="img" required>
+                                            <input class="form-control" type="file" accept="image/*" name="image" required>
                                         </div>
                                         <div class="text-center">
                                             <button class="btn btn-primary btn-sm">画像の更新</button>
@@ -91,7 +108,7 @@
         @endforeach
     </div>
     <div class="table-responsive mt-4">
-        {{ $spots->links() }}
+        {{ $spots->appends(request()->query())->links() }}
     </div>
 </div>
 @endsection

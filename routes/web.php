@@ -47,3 +47,4 @@ Route::post('/spot-upload/csv', [SpotUploadController::class, 'csvUpload'])->nam
 Route::post('/spot-upload', [SpotUploadController::class, 'upload'])->name('spotUpload.upload');
 
 Route::get('/spots', [SpotController::class, 'index'])->name('spots.index');
+Route::post('/spots/{id}/update-image', [SpotController::class, 'updateImage'])->name('spots.updateImage');
