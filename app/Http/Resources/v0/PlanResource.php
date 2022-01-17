@@ -19,7 +19,7 @@ class PlanResource extends JsonResource
             "title" => $this->title,
             "thumbnail_url" => $this->thumbnail_url,
             "favorites_count" => $this->favorites->count(),
-            'uid' => $this->uid,
+            'url' => route('plans.show', ['id' => $this->id, 'uid' => $this->uid]),
             'start_date_time' => $this->start_date_time,
             "user" => [
                 'id' => $this->user->id,

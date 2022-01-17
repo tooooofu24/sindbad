@@ -11,18 +11,42 @@ class PlanElement extends Model
 
     protected $table = 'plan_elements';
     protected $fillable = [
-        'child_id', 'memo', 'type', 'duration_min'
+        'child_id',
+        'memo',
+        'type', // 0 => blank, 1 => spot, 2 => transportation
+        'duration_min'
     ];
 
-    public function child() // 0 => blank, 1 => spot, 2 => transportation
+    public function spot()
     {
-        if ($this->type == 0) {
-            return null;
-        } elseif ($this->type == 1) {
-            return $this->belongsTo(Spot::class, 'child_id');
-        } else {
-            return $this->belongsTo(Transportation::class, 'child_id');
+        return $this->belongsTo(Spot::class, 'child_id');
+    }
+
+    public function transportation()
+    {
+        return $this->belongsTo(Transportation::class, 'child_id');
+    }
+
+    public function getStartDateTimeAttribute()
+    {
+        $start_date_time = $this->plan->start_date_time;
+        foreach ($this->plan->planElements as $planElement) {
+            if ($planElement->id == $this->id) {
+                break;
+            }
+            $start_date_time->addMinutes($planElement->duration_min);
         }
+        return $start_date_time;
+    }
+
+    public function getEndDateTimeAttribute()
+    {
+        return $this->start_date_time->addMinutes($this->duration_min);
+    }
+
+    public function plan()
+    {
+        return $this->belongsTo(Plan::class);
     }
 
     public static function createFromRequest(array $dataArray, int $plan_id): void

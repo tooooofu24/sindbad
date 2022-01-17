@@ -20,15 +20,6 @@ class User extends Authenticatable implements MustVerifyEmail
     use Notifiable;
     use TwoFactorAuthenticatable;
 
-    function __construct($attributes = [])
-    {
-        // ユニークなIDを作成
-        $this->uid = Str::uuid();
-        // ランダムなパスワードのハッシュ値を生成
-        $this->password = Hash::make(Str::random());
-        parent::__construct($attributes);
-    }
-
     /**
      * The attributes that are mass assignable.
      *
@@ -50,5 +41,17 @@ class User extends Authenticatable implements MustVerifyEmail
     public function favorites()
     {
         return $this->hasMany(Favorite::class);
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+        // 登録時に初期値を入れる
+        self::creating(function (self $user) {
+            // ユニークなIDを作成
+            $user->uid = Str::uuid();
+            // ランダムなパスワードのハッシュ値を生成
+            $user->password = Hash::make(Str::random());
+        });
     }
 }

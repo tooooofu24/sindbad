@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\Web\PlanController;
 use App\Http\Controllers\Web\EmailVerifyController;
 use App\Http\Controllers\Web\SpotController;
-use App\Http\Controllers\Web\SpotUploadController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -50,6 +50,11 @@ Route::group(['prefix' => 'spots', 'as' => 'spots.'], function () {
         Route::post('/', [SpotController::class, 'store'])->name('store');
         Route::post('/csv', [SpotController::class, 'storeWithCsv'])->name('csv');
     });
+});
+
+// スポット
+Route::group(['prefix' => 'plans', 'as' => 'plans.'], function () {
+    Route::get('/{id}', [PlanController::class, 'show'])->name('show');
 });
 
 Route::get('/spotUpload', function () {

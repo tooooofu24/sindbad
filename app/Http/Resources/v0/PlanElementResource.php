@@ -19,9 +19,9 @@ class PlanElementResource extends JsonResource
         if ($this->type == 0) {
             $child = null;
         } elseif ($this->type == 1) {
-            $child = new SpotResource($this->child);
+            $child = new SpotResource($this->spot);
         } else {
-            $child = new TransportationResource($this->child);
+            $child = new TransportationResource($this->transportation);
         }
         return [
             'id' => $this->id,

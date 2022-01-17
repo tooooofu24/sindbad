@@ -72,13 +72,14 @@
     <div class="row">
         @foreach($spots as $spot)
         <div class="col-md-3 px-3 py-2">
-            <div class="card shadow rounded border-0 p-0">
+            <div class="card rounded border-0 p-0">
                 <div class="ratio ratio-16x9">
                     <img @if($spot->thumbnail_url) src="{{ $spot->thumbnail_url }}" @else src="https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg" @endif alt="{{$spot->name}}" class="rounded-top" style="object-fit: cover;">
                 </div>
                 <div class="card-body p-0">
                     <div class="accordion" id="accordion-{{$spot->id}}">
-                        <div class="accordion-item border-top-0">
+                        <div class="accordion-item"></div>
+                        <div class="accordion-item">
                             <div class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{$spot->id}}" aria-expanded="false" aria-controls="collapse-{{$spot->id}}">
                                     <div class="fw-bold text-truncate d-flex align-items-center">

@@ -10,16 +10,6 @@ use Illuminate\Support\Str;
 class Plan extends Model
 {
     use HasFactory;
-    function __construct($attributes = [])
-    {
-        $uid = Str::random(25);
-        // 重複チェック
-        while (self::where('uid', $uid)->exists()) {
-            $uid = Str::random(25);
-        }
-        $this->uid = $uid;
-        parent::__construct($attributes);
-    }
 
     protected $fillable = [
         'title',
@@ -28,26 +18,47 @@ class Plan extends Model
         'public_flag',
     ];
 
+    protected $casts = [
+        'start_date_time' => 'datetime'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+
     public function favorites()
     {
         return $this->hasMany(Favorite::class);
     }
+
     public function planElements()
     {
         return $this->hasMany(PlanElement::class);
     }
-    /**
-     * 小要素のplan_elementsを全て削除するメソッド
-     * @return void
-     */
-    public function deletePlanElements(): void
+
+    public static function boot()
     {
-        foreach ($this->planElements as $planElement) {
-            $planElement->delete();
-        }
+        parent::boot();
+        // 登録時に初期値を入れる
+        self::creating(function (self $plan) {
+            $uid = Str::random(30);
+            // 重複チェック
+            while (self::where('uid', $uid)->exists()) {
+                $uid = Str::random(30);
+            }
+            $this->uid = $uid;
+        });
+        // 更新時と削除時に子要素を削除
+        self::updating(function (self $plan) {
+            foreach ($plan->planElements as $planElement) {
+                $planElement->delete();
+            }
+        });
+        self::deleting(function (self $plan) {
+            foreach ($plan->planElements as $planElement) {
+                $planElement->delete();
+            }
+        });
     }
 }

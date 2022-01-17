@@ -19,7 +19,9 @@ class PlanController extends Controller
     public function index(Request $request)
     {
         $plans = Plan::query()
-            ->with(['user', 'favorites', 'planElements']);
+            ->with([
+                'user', 'favorites', 'planElements.spot', 'planElements.transportation',
+            ]);
         if ($request->is_mine) {
             $plans->where('user_id', $request->user()->id);
         }
@@ -85,7 +87,6 @@ class PlanController extends Controller
         if ($plan->user_id !== $request->user()->id) {
             return response('削除する権限がありません', 403);
         }
-        $plan->deletePlanElements();
         PlanElement::createFromRequest(
             json_decode($request->plan_elements, true),
             $plan->id
@@ -105,7 +106,6 @@ class PlanController extends Controller
         if ($plan->user_id !== $request->user()->id) {
             return response('削除する権限がありません', 403);
         }
-        $plan->deletePlanElements();
         $plan->delete();
     }
 }
