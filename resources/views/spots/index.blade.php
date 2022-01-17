@@ -72,9 +72,9 @@
     <div class="row">
         @foreach($spots as $spot)
         <div class="col-md-3 px-3 py-2">
-            <div class="card rounded border-0 p-0">
+            <div class="card rounded-3 rounded-top border-0 p-0">
                 <div class="ratio ratio-16x9">
-                    <img @if($spot->thumbnail_url) src="{{ $spot->thumbnail_url }}" @else src="https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg" @endif alt="{{$spot->name}}" class="rounded-top" style="object-fit: cover;">
+                    <img @if($spot->thumbnail_url) src="{{ $spot->thumbnail_url }}" @else src="https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg" @endif alt="{{$spot->name}}" style="object-fit: cover; border-radius: 0.3rem 0.3rem 0px 0px;"">
                 </div>
                 <div class="card-body p-0">
                     <div class="accordion" id="accordion-{{$spot->id}}">

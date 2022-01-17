@@ -7,9 +7,9 @@
         {{-- スポット --}}
         @if($planElement->type == 1)
         <div class="p-2">
-            <div class="card rounded border-0 p-0 bg-light">
+            <div class="card rounded-3 border-0 p-0 bg-light">
                 <div class="ratio ratio-16x9">
-                    <img @if($planElement->spot->thumbnail_url) src="{{ $planElement->spot->thumbnail_url }}" @else src="https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg" @endif alt="{{$plan->title}}" class="rounded-top" style="object-fit: cover;">
+                    <img @if($planElement->spot->thumbnail_url) src="{{ $planElement->spot->thumbnail_url }}" @else src="https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg" @endif alt="{{$plan->title}}" style="object-fit: cover; border-radius: 0.3rem 0.3rem 0px 0px;">
                 </div>
                 <div class="card-body p-0">
                     <div class="accordion" id="accordion-{{$planElement->id}}">
@@ -38,7 +38,7 @@
         {{-- 移動 --}}
         @elseif($planElement->type == 2)
         <div class="p-2">
-            <div class="card rounded border-0 p-0 bg-light">
+            <div class="card rounded-3 border-0 p-0 bg-light">
                 <div class="card-body p-0">
                     <div class="accordion" id="accordion-{{$planElement->id}}">
                         <div class="accordion-item">
