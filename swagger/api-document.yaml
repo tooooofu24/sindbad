@@ -284,7 +284,6 @@ paths:
                   format: binary
                 email:
                   type: string
-                  format: email
                   example: test@email.com
                 password:
                   type: string
