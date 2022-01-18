@@ -56,7 +56,7 @@
                         <div class="py-2">
                             <div class="input-group">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" id="is_null" name="is_null" @if(request()->is_null) checked @endif>
+                                    <input class="form-check-input" type="checkbox" id="is_null" name="is_null" value="1" @if(request()->is_null) checked @endif>
                                     <label class="form-check-label" for="is_null">画像が未設定のスポットに絞る</label>
                                 </div>
                             </div>

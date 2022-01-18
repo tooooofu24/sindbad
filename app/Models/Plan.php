@@ -42,12 +42,7 @@ class Plan extends Model
         parent::boot();
         // 登録時に初期値を入れる
         self::creating(function (self $plan) {
-            $uid = Str::random(30);
-            // 重複チェック
-            while (self::where('uid', $uid)->exists()) {
-                $uid = Str::random(30);
-            }
-            $this->uid = $uid;
+            $plan->uid = Str::uuid();
         });
         // 更新時と削除時に子要素を削除
         self::updating(function (self $plan) {

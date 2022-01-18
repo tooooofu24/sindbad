@@ -17,9 +17,7 @@ class SpotController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Spot::query()
-            ->withCount('planElements')
-            ->orderBy('plan_elements_count', 'desc');;
+        $query = Spot::query();
         if ($request->q) {
             // スペース区切りの検索文字を配列にする
             $words = preg_split('/[\s|\x{3000}]+/u', $request->q);
