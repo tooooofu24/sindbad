@@ -15,9 +15,9 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserSeeder::class,
-            SpotSeeder::class,
             TransportationSeeder::class,
             PlanSeeder::class,
+            SpotSeeder::class,
             // Favoriteは最後に作成
             FavoriteSeeder::class,
         ]);
