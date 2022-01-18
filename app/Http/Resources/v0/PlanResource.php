@@ -17,7 +17,7 @@ class PlanResource extends JsonResource
         return [
             'id' => $this->id,
             "title" => $this->title,
-            "thumbnail_url" => $this->thumbnail_url,
+            "thumbnail_url" => $this->thumbnail_url ?: '',
             "favorites_count" => $this->favorites_count ?: 0,
             'url' => route('plans.show', ['id' => $this->id, 'uid' => $this->uid]),
             'start_date_time' => $this->start_date_time->toDateTimeString(),
