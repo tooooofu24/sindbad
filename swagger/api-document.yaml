@@ -347,6 +347,8 @@ paths:
                 $ref: '#/components/schemas/User'
         '404':
           description: ユーザが見つかりません
+        403:
+          description: 更新する権限がありません
   /spots:
     get:
       tags:
