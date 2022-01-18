@@ -557,6 +557,8 @@ paths:
                 $ref: '#/components/schemas/Plan'
         '404':
           description: ユーザが見つかりません
+        403:
+          description: 更新する権限がありません
     delete:
       tags:
         - 認証必須
