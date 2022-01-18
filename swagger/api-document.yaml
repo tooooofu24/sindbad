@@ -457,7 +457,7 @@ paths:
       tags:
         - 認証必須
           - Plans
-      summary: 【変更】プラン作成
+      summary: プラン作成
       description: プラン作成
       requestBody:
         content:
@@ -516,7 +516,7 @@ paths:
       tags:
         - 認証必須
           - Plans
-      summary: 【変更】プランデータ更新
+      summary: プランデータ更新
       description: 更新時に子要素のPlanElementsを全て削除
       parameters:
         - in: path
@@ -684,27 +684,5 @@ paths:
           description: いいねが見つかりません
         403:
           description: 削除する権限がありません
-  /upload-image:
-    post:
-      tags:
-        - 認証必須
-          - その他
-      summary: 【削除予定】画像アップロード
-      description: 画像をアップロードしてURLを取得
-      requestBody:
-        content:
-          image/png:
-            schema:
-              type: string
-              format: binary
-      responses:
-        '200':
-          description: 画像URL
-          content:
-            text/plain:
-              schema:
-                type: string
-                example: >-
-                  https://sindbad.s3.ap-northeast-1.amazonaws.com/test/RshjhbnY6hQ3DenzfbV1LzuStc2B095c98V0sqo6.png
 servers:
   - url: https://sindbad-travel.com/api/v0
