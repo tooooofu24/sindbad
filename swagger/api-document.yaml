@@ -674,6 +674,8 @@ paths:
           description: 成功
         '404':
           description: いいねが見つかりません
+        403:
+          description: 削除する権限がありません
   /upload-image:
     post:
       tags:
