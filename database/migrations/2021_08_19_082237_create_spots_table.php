@@ -20,7 +20,9 @@ class CreateSpotsTable extends Migration
             $table->text('converted_name')->nullable();
             $table->longText('thumbnail_url')->nullable();
             $table->enum('pref', Consts::PREF_LIST);
+            $table->tinyInteger('status')->default(0)->comment('-10: NGワード有, 0: 未認証, 10: 認証済み');
             $table->timestamps();
+            // 名前と都道府県の複合ユニーク
             $table->unique(['name', 'pref'], 'spots_name_pref_unique');
         });
     }

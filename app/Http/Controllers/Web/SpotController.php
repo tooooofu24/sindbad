@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\SpotCsvUploadRequst;
-use App\Http\Requests\SpotUploadRequst;
+use App\Http\Requests\Web\SpotCsvUploadRequst;
+use App\Http\Requests\Web\SpotUploadRequst;
 use App\Jobs\CsvSpotUploadJob;
 use App\Jobs\SpotUploadJob;
 use App\Models\Spot;

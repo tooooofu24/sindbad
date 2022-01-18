@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\v0;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\v0\ApiSpotRequest;
 use App\Http\Resources\v0\SpotResource;
 use App\Models\Spot;
 use App\Service\ConvertTextService;
+use App\Service\PythonService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -18,9 +20,9 @@ class SpotController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Spot::query()
-            ->withCount('planElements')
-            ->orderBy('plan_elements_count', 'desc');
+        $query = Spot::query();
+        // ->withCount('planElements')
+        // ->orderBy('plan_elements_count', 'desc');
         $size = $request->size ?: 20;
         if ($request->q) {
             // スペース区切りの検索文字を配列にする
@@ -42,12 +44,15 @@ class SpotController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ApiSpotRequest $request)
     {
         $spot = new Spot();
         $spot->fill(
-            $request->only(['name', 'thumbnail_url', 'pref'])
+            $request->only(['name', 'pref'])
         );
+        $python = new PythonService;
+        $thumbnail_url = $python->googleSearch($request->name);
+        $spot->thumbnail_url = $thumbnail_url;
         $spot->converted_name = ConvertTextService::convert($request->name);
         $spot->save();
         return new SpotResource($spot);
@@ -71,7 +76,7 @@ class SpotController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ApiSpotRequest $request, $id)
     {
         //
     }

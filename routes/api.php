@@ -33,10 +33,8 @@ Route::group(['prefix' => 'v0'], function () {
         Route::apiResource('users', App\Http\Controllers\v0\UserController::class);
         Route::apiResource('favorites', App\Http\Controllers\v0\FavoriteController::class);
         Route::apiResource('plans', App\Http\Controllers\v0\PlanController::class);
+        Route::apiResource('plan-elements', App\Http\Controllers\v0\PlanElementController::class);
         Route::apiResource('spots', App\Http\Controllers\v0\SpotController::class);
-        Route::post('register-with-email', App\Http\Controllers\v0\RegisterWithEmailController::class);
-        Route::post('uploadImage', App\Http\Controllers\v0\UploadImageController::class);
-        Route::post('upload-image', App\Http\Controllers\v0\UploadImageController::class);
     });
 });
 

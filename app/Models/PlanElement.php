@@ -14,7 +14,8 @@ class PlanElement extends Model
         'child_id',
         'memo',
         'type', // 0 => blank, 1 => spot, 2 => transportation
-        'duration_min'
+        'duration_min',
+        'plan_id'
     ];
 
     public function spot()

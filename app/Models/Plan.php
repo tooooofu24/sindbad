@@ -47,7 +47,7 @@ class Plan extends Model
             while (self::where('uid', $uid)->exists()) {
                 $uid = Str::random(30);
             }
-            $this->uid = $uid;
+            $plan->uid = $uid;
         });
         // 更新時と削除時に子要素を削除
         self::updating(function (self $plan) {
@@ -58,6 +58,9 @@ class Plan extends Model
         self::deleting(function (self $plan) {
             foreach ($plan->planElements as $planElement) {
                 $planElement->delete();
+            }
+            foreach ($plan->favorites as $favorite) {
+                $favorite->delete();
             }
         });
     }

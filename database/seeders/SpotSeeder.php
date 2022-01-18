@@ -26,7 +26,8 @@ class SpotSeeder extends Seeder
                     'name' => $record[0],
                     'converted_name' => $record[1],
                     'thumbnail_url' => $record[2],
-                    'pref' => $record[3]
+                    'pref' => $record[3],
+                    'status' => 10, // 認証済み
                 ])->save();
             } catch (Exception $e) {
                 dump($e->getMessage());

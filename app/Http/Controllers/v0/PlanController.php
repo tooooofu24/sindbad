@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\v0;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\v0\ApiPlanRequest;
 use App\Http\Resources\v0\PlanElementResource;
 use App\Http\Resources\v0\PlanResource;
 use App\Models\Plan;
 use App\Models\PlanElement;
+use App\Service\ImageService;
 use Illuminate\Http\Request;
 
 class PlanController extends Controller
@@ -47,16 +49,22 @@ class PlanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ApiPlanRequest $request)
     {
         $plan = new Plan;
-        $plan->fill($request->all());
+        $plan->fill($request->only([
+            'title',
+            'start_date_time',
+            'public_flag',
+        ]));
         $plan->user_id = $request->user()->id;
         $plan->save();
-        PlanElement::createFromRequest(
-            json_decode($request->plan_elements, true),
-            $plan->id
-        );
+        if ($image = $request->file('thumbnail')) {
+            $imageService = new ImageService($image);
+            $image_path = $imageService->save($folder = 'plans', $file_name = $plan->uid);
+            $plan->thumbnail_url = $image_path;
+            $plan->save();
+        }
         return new PlanResource($plan);
     }
 
@@ -80,17 +88,25 @@ class PlanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ApiPlanRequest $request, $id)
     {
-        $plan = Plan::findOrFail($id)
-            ->with(['user', 'favorites', 'planElements']);
-        if ($plan->user_id !== $request->user()->id) {
-            return response('削除する権限がありません', 403);
+        $plan = Plan::with(['user', 'planElements'])->withCount(['favorites'])->findOrFail($id);
+        return $plan;
+        $plan->fill($request->only([
+            'title',
+            'start_date_time',
+            'public_flag',
+        ]));
+        if ($image = $request->file('thumbnail')) {
+            $imageService = new ImageService($image);
+            $image_path = $imageService->save($folder = 'plans', $file_name = $plan->uid);
+            $plan->thumbnail_url = $image_path;
         }
-        PlanElement::createFromRequest(
-            json_decode($request->plan_elements, true),
-            $plan->id
-        );
+        $plan->save();
+        if ($plan->user_id !== $request->user()->id) {
+            return response('削除する権限がありません', 403)->header('Content-Type', 'text/plain');
+        }
+        return new PlanResource($plan);
     }
 
     /**
@@ -101,10 +117,10 @@ class PlanController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        $plan = Plan::with(['user', 'favorites', 'planElements'])
+        $plan = Plan::with(['favorites', 'planElements'])
             ->where('id', $id)->firstOrFail();
         if ($plan->user_id !== $request->user()->id) {
-            return response('削除する権限がありません', 403);
+            return response('削除する権限がありません', 403)->header('Content-Type', 'text/plain');
         }
         $plan->delete();
     }
