@@ -202,38 +202,6 @@ paths:
           description: パスワードが間違っています
         '404':
           description: uidが見つかりません
-  /register-with-email:
-    post:
-      tags:
-        - 認証必須
-          - Users
-      summary: メールアドレスとパスワードの登録
-      description: メールアドレスとパスワードの登録
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              required:
-                - email
-                - password
-              properties:
-                email:
-                  type: string
-                  format: email
-                  example: test@email.com
-                password:
-                  type: string
-                  format: password
-                  example: $2y$10$NQfd55oUpjHydhGENysbZ.0e408JuX/8a0mH5fC5jri.tBeBCGpWy
-                  description: ハッシュ化済みのもの
-      responses:
-        '200':
-          description: 成功
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
   /login-with-email:
     post:
       tags:
@@ -265,30 +233,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
-  /search-google:
-    get:
-      tags:
-        - 認証不要
-      summary: 【消すかも】Google画像検索
-      description: Google画像検索で取得したURLを返す
-      parameters:
-        - in: query
-          name: q
-          required: true
-          description: 検索したい文字列
-          schema:
-            type: string
-            example: 金閣
-      responses:
-        '200':
-          description: 画像のurl
-          content:
-            text/plain:
-              schema:
-                type: string
-                format: url
-                example: >-
-                  https://live.staticflickr.com/3917/15161969908_86cac5f4b1_b.jpg
   /users/{id}:
     get:
       tags:
