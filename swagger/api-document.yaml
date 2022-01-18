@@ -619,6 +619,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Plan'
+        404:
+          description: プランが見つかりません
+        403:
+          description: 削除する権限がありません
   /favorites:
     get:
       tags:
