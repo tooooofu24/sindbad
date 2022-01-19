@@ -470,7 +470,7 @@ paths:
                 $ref: '#/components/schemas/Plan'
         '404':
           description: プランが見つかりません
-    put:
+    post:
       tags:
         - 認証必須
           - Plans
