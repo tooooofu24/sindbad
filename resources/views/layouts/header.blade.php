@@ -45,6 +45,9 @@
                         <li class="nav-item">
                             <a class="nav-link @if(request()->route()->getName() == 'spots.create.index') active @endif" href="{{ route('spots.create.index') }}">スポット登録</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link @if(request()->route()->getName() == 'spots.check') active @endif" href="{{ route('spots.check') }}">スポット承認</a>
+                        </li>
                     </ul>
                 </div>
             </div>
