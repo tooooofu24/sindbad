@@ -399,7 +399,6 @@ paths:
         - in: query
           name: "spots[]"
           description: spot_idで絞り込み
-          deprecated: true
           schema:
             type: integer
             example: 1
@@ -497,6 +496,7 @@ paths:
                 _method:
                   type: string
                   example: PUT
+                  description: 固定値
                 title:
                   type: string
                   example: 金沢旅行
