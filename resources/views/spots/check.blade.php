@@ -29,7 +29,7 @@
                     <div class="card-title d-flex align-items-center">
                         <span class="fw-bold">{{ $spot->name }}</span>
                         @if($spot->status == -10)
-                        <span class="ms-2 badge bg-danger">禁止ワード</span>
+                        <i class="fas fa-exclamation-triangle ms-2" style="color: #dc3545;"></i>
                         @endif
                     </div>
                     <div class="text-end mt-2">
