@@ -256,7 +256,7 @@ paths:
                 $ref: '#/components/schemas/User'
         '404':
           description: ユーザが見つかりません
-    put:
+    post:
       tags:
         - 認証必須
          - Users
@@ -275,8 +275,12 @@ paths:
             schema:
               type: object
               required: 
+                - _method
                 - password
               properties:
+                _method:
+                  type: string
+                  example: PUT
                 password:
                   type: string
                   format: password
@@ -466,7 +470,7 @@ paths:
                 $ref: '#/components/schemas/Plan'
         '404':
           description: プランが見つかりません
-    put:
+    post:
       tags:
         - 認証必須
           - Plans
@@ -485,9 +489,14 @@ paths:
             schema:
               type: object
               required:
+                - _method
                 - title
                 - start_date_time
               properties:
+                _method:
+                  type: string
+                  example: PUT
+                  description: 固定値
                 title:
                   type: string
                   example: 金沢旅行
