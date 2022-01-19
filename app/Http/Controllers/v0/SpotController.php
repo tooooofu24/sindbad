@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\v0\ApiSpotRequest;
 use App\Http\Resources\v0\SpotResource;
 use App\Models\Spot;
-use App\Service\ConvertTextService;
+use App\Service\GooApiService;
 use App\Service\PythonService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -53,7 +53,7 @@ class SpotController extends Controller
         $python = new PythonService;
         $thumbnail_url = $python->googleSearch($request->name);
         $spot->thumbnail_url = $thumbnail_url;
-        $spot->converted_name = ConvertTextService::convert($request->name);
+        $spot->converted_name = GooApiService::convert($request->name);
         $spot->save();
         return new SpotResource($spot);
     }

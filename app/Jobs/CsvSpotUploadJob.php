@@ -3,7 +3,7 @@
 namespace App\Jobs;
 
 use App\Models\Spot;
-use App\Service\ConvertTextService;
+use App\Service\GooApiService;
 use App\Service\PythonService;
 use Exception;
 use Illuminate\Bus\Queueable;
@@ -49,7 +49,7 @@ class CsvSpotUploadJob implements ShouldQueue
                 if (Spot::where('name', $name)->where('pref', $pref)->exists()) {
                     continue;
                 }
-                $converted_name = ConvertTextService::convert($name);
+                $converted_name = GooApiService::convert($name);
                 $thumbnail_url = PythonService::googleSearch($name);
                 $spot = new Spot();
                 $spot->fill([

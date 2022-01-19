@@ -85,4 +85,24 @@ class SpotController extends Controller
 
         return redirect()->route('spots.create.index')->with('message', '登録しました！');
     }
+
+    public function check()
+    {
+        $spots = Spot::where('status', '<>', 10)->paginate(24);
+        return view('spots.check', compact('spots'));
+    }
+
+    public function update($id, Request $request)
+    {
+        $spot = Spot::find($id);
+        $spot->status = $request->status;
+        $spot->save();
+        return redirect()->route('spots.check')->with('message', '承認しました！');
+    }
+    public function destroy($id)
+    {
+        $spot = Spot::find($id);
+        $spot->delete();
+        return redirect()->route('spots.check')->with('message', '削除しました！');
+    }
 }

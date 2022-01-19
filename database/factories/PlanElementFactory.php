@@ -28,7 +28,7 @@ class PlanElementFactory extends Factory
             $child_id = null;
         } elseif ($type == 1) { // spot
             // $child_id = Spot::inRandomOrder()->first()->id;
-            $child_id = $this->faker->numberBetween(1, 60000);
+            $child_id = $this->faker->numberBetween(1, 500);
         } else { // transportation
             $child_id = $this->faker->numberBetween(1, 7);
         }

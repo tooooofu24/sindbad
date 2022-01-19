@@ -44,15 +44,18 @@ Route::group(['prefix' => 'spots', 'as' => 'spots.'], function () {
     Route::get('/', [SpotController::class, 'index'])->name('index');
     // スポット更新
     Route::post('/{id}/update-image', [SpotController::class, 'updateImage'])->name('updateImage');
+    Route::put('/{id}', [SpotController::class, 'update'])->name('update');
+    Route::delete('/{id}', [SpotController::class, 'destroy'])->name('delete');
     // スポット追加画面
     Route::group(['prefix' => 'create', 'as' => 'create.'], function () {
         Route::get('/', [SpotController::class, 'create'])->name('index');
         Route::post('/', [SpotController::class, 'store'])->name('store');
         Route::post('/csv', [SpotController::class, 'storeWithCsv'])->name('csv');
     });
+    Route::get('/check', [SpotController::class, 'check'])->name('check');
 });
 
-// スポット
+// プラン
 Route::group(['prefix' => 'plans', 'as' => 'plans.'], function () {
     Route::get('/{id}', [PlanController::class, 'show'])->name('show');
 });

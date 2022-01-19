@@ -91,7 +91,6 @@ class PlanController extends Controller
     public function update(ApiPlanRequest $request, $id)
     {
         $plan = Plan::with(['user', 'planElements'])->withCount(['favorites'])->findOrFail($id);
-        return $plan;
         $plan->fill($request->only([
             'title',
             'start_date_time',

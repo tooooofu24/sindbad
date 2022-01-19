@@ -3,7 +3,7 @@
 namespace App\Jobs;
 
 use App\Models\Spot;
-use App\Service\ConvertTextService;
+use App\Service\GooApiService;
 use App\Service\PythonService;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
@@ -37,7 +37,7 @@ class SpotUploadJob implements ShouldQueue
         $spot = new Spot();
         $spot->fill([
             'name' => $this->data['name'],
-            'converted_name' => ConvertTextService::convert($this->data['name']),
+            'converted_name' => GooApiService::convert($this->data['name']),
             'pref' => $this->data['pref'],
             'thumbnail_url' => PythonService::googleSearch($this->data['name']),
         ])->save();

@@ -3,6 +3,7 @@
 namespace App\Http\Requests\v0;
 
 use App\Consts\Consts;
+use App\Service\ModerateService;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Contracts\Validation\Validator;
@@ -69,5 +70,17 @@ class ApiSpotRequest extends FormRequest
         throw new HttpResponseException(response()->json([
             'errors' => $validator->errors(),
         ], 400));
+    }
+
+    /**
+     * バリデータインスタンスの設定
+     *
+     * @param  \Illuminate\Validation\Validator  $validator
+     * @return void
+     */
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+        });
     }
 }

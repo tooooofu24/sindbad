@@ -19,20 +19,21 @@ class SpotSeeder extends Seeder
         // csvでインポート
         $reader = Reader::createFromPath(__DIR__ . '/spotData.csv', 'r');
         $records = $reader->getRecords();
-        foreach ($records as $record) {
-            $spot = new Spot();
-            try {
-                $spot->fill([
-                    'name' => $record[0],
-                    'converted_name' => $record[1],
-                    'thumbnail_url' => $record[2],
-                    'pref' => $record[3],
-                    'status' => 10, // 認証済み
-                ])->save();
-            } catch (Exception $e) {
-                dump($e->getMessage());
-                continue;
-            }
+        $data = [];
+        $status_list = [-10, 0, 10];
+        foreach ($records as $i => $record) {
+            $data[] = [
+                'name' => $record[0],
+                'converted_name' => $record[1],
+                'thumbnail_url' => $record[2],
+                'pref' => $record[3],
+                // 'status' => 10, // 認証済み
+                'status' => $status_list[array_rand($status_list)],
+            ];
+        }
+        $insert_data = collect($data);
+        foreach ($insert_data->chunk(500) as $chunk) {
+            Spot::insert($chunk->toArray());
         }
     }
 }
