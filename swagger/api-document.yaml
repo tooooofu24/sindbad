@@ -489,9 +489,13 @@ paths:
             schema:
               type: object
               required:
+                - _method
                 - title
                 - start_date_time
               properties:
+                _method:
+                  type: string
+                  example: PUT
                 title:
                   type: string
                   example: 金沢旅行
