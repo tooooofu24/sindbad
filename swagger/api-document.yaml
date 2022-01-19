@@ -399,6 +399,7 @@ paths:
         - in: query
           name: "spots[]"
           description: spot_idで絞り込み
+          deprecated: true
           schema:
             type: integer
             example: 1
