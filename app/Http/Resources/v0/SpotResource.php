@@ -17,10 +17,10 @@ class SpotResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'converted_name' => $this->converted_name,
-            'thumbnail_url' => $this->thumbnail_url,
+            'converted_name' => $this->converted_name ?: '',
+            'thumbnail_url' => $this->thumbnail_url ?: '',
             'pref' => $this->pref,
-            'count' => $this->plan_elements_count,
+            'count' => $this->plan_elements_count == null ? count($this->planElements) : $this->plan_elements_count,
         ];
     }
 }

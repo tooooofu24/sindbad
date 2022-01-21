@@ -22,14 +22,17 @@ class PlanController extends Controller
     {
         $plans = Plan::query()
             ->with([
-                'user', 'favorites', 'planElements.spot', 'planElements.transportation',
-            ]);
+                'user', 'planElements.spot', 'planElements.transportation',
+            ])
+            ->withCount(['favorites'])
+            ->where('public_flag', true);
+
         if ($request->is_mine) {
             $plans->where('user_id', $request->user()->id);
         }
 
         // spotsのidでの絞り込み
-        if ($request->spots && is_array($request->spots)) {
+        if (is_array($request->spots)) {
             foreach ($request->spots as $spot_id) {
                 $plans->whereHas('planElements', function ($query) use ($spot_id) {
                     $query->where('child_id', $spot_id)->where('type', 1);
@@ -74,11 +77,13 @@ class PlanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
-        return new PlanResource(
-            Plan::findOrFail($id)
-        );
+        $plan = Plan::findOrFail($id);
+        if ($plan->public_flag == false && $plan->user_id != $request->user()->id) {
+            return response('表示する権限がありません', 403)->header('Content-Type', 'text/plain');
+        }
+        return new PlanResource($plan);
     }
 
     /**
@@ -118,7 +123,7 @@ class PlanController extends Controller
     {
         $plan = Plan::with(['favorites', 'planElements'])
             ->where('id', $id)->firstOrFail();
-        if ($plan->user_id !== $request->user()->id) {
+        if ($plan->user_id != $request->user()->id) {
             return response('削除する権限がありません', 403)->header('Content-Type', 'text/plain');
         }
         $plan->delete();

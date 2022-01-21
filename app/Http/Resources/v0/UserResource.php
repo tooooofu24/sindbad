@@ -19,11 +19,11 @@ class UserResource extends JsonResource
         return [
             'id' => $this->id,
             'uid' => $this->uid,
-            'name' => $this->name,
-            'email' => $this->email,
-            'password' => $this->password,
-            'icon_url' => $this->icon_url,
-            'email_verified_at' => $this->email_verified_at,
+            'name' => $this->name ?: '',
+            'email' => $this->email ?: '',
+            'password' => $this->password ?: '',
+            'icon_url' => $this->icon_url ?: '',
+            'email_verified_at' => $this->email_verified_at ?: '',
             // registerかloginだったらtokenを発行
             'token' => $this->when(
                 in_array(Route::currentRouteName(), ['register', 'login']),

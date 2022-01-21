@@ -18,13 +18,13 @@ class PlanResource extends JsonResource
             'id' => $this->id,
             "title" => $this->title,
             "thumbnail_url" => $this->thumbnail_url ?: '',
-            "favorites_count" => $this->favorites_count ?: 0,
+            "favorites_count" => $this->favorites_count == null ? count($this->favorites) : $this->favorites_count,
             'url' => route('plans.show', ['id' => $this->id, 'uid' => $this->uid]),
             'start_date_time' => $this->start_date_time->toDateTimeString(),
             "user" => [
                 'id' => $this->user->id,
-                'name' => $this->user->name,
-                'icon_url' => $this->user->icon_url,
+                'name' => $this->user->name ?: '',
+                'icon_url' => $this->user->icon_url ?: '',
             ],
             "planElements" => PlanElementResource::collection($this->planElements),
         ];
