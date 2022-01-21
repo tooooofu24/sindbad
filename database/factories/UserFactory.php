@@ -29,6 +29,7 @@ class UserFactory extends Factory
             'icon_url' => $this->faker->imageUrl(),
             'name' => $this->faker->name(),
             'email' => $this->faker->boolean(50) ? $this->faker->unique()->safeEmail() : null,
+            'password' => Hash::make('password'),
         ];
     }
 }

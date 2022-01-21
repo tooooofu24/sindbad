@@ -12,7 +12,7 @@ class Spot extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'converted_name', 'thumbnail_url', 'pref', 'status'
+        'name', 'converted_name', 'thumbnail_url', 'pref', 'status', 'count'
     ];
 
     public function planElements()

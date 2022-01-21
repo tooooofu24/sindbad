@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\Spot;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 use League\Csv\Writer;
 
 class UpdateSpotCsv extends Command
@@ -39,14 +40,23 @@ class UpdateSpotCsv extends Command
      */
     public function handle()
     {
+        Log::debug('自動更新スタート');
         $writer = Writer::createFromPath(base_path("database/seeders/spotData.csv"), 'w+');
-        foreach (Spot::all() as $spot) {
-            $writer->insertOne([
-                $spot->name,
-                $spot->converted_name,
-                $spot->thumbnail_url,
-                $spot->pref
-            ]);
-        }
+        // メモリ節約のため、1000軒ずつ取得
+        Spot::withCount('planElements')->chunk(1000, function ($spots) use ($writer) {
+            foreach ($spots as $spot) {
+                $writer->insertOne([
+                    $spot->name,
+                    $spot->converted_name,
+                    $spot->thumbnail_url,
+                    $spot->pref,
+                    $spot->status,
+                    $spot->plan_elements_count,
+                ]);
+                $spot->count = $spot->plan_elements_count;
+                $spot->save();
+            }
+        });
+        Log::debug('自動更新終了');
     }
 }

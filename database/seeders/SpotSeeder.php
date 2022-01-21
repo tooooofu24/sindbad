@@ -27,8 +27,10 @@ class SpotSeeder extends Seeder
                 'converted_name' => $record[1],
                 'thumbnail_url' => $record[2],
                 'pref' => $record[3],
-                // 'status' => 10, // 認証済み
-                'status' => $status_list[array_rand($status_list)],
+                // 'status' => $record[4], // 認証済み
+                'status' => 10, // 認証済み
+                // 'count' => $record[5],
+                'count' => 0,
             ];
         }
         $insert_data = collect($data);

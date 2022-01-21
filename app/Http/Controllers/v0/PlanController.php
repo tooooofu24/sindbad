@@ -60,7 +60,7 @@ class PlanController extends Controller
             'title',
             'start_date_time',
         ]));
-        $plan->public_flag=$request->public_flag ?1: 0;
+        $plan->public_flag = $request->public_flag ? 1 : 0;
         $plan->user_id = $request->user()->id;
         $plan->save();
         if ($image = $request->file('thumbnail')) {
@@ -97,20 +97,22 @@ class PlanController extends Controller
     public function update(ApiPlanRequest $request, $id)
     {
         $plan = Plan::with(['user', 'planElements'])->withCount(['favorites'])->findOrFail($id);
+        if ($plan->user_id != $request->user()->id) {
+            return response('編集する権限がありません', 403)->header('Content-Type', 'text/plain');
+        }
+
         $plan->fill($request->only([
             'title',
             'start_date_time',
         ]));
-        $plan->public_flag=$request->public_flag ?1: 0;
+
+        $plan->public_flag = $request->public_flag ? 1 : 0;
         if ($image = $request->file('thumbnail')) {
             $imageService = new ImageService($image);
             $image_path = $imageService->save($folder = 'plans', $file_name = $plan->uid);
             $plan->thumbnail_url = $image_path;
         }
         $plan->save();
-        if ($plan->user_id !== $request->user()->id) {
-            return response('削除する権限がありません', 403)->header('Content-Type', 'text/plain');
-        }
         return new PlanResource($plan);
     }
 

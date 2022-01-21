@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 
@@ -21,6 +22,27 @@ class Plan extends Model
     protected $casts = [
         'start_date_time' => 'datetime'
     ];
+
+    /**
+     * サムネイルURLが存在しない場合、子要素のサムネイルを使う
+     * 
+     * @param mixed $value
+     * 
+     * @return string
+     */
+    public function getThumbnailUrlAttribute($value): string
+    {
+        if ($value) {
+            return '';
+        }
+        $thumbnail_url = '';
+        foreach ($this->planElements as $planElement) {
+            if ($thumbnail_url = optional($planElement->spot)->thumbnail_url) {
+                break;
+            }
+        }
+        return $thumbnail_url;
+    }
 
     public function user()
     {
