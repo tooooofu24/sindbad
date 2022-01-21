@@ -21,6 +21,8 @@ class PlanResource extends JsonResource
             "favorites_count" => $this->favorites_count == null ? count($this->favorites) : $this->favorites_count,
             'url' => route('plans.show', ['id' => $this->id, 'uid' => $this->uid]),
             'start_date_time' => $this->start_date_time->toDateTimeString(),
+            'is_editing' => $this->is_editing,
+            'public_flag' => $this->public_flag,
             "user" => new PublicUserResource($this->user),
             "planElements" => PlanElementResource::collection($this->planElements),
         ];

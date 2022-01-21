@@ -61,6 +61,7 @@ class PlanController extends Controller
             'start_date_time',
         ]));
         $plan->public_flag = $request->public_flag ? 1 : 0;
+        $plan->is_editing = $request->is_editing ? 1 : 0;
         $plan->user_id = $request->user()->id;
         $plan->save();
         if ($image = $request->file('thumbnail')) {
@@ -107,6 +108,7 @@ class PlanController extends Controller
         ]));
 
         $plan->public_flag = $request->public_flag ? 1 : 0;
+        $plan->is_editing = $request->is_editing ? 1 : 0;
         if ($image = $request->file('thumbnail')) {
             $imageService = new ImageService($image);
             $image_path = $imageService->save($folder = 'plans', $file_name = $plan->uid);

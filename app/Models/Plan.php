@@ -17,6 +17,7 @@ class Plan extends Model
         'thumbnail_url',
         'start_date_time',
         'public_flag',
+        'is_editing'
     ];
 
     protected $casts = [

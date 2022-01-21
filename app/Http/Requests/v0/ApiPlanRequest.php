@@ -30,7 +30,8 @@ class ApiPlanRequest extends FormRequest
             'title' => ['required', 'max:255'],
             'start_date_time' => ['required', 'date'],
             'public_flag' => ['nullable'],
-            'thumbnail' => ['image'],
+            'is_editing' => ['nullable'],
+            'thumbnail' => ['nullable', 'image'],
         ];
     }
 

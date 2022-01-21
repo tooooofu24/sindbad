@@ -15,12 +15,13 @@ class CreatePlansTable extends Migration
     {
         Schema::create('plans', function (Blueprint $table) {
             $table->id();
+            $table->string('uid')->unique();
             $table->bigInteger('user_id');
             $table->string('title')->default('');
             $table->longText('thumbnail_url')->nullable();
             $table->dateTime('start_date_time');
-            $table->string('uid')->unique();
             $table->boolean('public_flag')->default(false);
+            $table->boolean('is_editing')->default(false);
             $table->timestamps();
         });
     }
