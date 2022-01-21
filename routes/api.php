@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\RedirectController;
+use App\Http\Controllers\Web\ApiWebAuthController;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -49,4 +50,10 @@ Route::group(['as' => 'api.'], function () {
     Route::get('redirect', function () {
         return response('Unauthorized', 401)->header('Content-Type', 'text/plain');
     })->name('redirect');
+
+    Route::post('/web-login', [ApiWebAuthController::class, 'login']);
+
+    Route::get('/test', function () {
+        return Auth::user();
+    });
 });

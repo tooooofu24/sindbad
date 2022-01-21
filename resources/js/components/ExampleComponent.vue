@@ -11,6 +11,11 @@
                             ログイン
                         </button>
                     </div>
+                    <div class="text-center m-2">
+                        <button class="btn btn-primary" @click="api">
+                            APIテスト
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -22,8 +27,15 @@ export default {
     methods: {
         login: function () {
             console.log("test");
+            axios.get("/sanctum/csrf-cookie").then((res) => {
+                axios.post("/api/web-login", {});
+            });
         },
-        get_spots: function () {},
+        api: function () {
+            axios.get("/api/v0/spots").then((res) => {
+                console.log(res);
+            });
+        },
     },
     mounted() {
         console.log("Component mounted.");
