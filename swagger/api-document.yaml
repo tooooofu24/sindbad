@@ -162,8 +162,8 @@ paths:
       summary: 初回登録
       description: アプリ初回起動時に叩く
       responses:
-        '200':
-          description: 成功
+        '201':
+          description: 作成完了
           content:
             application/json:
               schema:
@@ -175,17 +175,26 @@ paths:
                   uid:
                     type: string
                     example: 80a49b06-821d-4893-b625-33acb6f1d0f5
+                  name:
+                    example: ""
+                  email:
+                    example: ""
+                  icon_url:
+                    example: ""
+                  email_verified_at:
+                    example: ""
                   password:
                     type: string
-                    format: password
-                    example: $2y$10$NQfd55oUpjHydhGENysbZ.0e408JuX/8a0mH5fC5jri.tBeBCGpWy
-                    description: ハッシュ化済みのもの
+                    example: FO63hGCSQa7JFmS8
+                    description: ハッシュ化前のもの
+                  token:
+                    example: 2|BZJV9s2aaXwhBLviAq0C0RPGfNmX9O7RbeYBbxB6
   /login:
     post:
       tags:
         - 認証不要
       summary: ログイン
-      description: アプリ2回目以降起動時にuidとハッシュ化済みのパスワードで認証する
+      description: アプリ2回目以降起動時にuidとパスワードで認証する
       requestBody:
         content:
           multipart/form-data:
@@ -202,14 +211,31 @@ paths:
                   type: string
                   format: password
                   example: $2y$10$NQfd55oUpjHydhGENysbZ.0e408JuX/8a0mH5fC5jri.tBeBCGpWy
-                  description: ハッシュ化済みのもの
+                  description: ハッシュ化前のもの
       responses:
         '200':
           description: ログイン成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  uid:
+                    type: string
+                    example: 80a49b06-821d-4893-b625-33acb6f1d0f5
+                  name:
+                    example: ""
+                  email:
+                    example: ""
+                  icon_url:
+                    example: ""
+                  email_verified_at:
+                    example: ""
+                  token:
+                    example: 2|BZJV9s2aaXwhBLviAq0C0RPGfNmX9O7RbeYBbxB6
         '401':
           description: パスワードが間違っています
         '404':
