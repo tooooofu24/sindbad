@@ -10,6 +10,7 @@ use App\Models\Plan;
 use App\Models\PlanElement;
 use App\Service\ImageService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class PlanController extends Controller
 {
@@ -58,8 +59,8 @@ class PlanController extends Controller
         $plan->fill($request->only([
             'title',
             'start_date_time',
-            'public_flag',
         ]));
+        $plan->public_flag=$request->public_flag ?1: 0;
         $plan->user_id = $request->user()->id;
         $plan->save();
         if ($image = $request->file('thumbnail')) {
@@ -99,8 +100,8 @@ class PlanController extends Controller
         $plan->fill($request->only([
             'title',
             'start_date_time',
-            'public_flag',
         ]));
+        $plan->public_flag=$request->public_flag ?1: 0;
         if ($image = $request->file('thumbnail')) {
             $imageService = new ImageService($image);
             $image_path = $imageService->save($folder = 'plans', $file_name = $plan->uid);
