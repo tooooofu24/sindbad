@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="container">
+    <div id="app">
+        <example-component></example-component>
+    </div><!-- #app -->
     @if(session('message'))
     <div class="alert alert-success" role="alert">
         {{ session('message') }}
