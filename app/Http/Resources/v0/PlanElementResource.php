@@ -28,7 +28,7 @@ class PlanElementResource extends JsonResource
             'plan_id' => $this->plan_id,
             'type' => $this->type, // 0 => blank, 1 => spot, 2 => transportation
             'duration_min' => $this->duration_min,
-            'memo' => $this->when($this->type > 0, $this->memo) ?: '', // blankは表示しない
+            'memo' => $this->when($this->type > 0, $this->memo ?: ''), // blankは表示しない
             'child' => $this->when($child, $child),
         ];
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\v0;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\v0\ApiUserRequest;
+use App\Http\Resources\v0\PublicUserResource;
 use App\Http\Resources\v0\UserResource;
 use App\Models\User;
 use App\Service\ImageService;
@@ -40,7 +41,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return new UserResource(User::findOrFail($id));
+        return new PublicUserResource(User::findOrFail($id));
     }
 
     /**

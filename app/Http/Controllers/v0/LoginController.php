@@ -6,17 +6,18 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\v0\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
     public function __invoke(Request $request)
     {
         $user = User::where('uid', $request->uid)->firstOrFail();
-        $user->tokens()->delete();
-        if ($user->password == $request->password) {
+        if (Hash::check($request->password, $user->password)) {
+            $user->tokens()->delete();
             return new UserResource($user);
         } else {
-            return response('パスワードが正しくありません', 401);
+            return response('パスワードが正しくありません', 401)->header('Content-Type', 'text/plain');
         }
     }
 }

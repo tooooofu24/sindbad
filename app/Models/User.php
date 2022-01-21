@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
@@ -50,12 +51,15 @@ class User extends Authenticatable implements MustVerifyEmail
         self::creating(function (self $user) {
             // ユニークなIDを作成
             $user->uid = Str::uuid();
-            // ランダムなパスワードのハッシュ値を生成
-            $user->password = Hash::make(Str::random());
         });
-        self::updated(function(self $user){
-            if($user->isDirty('email')){
+        self::updating(function (self $user) {
+            if ($user->isDirty('email')) {
                 $user->sendEmailVerificationNotification();
+            }
+            // パスワードが変わった場合
+            if (!Hash::check($user->password, User::find($user->id)->password)) {
+                Log::debug('test');
+                $user->password = Hash::make($user->password);
             }
         });
     }

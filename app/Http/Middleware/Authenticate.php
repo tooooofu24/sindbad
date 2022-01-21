@@ -15,7 +15,7 @@ class Authenticate extends Middleware
     protected function redirectTo($request)
     {
         if (substr($request->path(), 0, 3) == 'api') {
-            return route('redirect');
+            return route('api.redirect');
         }
     }
 }

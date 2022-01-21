@@ -19,36 +19,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// version0.0(demo)
-Route::group(['prefix' => 'v0'], function () {
-    // 認証不要ルート
-    Route::post('register', App\Http\Controllers\v0\RegisterController::class)->name('register');
-    Route::post('login', App\Http\Controllers\v0\LoginController::class)->name('login');
-    Route::post('login-with-email', App\Http\Controllers\v0\LoginWithEmailController::class);
-    Route::get('searchGoogle', App\Http\Controllers\v0\SearchGoogle::class);
-    Route::get('search-google', App\Http\Controllers\v0\SearchGoogle::class);
+Route::group(['as' => 'api.'], function () {
 
-    // 認証が必要なルート
-    Route::middleware('auth:sanctum')->group(function () {
-        Route::apiResource('users', App\Http\Controllers\v0\UserController::class);
-        Route::apiResource('favorites', App\Http\Controllers\v0\FavoriteController::class);
-        Route::apiResource('plans', App\Http\Controllers\v0\PlanController::class);
-        Route::apiResource('plan-elements', App\Http\Controllers\v0\PlanElementController::class);
-        Route::apiResource('spots', App\Http\Controllers\v0\SpotController::class);
+    // version0.0(demo)
+    Route::group(['prefix' => 'v0'], function () {
+        // 認証不要ルート
+        Route::post('register', App\Http\Controllers\v0\RegisterController::class)->name('register');
+        Route::post('login', App\Http\Controllers\v0\LoginController::class)->name('login');
+        Route::post('login-with-email', App\Http\Controllers\v0\LoginWithEmailController::class);
+        Route::get('searchGoogle', App\Http\Controllers\v0\SearchGoogle::class);
+        Route::get('search-google', App\Http\Controllers\v0\SearchGoogle::class);
+
+        // 認証が必要なルート
+        Route::middleware('auth:sanctum')->group(function () {
+            Route::apiResource('users', App\Http\Controllers\v0\UserController::class);
+            Route::apiResource('favorites', App\Http\Controllers\v0\FavoriteController::class);
+            Route::apiResource('plans', App\Http\Controllers\v0\PlanController::class);
+            Route::apiResource('plan-elements', App\Http\Controllers\v0\PlanElementController::class);
+            Route::apiResource('spots', App\Http\Controllers\v0\SpotController::class);
+        });
     });
-});
 
-// version0.0.1(develop)
-// Planの作成方法を変更
-Route::group(['prefix' => 'v001'], function () {
-});
+    // version0.0.1(develop)
+    // Planの作成方法を変更
+    Route::group(['prefix' => 'v001'], function () {
+    });
 
-Route::get('emailTest', function () {
-    $user = User::find(1);
-    $user->sendEmailVerificationNotification();
+    // 認証時のリダイレクト用ルート
+    Route::get('redirect', function () {
+        return response('Unauthorized', 401)->header('Content-Type', 'text/plain');
+    })->name('redirect');
 });
-
-// 認証時のリダイレクト用ルート
-Route::get('redirect', function () {
-    return response('Unauthorized', 401)->header('Content-Type', 'text/plain');
-})->name('redirect');

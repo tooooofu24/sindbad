@@ -21,12 +21,16 @@ class UserResource extends JsonResource
             'uid' => $this->uid,
             'name' => $this->name ?: '',
             'email' => $this->email ?: '',
-            'password' => $this->password ?: '',
             'icon_url' => $this->icon_url ?: '',
             'email_verified_at' => $this->email_verified_at ?: '',
+            // registerの時だけパスワードの平文（初期値）を返す
+            'password' => $this->when(
+                Route::currentRouteName() == 'api.register',
+                $this->password
+            ),
             // registerかloginだったらtokenを発行
             'token' => $this->when(
-                in_array(Route::currentRouteName(), ['register', 'login']),
+                in_array(Route::currentRouteName(), ['api.register', 'api.login']),
                 $this->createToken($this->id)->plainTextToken
             ),
         ];
