@@ -167,7 +167,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  uid:
+                    type: string
+                    example: 80a49b06-821d-4893-b625-33acb6f1d0f5
+                  password:
+                    type: string
+                    format: password
+                    example: $2y$10$NQfd55oUpjHydhGENysbZ.0e408JuX/8a0mH5fC5jri.tBeBCGpWy
+                    description: ハッシュ化済みのもの
   /login:
     post:
       tags:
