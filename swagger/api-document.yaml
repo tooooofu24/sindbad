@@ -100,10 +100,6 @@ components:
           type: integer
           description: いいねされている回数
           example: 13
-        count:
-          type: integer
-          description: 使用されている数
-          example: 5
         start_date_time:
           type: string
           format: date-time
