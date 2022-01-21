@@ -5,6 +5,7 @@ namespace App\Http\Requests\v0;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Validation\Rule;
 
 class ApiPlanRequest extends FormRequest
 {
@@ -28,8 +29,8 @@ class ApiPlanRequest extends FormRequest
         return [
             'title' => ['required', 'max:255'],
             'start_date_time' => ['required', 'date'],
-            'public_flag' => ['boolean'],
-            'image' => ['image'],
+            'public_flag' => ['nullable'],
+            'thumbnail' => ['image'],
         ];
     }
 

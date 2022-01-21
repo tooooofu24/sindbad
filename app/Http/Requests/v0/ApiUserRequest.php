@@ -28,7 +28,7 @@ class ApiUserRequest extends FormRequest
         return [
             'name' => ['max:255'],
             'icon' => ['image'],
-            'email' => ['email'],
+            'email' => ['email','unique:users'],
             'password' => ['required', 'max:255'],
         ];
     }

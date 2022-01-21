@@ -53,5 +53,10 @@ class User extends Authenticatable implements MustVerifyEmail
             // ランダムなパスワードのハッシュ値を生成
             $user->password = Hash::make(Str::random());
         });
+        self::updated(function(self $user){
+            if($user->isDirty('email')){
+                $user->sendEmailVerificationNotification();
+            }
+        });
     }
 }

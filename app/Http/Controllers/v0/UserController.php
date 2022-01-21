@@ -59,7 +59,7 @@ class UserController extends Controller
         if ($image = $request->file('icon')) {
             $imageService = new ImageService($image);
             $image_path = $imageService->save($folder = 'users', $file_name = $user->uid);
-            $user->thumbnail_url = $image_path;
+            $user->icon_url = $image_path;
         }
         $user->fill($request->only(['name', 'email', 'password']))->save();
         return new UserResource($user);
