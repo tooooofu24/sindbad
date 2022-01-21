@@ -233,6 +233,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
+        400:
+          description: バリデーションエラー
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    email: 
+                      type: array
+                      example: ['メールアドレスは正しいフォーマットで入力してください','メールアドレスは必須です']
+                      items: 
+                        type: string
+        404:
+          description: ユーザーが見つかりません
   /users/{id}:
     get:
       tags:

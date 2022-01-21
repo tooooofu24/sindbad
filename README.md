@@ -13,6 +13,7 @@ WEBで実装したものたちです。
 - [スポットアップロード](https://sindbad-travel.com/spots/create)
 - [スポット一覧（画像の更新）](https://sindbad-travel.com/spots/)
 - [プランの表示（WEB版）](https://sindbad-travel.com/plans/3)
+- [スポットの承認](https://sindbad-travel.com/spots/check)
 
 ## 👨‍💻 Dependencies
 >**言語・FW・ライブラリ等**
