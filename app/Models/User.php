@@ -73,7 +73,6 @@ class User extends Authenticatable implements MustVerifyEmail
             }
             // パスワードが変わった場合
             if (!Hash::check($user->password, User::find($user->id)->password)) {
-                Log::debug('test');
                 $user->password = Hash::make($user->password);
             }
         });

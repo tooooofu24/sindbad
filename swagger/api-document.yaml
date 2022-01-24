@@ -107,6 +107,9 @@ components:
         url:
           type: string
           example: 'https://sindbad-travel.com/plans/1?uid=oEbiayrFcqd0YppnUDmE4lpf1'
+        is_editing:
+          type: boolean
+          example: true
         user:
           type: object
           properties:
@@ -655,10 +658,6 @@ paths:
       responses:
         '200':
           description: 成功
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Plan'
         404:
           description: プランが見つかりません
         403:
