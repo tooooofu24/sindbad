@@ -9,6 +9,7 @@ use App\Http\Resources\v0\UserResource;
 use App\Models\User;
 use App\Service\ImageService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
@@ -62,7 +63,12 @@ class UserController extends Controller
             $image_path = $imageService->save($folder = 'users', $file_name = $user->uid);
             $user->icon_url = $image_path;
         }
-        $user->fill($request->only(['name', 'email', 'password']))->save();
+        $user->fill($request->only(['name', 'email']));
+        Log::debug($request->all());
+        if($request->password){
+            $user->password=$request->password;
+        }
+        $user->save();
         return new UserResource($user);
     }
 

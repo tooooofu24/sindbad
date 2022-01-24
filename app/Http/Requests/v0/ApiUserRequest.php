@@ -5,6 +5,7 @@ namespace App\Http\Requests\v0;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Validation\Rule;
 
 class ApiUserRequest extends FormRequest
 {
@@ -28,8 +29,8 @@ class ApiUserRequest extends FormRequest
         return [
             'name' => ['max:255'],
             'icon' => ['nullable','image'],
-            'email' => ['email','unique:users'],
-            'password' => ['required', 'max:255'],
+            'email' => ['nullable','email',Rule::unique('users', 'email')->whereNot('email', $this->user()->email)],
+            'password' => ['nullable', 'max:255'],
         ];
     }
 

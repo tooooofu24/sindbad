@@ -27,7 +27,7 @@
 
 <body>
     <main>
-        <nav class="navbar navbar-dark bg-dark">
+        <nav class="navbar navbar-dark bg-dark navbar-expand-sm">
             <div class="container-fluid">
                 <a class="navbar-brand" href="">
                 </a>
