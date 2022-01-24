@@ -27,8 +27,8 @@ class ApiUserRequest extends FormRequest
     {
         return [
             'name' => ['max:255'],
-            'icon' => ['nullable','image'],
-            'email' => ['email','unique:users'],
+            'icon' => ['nullable', 'image'],
+            'email' => ['email', 'unique:users'],
             'password' => ['required', 'max:255'],
         ];
     }
@@ -59,7 +59,7 @@ class ApiUserRequest extends FormRequest
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json([
-            'errors' => $validator->errors(),
+            'errors' => $validator->errors()->all(),
         ], 400));
     }
 }

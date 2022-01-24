@@ -37,6 +37,6 @@ class ImageService
             $resource,
             'public'
         );
-        return env('AWS_BASE_URL') . $file_path;
+        return $file_path;
     }
 }

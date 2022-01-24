@@ -8,6 +8,7 @@ use App\Http\Requests\Web\SpotUploadRequst;
 use App\Jobs\CsvSpotUploadJob;
 use App\Jobs\SpotUploadJob;
 use App\Models\Spot;
+use App\Service\ImageService;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -43,7 +44,8 @@ class SpotController extends Controller
         $spot = Spot::findOrFail($id);
         try {
             $image = $request->file('image');
-            $image_path = Storage::disk('s3')->put('/test', $image, 'public');
+            $imageService = new ImageService($image);
+            $image_path = $imageService->save($folder = 'spots', $file_name = $spot->id);
             $url = env('AWS_BASE_URL') . $image_path;
             $spot->thumbnail_url = $url;
             $spot->save();

@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
@@ -44,6 +45,20 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Favorite::class);
     }
 
+    /**
+     * 
+     * @param mixed $value
+     * 
+     * @return string
+     */
+    public function getIconUrlAttribute($value): string
+    {
+        if (!$value) {
+            return '';
+        }
+        return env('AWS_BASE_URL') . $value;
+    }
+
     public static function boot()
     {
         parent::boot();
@@ -61,6 +76,10 @@ class User extends Authenticatable implements MustVerifyEmail
                 Log::debug('test');
                 $user->password = Hash::make($user->password);
             }
+        });
+        self::deleted(function (self $user) {
+            if ($user->icon_url)
+                Storage::disk('s3')->delete($user->icon_url);
         });
     }
 }

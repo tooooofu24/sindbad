@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 
@@ -34,7 +35,7 @@ class Plan extends Model
     public function getThumbnailUrlAttribute($value): string
     {
         if ($value) {
-            return '';
+            return env('AWS_BASE_URL') . $value;
         }
         $thumbnail_url = '';
         foreach ($this->planElements as $planElement) {
@@ -85,6 +86,8 @@ class Plan extends Model
             foreach ($plan->favorites as $favorite) {
                 $favorite->delete();
             }
+            if ($plan->thumbnail_url)
+                Storage::disk('s3')->delete($plan->thumbnail_url);
         });
     }
 }
