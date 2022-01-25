@@ -71,10 +71,8 @@ class User extends Authenticatable implements MustVerifyEmail
             if ($user->isDirty('email')) {
                 $user->sendEmailVerificationNotification();
             }
-            // パスワードが変わった場合
-            if (!Hash::check($user->password, User::find($user->id)->password)) {
+            // パスワードが変わった場�
                 $user->password = Hash::make($user->password);
-            }
         });
         self::deleted(function (self $user) {
             if ($user->icon_url)
