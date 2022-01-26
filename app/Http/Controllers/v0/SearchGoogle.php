@@ -10,8 +10,7 @@ class SearchGoogle extends Controller
 {
     function __invoke(Request $request)
     {
-        $python = new PythonService;
-        $response = $python->googleSearch($request->q);
+        $response = PythonService::googleSearch($request->q);
         return response($response, 200)->header('Content-Type', 'text/plain');
     }
 }
