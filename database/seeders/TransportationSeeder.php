@@ -19,19 +19,22 @@ class TransportationSeeder extends Seeder
                 'name' => 'その他'
             ],
             [
-                'name' => '徒歩'
+                'name' => '車'
             ],
             [
                 'name' => '電車'
             ],
             [
-                'name' => '新幹線'
+                'name' => 'バス'
             ],
             [
-                'name' => '車'
+                'name' => '飛行機'
             ],
             [
                 'name' => '船'
+            ],
+            [
+                'name' => '徒歩'
             ],
             [
                 'name' => '自転車'
