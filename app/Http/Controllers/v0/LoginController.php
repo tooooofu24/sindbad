@@ -13,7 +13,6 @@ class LoginController extends Controller
 {
     public function __invoke(Request $request)
     {
-        Log::debug($request->all());
         $user = User::where('uid', $request->uid)->firstOrFail();
         if (Hash::check($request->password, $user->password)) {
             $user->tokens()->delete();

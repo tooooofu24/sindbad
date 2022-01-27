@@ -64,9 +64,8 @@ class UserController extends Controller
             $user->icon_url = $image_path;
         }
         $user->fill($request->only(['name', 'email']));
-        Log::debug($request->all());
-        if($request->password){
-            $user->password=$request->password;
+        if ($request->password) {
+            $user->password = $request->password;
         }
         $user->save();
         return new UserResource($user);
