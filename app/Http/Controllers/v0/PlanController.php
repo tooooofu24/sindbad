@@ -25,11 +25,15 @@ class PlanController extends Controller
             ->with([
                 'user', 'planElements.spot', 'planElements.transportation',
             ])
-            ->withCount(['favorites'])
-            ->where('public_flag', true);
+            ->withCount(['favorites']);
 
         if ($request->is_mine) {
             $plans->where('user_id', $request->user()->id);
+            $plans->latest();
+            $size = $request->size ?: 20;
+            return PlanResource::collection(
+                $plans->paginate($size)
+            );
         }
 
         // spotsのidでの絞り込み
@@ -40,6 +44,8 @@ class PlanController extends Controller
                 });
             }
         }
+
+        $plans->where('public_flag', true)->where('is_editing', false);
         $plans->latest();
         $size = $request->size ?: 20;
         return PlanResource::collection(
@@ -69,6 +75,12 @@ class PlanController extends Controller
             $image_path = $imageService->save($folder = 'plans', $file_name = $plan->uid);
             $plan->thumbnail_url = $image_path;
             $plan->save();
+        }
+        if ($request->plan_elements) {
+            PlanElement::createFromRequest(
+                json_decode($request->plan_elements, true),
+                $plan->id
+            );
         }
         return new PlanResource($plan);
     }
@@ -115,6 +127,12 @@ class PlanController extends Controller
             $plan->thumbnail_url = $image_path;
         }
         $plan->save();
+        if ($request->plan_elements) {
+            PlanElement::createFromRequest(
+                json_decode($request->plan_elements, true),
+                $plan->id
+            );
+        }
         return new PlanResource($plan);
     }
 

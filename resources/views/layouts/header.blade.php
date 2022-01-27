@@ -28,14 +28,15 @@
 <body>
     <main>
         <nav class="navbar navbar-dark bg-dark navbar-expand-sm">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="">
+            <div class="container-fluid align-items-center">
+                <a class="navbar-brand p-0 d-flex align-items-center" href="">
+                    <img src="/sindbad-icon.jpg" alt="シンドバッドのアイコン" width="24" height="24">
                 </a>
-                <button class=" navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav me-auto">
                         <li class="nav-item">
                             <a class="nav-link @if(request()->route()->getName() == 'spots.index') active @endif" href="{{ route('spots.index') }}">スポット一覧</a>
                         </li>
