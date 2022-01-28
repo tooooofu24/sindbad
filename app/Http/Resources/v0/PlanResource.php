@@ -23,6 +23,14 @@ class PlanResource extends JsonResource
             'start_date_time' => $this->start_date_time->toDateTimeString(),
             'is_editing' => $this->is_editing,
             'public_flag' => $this->public_flag,
+            'parent_plan' => $this->parentPlan
+                ? [
+                    'id' => $this->parentPlan->id,
+                    'title' => $this->parentPlan->title,
+                    'thumbnail_url' => $this->parentPlan->thumbnail_url,
+                    'user' => new PublicUserResource($this->parentPlan->user),
+                ]
+                : null,
             "user" => new PublicUserResource($this->user),
             "planElements" => PlanElementResource::collection($this->planElements),
         ];

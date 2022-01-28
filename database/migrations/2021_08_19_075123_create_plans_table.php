@@ -16,7 +16,8 @@ class CreatePlansTable extends Migration
         Schema::create('plans', function (Blueprint $table) {
             $table->id();
             $table->string('uid')->unique();
-            $table->bigInteger('user_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('parent_id')->nullable();
             $table->string('title')->default('');
             $table->longText('thumbnail_url')->nullable();
             $table->dateTime('start_date_time');

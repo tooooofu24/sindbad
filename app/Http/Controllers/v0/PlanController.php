@@ -23,7 +23,7 @@ class PlanController extends Controller
     {
         $plans = Plan::query()
             ->with([
-                'user', 'planElements.spot', 'planElements.transportation',
+                'user', 'planElements.spot', 'planElements.transportation', 'parentPlan.user'
             ])
             ->withCount(['favorites']);
 
@@ -65,6 +65,7 @@ class PlanController extends Controller
         $plan->fill($request->only([
             'title',
             'start_date_time',
+            'parent_id'
         ]));
         $plan->public_flag = $request->public_flag ? 1 : 0;
         $plan->is_editing = $request->is_editing ? 1 : 0;
@@ -93,7 +94,9 @@ class PlanController extends Controller
      */
     public function show($id, Request $request)
     {
-        $plan = Plan::findOrFail($id);
+        $plan = Plan::with([
+            'user', 'planElements.spot', 'planElements.transportation', 'parentPlan.user'
+        ])->findOrFail($id);
         if ($plan->public_flag == false && $plan->user_id != $request->user()->id) {
             return response('表示する権限がありません', 403)->header('Content-Type', 'text/plain');
         }
