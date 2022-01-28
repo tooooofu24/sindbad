@@ -22,7 +22,7 @@ class UserResource extends JsonResource
             'name' => $this->name ?: '',
             'email' => $this->email ?: '',
             'icon_url' => $this->icon_url ?: '',
-            'email_verified_at' => $this->email_verified_at ?: '',
+            'email_verified_at' => $this->email_verified_at ? $this->email_verified_at->toDateTimeString() : '',
             // registerの時だけパスワードの平文（初期値）を返す
             'password' => $this->when(
                 Route::currentRouteName() == 'api.register',
