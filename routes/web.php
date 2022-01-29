@@ -4,6 +4,7 @@ use App\Http\Controllers\Web\PlanController;
 use App\Http\Controllers\Web\EmailVerifyController;
 use App\Http\Controllers\Web\SpotController;
 use App\Models\Spot;
+use App\Models\User;
 use App\Service\PythonService;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -63,7 +64,4 @@ Route::group(['prefix' => 'plans', 'as' => 'plans.'], function () {
 });
 
 Route::get('/test', function () {
-    $spot = Spot::orWhere('thumbnail_url', 'like', 'https://encrypted-tbn2.gstatic.com/faviconV2?url=%')
-        ->first();
-    ddd(PythonService::googleSearch($spot->name));
 });

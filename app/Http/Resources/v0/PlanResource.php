@@ -22,6 +22,7 @@ class PlanResource extends JsonResource
             'url' => $this->user_id == $request->user()->id && !$this->public_flag ? route('plans.show', ['id' => $this->id, 'uid' => $this->uid]) : route('plans.show', ['id' => $this->id]),
             'start_date_time' => $this->start_date_time->toDateTimeString(),
             'is_editing' => $this->is_editing,
+            'is_liked' => in_array($this->id, request()->user()->favorites->pluck('plan_id')->toArray()),
             'public_flag' => $this->public_flag,
             'parent_plan' => $this->parentPlan
                 ? [

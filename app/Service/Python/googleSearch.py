@@ -61,33 +61,38 @@ try:
 
     #  Google検索の最初の画像をクリック
     try:
-        img_tag = WebDriverWait(driver, 2).until(
-            EC.visibility_of_element_located((By.CSS_SELECTOR, "#islmp img"))
+        img_tags = WebDriverWait(driver, 10).until(
+            EC.visibility_of_any_elements_located(
+                (By.CSS_SELECTOR, "#islmp img"))
         )
     except:
         print("")
         driver.quit()
         sys.exit()
-    actions = ActionChains(driver)
-    actions.move_to_element(img_tag)
-    actions.click(img_tag)
-    actions.perform()
 
-    # 2秒待機
-    time.sleep(2)
+    img_url = ""
+    for img_tag in img_tags:
+        actions = ActionChains(driver)
+        actions.move_to_element(img_tag)
+        actions.click(img_tag)
+        actions.perform()
 
-    # 右側に表示されたimgタグを取得
-    images = WebDriverWait(driver, 10).until(
-        EC.visibility_of_any_elements_located((By.CSS_SELECTOR, "#islsp img"))
-    )
+        # 2秒待機
+        time.sleep(2)
 
-    # httpsで始まるものを取得
-    for img in images:
+        # 右側に表示されたimgタグを取得
+        img = WebDriverWait(driver, 10).until(
+            EC.visibility_of_element_located((By.CSS_SELECTOR, "#islsp img"))
+        )
+
+        # httpsで始まるものを取得
         img_url = img.get_attribute("src")
-        style = img.get_attribute("style")
+
         # favicon以外のhttpsから始まる画像urlを取得
-        if img_url.startswith("https") and not(img_url.startswith("https://encrypted-tbn2.gstatic.com/faviconV2?url=")):
+        if img_url.startswith('https'):
             break
+        else:
+            img_url = ""
 
     # ブラウザを終了
     driver.quit()
