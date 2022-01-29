@@ -85,9 +85,8 @@ try:
     for img in images:
         img_url = img.get_attribute("src")
         style = img.get_attribute("style")
-        if "display: inline" in style:
-            continue
-        if img_url.startswith("https"):
+        # favicon以外のhttpsから始まる画像urlを取得
+        if img_url.startswith("https") and not(img_url.startswith("https://encrypted-tbn2.gstatic.com/faviconV2?url=")):
             break
 
     # ブラウザを終了
