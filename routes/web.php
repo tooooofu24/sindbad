@@ -3,6 +3,8 @@
 use App\Http\Controllers\Web\PlanController;
 use App\Http\Controllers\Web\EmailVerifyController;
 use App\Http\Controllers\Web\SpotController;
+use App\Models\Spot;
+use App\Service\PythonService;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -60,6 +62,8 @@ Route::group(['prefix' => 'plans', 'as' => 'plans.'], function () {
     Route::get('/{id}', [PlanController::class, 'show'])->name('show');
 });
 
-Route::get('/spotUpload', function () {
-    return redirect()->route('spots.create.index');
+Route::get('/test', function () {
+    $spot = Spot::orWhere('thumbnail_url', 'like', 'https://encrypted-tbn2.gstatic.com/faviconV2?url=%')
+        ->first();
+    ddd(PythonService::googleSearch($spot->name));
 });
