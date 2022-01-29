@@ -69,6 +69,13 @@ class Plan extends Model
         return $this->belongsTo(Plan::class, 'parent_id');
     }
 
+    public function deleteElements()
+    {
+        foreach ($this->planElements as $planElement) {
+            $planElement->delete();
+        }
+    }
+
     public static function boot()
     {
         parent::boot();
@@ -81,16 +88,8 @@ class Plan extends Model
             }
             $plan->uid = $uid;
         });
-        // 更新時と削除時に子要素を削除
-        self::updating(function (self $plan) {
-            foreach ($plan->planElements as $planElement) {
-                $planElement->delete();
-            }
-        });
         self::deleting(function (self $plan) {
-            foreach ($plan->planElements as $planElement) {
-                $planElement->delete();
-            }
+            $plan->deleteElements();
             foreach ($plan->favorites as $favorite) {
                 $favorite->delete();
             }

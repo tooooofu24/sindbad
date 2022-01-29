@@ -130,6 +130,7 @@ class PlanController extends Controller
             $plan->thumbnail_url = $image_path;
         }
         $plan->save();
+        $plan->deleteElements();
         if ($request->plan_elements) {
             PlanElement::createFromRequest(
                 json_decode($request->plan_elements, true),
