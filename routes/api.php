@@ -23,11 +23,11 @@ use Illuminate\Support\Facades\Route;
 Route::group(['as' => 'api.'], function () {
 
     // version0.0(demo)
-    Route::group(['prefix' => 'v0'], function () {
+    Route::group(['prefix' => 'v0', 'as' => 'v0'], function () {
         // 認証不要ルート
         Route::post('register', App\Http\Controllers\v0\RegisterController::class)->name('register');
         Route::post('login', App\Http\Controllers\v0\LoginController::class)->name('login');
-        Route::post('login-with-email', App\Http\Controllers\v0\LoginWithEmailController::class);
+        Route::post('login-with-email', App\Http\Controllers\v0\LoginWithEmailController::class)->name('login-with-email');
         Route::get('searchGoogle', App\Http\Controllers\v0\SearchGoogle::class);
         Route::get('search-google', App\Http\Controllers\v0\SearchGoogle::class);
 
