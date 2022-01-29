@@ -30,7 +30,7 @@ class UserResource extends JsonResource
             ),
             // registerかloginだったらtokenを発行
             'token' => $this->when(
-                in_array(Route::currentRouteName(), ['api.register', 'api.login']),
+                strpos(Route::currentRouteName(), 'register') || strpos(Route::currentRouteName(), 'login') || strpos(Route::currentRouteName(), 'login-with-email'),
                 $this->createToken($this->id)->plainTextToken
             ),
         ];
