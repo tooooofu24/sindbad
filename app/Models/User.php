@@ -56,6 +56,9 @@ class User extends Authenticatable implements MustVerifyEmail
         if (!$value) {
             return '';
         }
+        if (substr($value, 0, 8) == "https://") {
+            return $value;
+        }
         return env('AWS_BASE_URL') . $value;
     }
 
