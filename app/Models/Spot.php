@@ -20,6 +20,14 @@ class Spot extends Model
         return $this->hasMany(PlanElement::class, 'child_id')->where('type', 1);
     }
 
+    public function getThumbnailUrlAttribute($value): string
+    {
+        if (!$value) {
+            return "https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg";
+        }
+        return $value;
+    }
+
     /**
      * 検索ワードで絞り込むメソッド
      * 検索文字列が空欄などを含まない場合は検索結果をマッチ率でソートする
