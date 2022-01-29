@@ -25,7 +25,7 @@ class UserResource extends JsonResource
             'email_verified_at' => $this->email_verified_at ? $this->email_verified_at->toDateTimeString() : '',
             // registerの時だけパスワードの平文（初期値）を返す
             'password' => $this->when(
-                Route::currentRouteName() == 'api.register',
+                strpos(Route::currentRouteName(), 'register'),
                 $this->password
             ),
             // registerかloginだったらtokenを発行
