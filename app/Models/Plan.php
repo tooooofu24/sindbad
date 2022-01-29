@@ -18,7 +18,8 @@ class Plan extends Model
         'thumbnail_url',
         'start_date_time',
         'public_flag',
-        'is_editing'
+        'is_editing',
+        'parent_id',
     ];
 
     protected $casts = [
@@ -59,6 +60,11 @@ class Plan extends Model
     public function planElements()
     {
         return $this->hasMany(PlanElement::class);
+    }
+
+    public function parentPlan()
+    {
+        return $this->belongsTo(Plan::class, 'parent_id');
     }
 
     public static function boot()

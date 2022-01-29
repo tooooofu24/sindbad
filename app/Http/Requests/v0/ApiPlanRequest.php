@@ -32,6 +32,7 @@ class ApiPlanRequest extends FormRequest
             'public_flag' => ['nullable'],
             'is_editing' => ['nullable'],
             'thumbnail' => ['nullable', 'image'],
+            'parent_id' => ['nullable', 'integer']
         ];
     }
 
