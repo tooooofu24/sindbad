@@ -41,8 +41,12 @@ class FixSpotImage extends Command
     {
         $spots = Spot::orWhere('thumbnail_url', 'like', 'https://encrypted-tbn2.gstatic.com/faviconV2?url=%')
             ->get();
+        $total=count($spots);
+        dump("$total 件のデータを更新します");
         foreach ($spots as $i => $spot) {
+            dump("$i/$total");
             $spot->thumbnail_url = PythonService::googleSearch($spot->name);
+            dump($spot->thumbnail_url);
             $spot->save();
         }
         return Command::SUCCESS;
