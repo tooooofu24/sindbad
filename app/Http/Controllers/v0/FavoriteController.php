@@ -19,6 +19,7 @@ class FavoriteController extends Controller
         $user_id = $request->user()->id;
         $favorites = Favorite::where('user_id', $user_id)
             ->with(['plan.planElements.spot', 'plan.planElements.transportation', 'plan.user', 'plan.parentPlan.user'])
+            ->latest()
             ->paginate();
         return FavoriteResource::collection($favorites);
     }
