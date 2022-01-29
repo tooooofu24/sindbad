@@ -137,6 +137,10 @@ class PlanController extends Controller
                 $plan->id
             );
         }
+        $plan = Plan::with([
+            'user', 'planElements.spot', 'planElements.transportation', 'parentPlan.user'
+        ])->withCount(['favorites'])
+            ->findOrFail($plan->id);
         return new PlanResource($plan);
     }
 

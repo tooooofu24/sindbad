@@ -71,6 +71,7 @@ class Plan extends Model
 
     public function deleteElements()
     {
+        Log::debug($this->planElements);
         foreach ($this->planElements as $planElement) {
             $planElement->delete();
         }
