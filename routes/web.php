@@ -28,7 +28,7 @@ Route::get('/', function () {
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});
+})->name('index');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -38,6 +38,7 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// メール承認
 Route::get('/complete-verification', [EmailVerifyController::class, 'completeVerification'])->name('completeVerification');
 Route::get('/fail-verification', [EmailVerifyController::class, 'failVerification'])->name('failVerification');
 
@@ -63,5 +64,6 @@ Route::group(['prefix' => 'plans', 'as' => 'plans.'], function () {
     Route::get('/{id}', [PlanController::class, 'show'])->name('show');
 });
 
-Route::get('/test', function () {
-});
+Route::get('/terms', function () {
+    return view('terms');
+})->name('terms');
