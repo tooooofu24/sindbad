@@ -67,3 +67,7 @@ Route::group(['prefix' => 'plans', 'as' => 'plans.'], function () {
 Route::get('/terms', function () {
     return view('terms');
 })->name('terms');
+
+Route::get('/policy', function () {
+    return view('policy');
+})->name('policy');
