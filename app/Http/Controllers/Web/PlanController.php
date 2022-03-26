@@ -17,6 +17,10 @@ class PlanController extends Controller
         $plan = Plan::with([
             'planElements.spot', 'planElements.transportation', 'planElements.plan'
         ])->findOrFail($id);
+
+        if (!$plan->public_flag && $request->uid != $plan->uid) {
+            abort(404);
+        }
         return view('plans.show', compact(['plan']));
     }
 }
