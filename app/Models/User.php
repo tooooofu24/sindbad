@@ -54,7 +54,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function getIconUrlAttribute($value): string
     {
         if (!$value) {
-            return '';
+            return asset('img/icon-gray.jpg');
         }
         if (substr($value, 0, 8) == "https://") {
             return $value;
@@ -69,6 +69,10 @@ class User extends Authenticatable implements MustVerifyEmail
         self::creating(function (self $user) {
             // ユニークなIDを作成
             $user->uid = Str::uuid();
+            // 名前の初期値
+            if (!$user->name) {
+                $user->name = 'ユーザー';
+            }
         });
         self::updating(function (self $user) {
             if ($user->isDirty('email')) {
