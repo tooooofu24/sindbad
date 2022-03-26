@@ -1,6 +1,10 @@
-@extends('layouts.header')
+@extends('layouts.app')
+
+@section('title', $plan->title)
+@section('nav-title', $plan->title)
 
 @section('content')
+@include('layouts.public-nav')
 <div class="container">
     <div class="mx-auto" style="max-width: 600px;">
         @foreach($plan->planElements as $planElement)
