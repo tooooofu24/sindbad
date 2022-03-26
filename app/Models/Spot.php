@@ -23,7 +23,7 @@ class Spot extends Model
     public function getThumbnailUrlAttribute($value): string
     {
         if (!$value) {
-            return "https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg";
+            return asset('img/icon-gray.jpg');
         }
         return $value;
     }

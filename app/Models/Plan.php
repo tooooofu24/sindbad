@@ -45,7 +45,7 @@ class Plan extends Model
             }
         }
         if (!$thumbnail_url)
-            $thumbnail_url = "https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg";
+            $thumbnail_url = asset('img/icon-gray.jpg');
         return $thumbnail_url;
     }
 
