@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\ContactController;
 use App\Http\Controllers\Web\PlanController;
 use App\Http\Controllers\Web\EmailVerifyController;
 use App\Http\Controllers\Web\SpotController;
@@ -71,3 +72,6 @@ Route::get('/terms', function () {
 Route::get('/policy', function () {
     return view('policy');
 })->name('policy');
+
+Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
+Route::post('contact', [ContactController::class, 'store'])->name('contact.store');
