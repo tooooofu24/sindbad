@@ -10,6 +10,7 @@ use App\Models\Plan;
 use App\Models\PlanElement;
 use App\Service\ImageService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class PlanController extends Controller
@@ -25,7 +26,8 @@ class PlanController extends Controller
             ->with([
                 'user', 'planElements.spot', 'planElements.transportation', 'parentPlan.user'
             ])
-            ->withCount(['favorites']);
+            ->withCount(['favorites'])
+            ->whereNotIn('user_id', Auth::user()->blockUserIdList);  // ブロックした人の投稿は見れないようにする
 
         if ($request->is_mine) {
             $plans->where('user_id', $request->user()->id);
