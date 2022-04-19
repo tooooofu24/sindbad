@@ -38,22 +38,13 @@ Route::group(['as' => 'api.'], function () {
             Route::apiResource('plans', App\Http\Controllers\v0\PlanController::class);
             Route::apiResource('plan-elements', App\Http\Controllers\v0\PlanElementController::class);
             Route::apiResource('spots', App\Http\Controllers\v0\SpotController::class);
+            Route::post('block', [App\Http\Controllers\v0\BlockController::class, 'block']);
+            Route::post('unblock', [App\Http\Controllers\v0\BlockController::class, 'unblock']);
         });
-    });
-
-    // version0.0.1(develop)
-    // Planの作成方法を変更
-    Route::group(['prefix' => 'v001'], function () {
     });
 
     // 認証時のリダイレクト用ルート
     Route::get('redirect', function () {
         return response('Unauthorized', 401)->header('Content-Type', 'text/plain');
     })->name('redirect');
-
-    Route::post('/web-login', [ApiWebAuthController::class, 'login']);
-
-    Route::get('/test', function () {
-        return Auth::user();
-    });
 });

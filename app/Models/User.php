@@ -45,6 +45,16 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Favorite::class);
     }
 
+    public function blockUsers()
+    {
+        return $this->belongsToMany(User::class, 'blocks', 'user_id', 'block_id');
+    }
+
+    public function getBlockUserIdListAttribute($value)
+    {
+        return $this->blockUsers->pluck('id');
+    }
+
     /**
      * 
      * @param mixed $value

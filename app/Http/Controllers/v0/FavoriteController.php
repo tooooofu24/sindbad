@@ -78,7 +78,7 @@ class FavoriteController extends Controller
         $user_id = $request->user()->id;
         $favorite = Favorite::findOrFail($id);
         if ($favorite->user_id !== $user_id) {
-            return response('削除する権限がありません', 403)->header('Content-Type', 'text/plain');;
+            return response('削除する権限がありません', 403)->header('Content-Type', 'text/plain');
         }
         $favorite->delete();
         return;
