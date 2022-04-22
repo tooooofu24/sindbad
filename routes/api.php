@@ -31,6 +31,7 @@ Route::group(['as' => 'api.'], function () {
         Route::apiResource('spots', App\Http\Controllers\Api\SpotController::class);
         Route::post('block', [App\Http\Controllers\Api\BlockController::class, 'block']);
         Route::post('unblock', [App\Http\Controllers\Api\BlockController::class, 'unblock']);
+        Route::apiResource('reports', App\Http\Controllers\Api\ReportController::class);
     });
 
 

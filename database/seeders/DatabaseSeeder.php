@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             // Favoriteは最後に作成
             FavoriteSeeder::class,
             AdminSeeder::class,
+            ReportSeeder::class,
         ]);
     }
 }
