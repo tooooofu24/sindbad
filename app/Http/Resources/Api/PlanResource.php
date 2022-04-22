@@ -19,10 +19,10 @@ class PlanResource extends JsonResource
             "title" => $this->title,
             "thumbnail_url" => $this->thumbnail_url ?: '',
             "favorites_count" => $this->favorites_count == null ? count($this->favorites) : $this->favorites_count,
-            'url' => $this->user_id == $request->user()->id && !$this->public_flag ? route('plans.show', ['id' => $this->id, 'uid' => $this->uid]) : route('plans.show', ['id' => $this->id]),
+            'url' => $this->url,
             'start_date_time' => $this->start_date_time->toDateTimeString(),
             'is_editing' => $this->is_editing,
-            'is_liked' => in_array($this->id, request()->user()->favorites->pluck('plan_id')->toArray()),
+            'is_liked' => $this->isLiked,
             'public_flag' => $this->public_flag,
             'parent_plan' => $this->parentPlan
                 ? [

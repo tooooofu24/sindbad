@@ -77,6 +77,22 @@ class Plan extends Model
         }
     }
 
+    public function getUrlAttribute()
+    {
+        if ($this->user_id == Auth::id() && !$this->public_flag) {
+            return route('plans.show', ['id' => $this->id, 'uid' => $this->uid]);
+        }
+        return route('plans.show', ['id' => $this->id]);
+    }
+
+    public function getIsLikedAttribute()
+    {
+        if (request()->user()->isAdmin()) {
+            return false;
+        }
+        return in_array($this->id, request()->user()->favorites->pluck('plan_id')->toArray());
+    }
+
     public function scopeWithAllRelations($query)
     {
         $query->with([
