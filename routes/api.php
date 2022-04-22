@@ -32,6 +32,7 @@ Route::group(['as' => 'api.'], function () {
         Route::post('block', [App\Http\Controllers\Api\BlockController::class, 'block']);
         Route::post('unblock', [App\Http\Controllers\Api\BlockController::class, 'unblock']);
         Route::apiResource('reports', App\Http\Controllers\Api\ReportController::class);
+        Route::post('admin/auth', App\Http\Controllers\Api\AdminLoginController::class);
     });
 
 
