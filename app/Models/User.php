@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
@@ -70,6 +69,11 @@ class User extends Authenticatable implements MustVerifyEmail
             return $value;
         }
         return env('AWS_BASE_URL') . $value;
+    }
+
+    public function isAdmin()
+    {
+        return false;
     }
 
     public static function boot()
