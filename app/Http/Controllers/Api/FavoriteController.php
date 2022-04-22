@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\FavoriteResource;
 use App\Models\Favorite;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FavoriteController extends Controller
 {
@@ -16,8 +17,7 @@ class FavoriteController extends Controller
      */
     public function index(Request $request)
     {
-        $user_id = $request->user()->id;
-        $favorites = Favorite::where('user_id', $user_id)
+        $favorites = Favorite::where('user_id', Auth::id())
             ->with(['plan.planElements.spot', 'plan.planElements.transportation', 'plan.user', 'plan.parentPlan.user'])
             ->latest()
             ->paginate();
@@ -75,11 +75,8 @@ class FavoriteController extends Controller
      */
     public function destroy($id, Request $request)
     {
-        $user_id = $request->user()->id;
         $favorite = Favorite::findOrFail($id);
-        if ($favorite->user_id !== $user_id) {
-            return response('削除する権限がありません', 403)->header('Content-Type', 'text/plain');
-        }
+        $this->authorize('delete', $favorite);
         $favorite->delete();
         return;
     }

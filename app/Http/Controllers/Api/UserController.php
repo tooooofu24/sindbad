@@ -55,9 +55,7 @@ class UserController extends Controller
     public function update(ApiUserRequest $request, $id)
     {
         $user = User::findOrFail($id);
-        if ($user->id !== $request->user()->id) {
-            return response('更新する権限がありません', 403)->header('Content-Type', 'text/plain');
-        }
+        $this->authorize('update', $user);
         if ($image = $request->file('icon')) {
             $imageService = new ImageService($image);
             $image_path = $imageService->save($folder = 'users', $file_name = $user->uid);
@@ -80,9 +78,7 @@ class UserController extends Controller
     public function destroy(Request $request, $id)
     {
         $user = User::findOrFail($id);
-        if ($user->id !== $request->user()->id) {
-            return response('削除する権限がありません', 403)->header('Content-Type', 'text/plain');
-        }
+        $this->authorize('delete', $user);
         $user->delete();
     }
 }

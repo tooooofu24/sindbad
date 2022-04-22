@@ -23,11 +23,11 @@ class PlanController extends Controller
     public function index(Request $request)
     {
         $plans = Plan::query()
-            ->with([
-                'user', 'planElements.spot', 'planElements.transportation', 'parentPlan.user'
-            ])
-            ->withCount(['favorites'])
-            ->whereNotIn('user_id', Auth::user()->blockUserIdList);  // ブロックした人の投稿は見れないようにする
+            ->withAllRelations()
+            ->whereNotIn('user_id', Auth::user()->blockUserIdList)
+            ->where('public_flag', true)
+            ->where('is_editing', false)
+            ->latest();
 
         if ($request->is_mine) {
             $plans->where('user_id', $request->user()->id);
@@ -47,8 +47,6 @@ class PlanController extends Controller
             }
         }
 
-        $plans->where('public_flag', true)->where('is_editing', false);
-        $plans->latest();
         $size = $request->size ?: 20;
         return PlanResource::collection(
             $plans->paginate($size)
@@ -96,12 +94,8 @@ class PlanController extends Controller
      */
     public function show($id, Request $request)
     {
-        $plan = Plan::with([
-            'user', 'planElements.spot', 'planElements.transportation', 'parentPlan.user'
-        ])->findOrFail($id);
-        if ($plan->public_flag == false && $plan->user_id != $request->user()->id) {
-            return response('表示する権限がありません', 403)->header('Content-Type', 'text/plain');
-        }
+        $plan = Plan::withAllRelations()->findOrFail($id);
+        $this->authorize('view', $plan);
         return new PlanResource($plan);
     }
 
@@ -114,10 +108,8 @@ class PlanController extends Controller
      */
     public function update(ApiPlanRequest $request, $id)
     {
-        $plan = Plan::with(['user', 'planElements'])->withCount(['favorites'])->findOrFail($id);
-        if ($plan->user_id != $request->user()->id) {
-            return response('編集する権限がありません', 403)->header('Content-Type', 'text/plain');
-        }
+        $plan = Plan::withAllRelations()->findOrFail($id);
+        $this->authorize('update', $plan);
 
         $plan->fill($request->only([
             'title',
@@ -139,10 +131,6 @@ class PlanController extends Controller
                 $plan->id
             );
         }
-        $plan = Plan::with([
-            'user', 'planElements.spot', 'planElements.transportation', 'parentPlan.user'
-        ])->withCount(['favorites'])
-            ->findOrFail($plan->id);
         return new PlanResource($plan);
     }
 
@@ -154,11 +142,8 @@ class PlanController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        $plan = Plan::with(['favorites', 'planElements'])
-            ->where('id', $id)->firstOrFail();
-        if ($plan->user_id != $request->user()->id) {
-            return response('削除する権限がありません', 403)->header('Content-Type', 'text/plain');
-        }
+        $plan = Plan::withAllRelations()->findOrFail($id);
+        $this->authorize('destroy', $plan);
         $plan->delete();
     }
 }
