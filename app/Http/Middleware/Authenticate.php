@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use Illuminate\Support\Facades\Route;
 
 class Authenticate extends Middleware
 {
@@ -14,8 +15,8 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
-        if (substr($request->path(), 0, 3) == 'api') {
-            return route('api.redirect');
+        if (Route::is('api.*')) {
+            return route('api.unauthorized');
         }
     }
 }

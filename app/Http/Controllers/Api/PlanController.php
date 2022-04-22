@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\v0;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\v0\ApiPlanRequest;
-use App\Http\Resources\v0\PlanElementResource;
-use App\Http\Resources\v0\PlanResource;
+use App\Http\Requests\Api\ApiPlanRequest;
+use App\Http\Resources\Api\PlanElementResource;
+use App\Http\Resources\Api\PlanResource;
 use App\Models\Plan;
 use App\Models\PlanElement;
 use App\Service\ImageService;

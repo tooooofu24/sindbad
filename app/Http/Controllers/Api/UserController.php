@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\v0;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\v0\ApiUserRequest;
-use App\Http\Resources\v0\PublicUserResource;
-use App\Http\Resources\v0\UserResource;
+use App\Http\Requests\Api\ApiUserRequest;
+use App\Http\Resources\Api\PublicUserResource;
+use App\Http\Resources\Api\UserResource;
 use App\Models\User;
 use App\Service\ImageService;
 use Illuminate\Http\Request;

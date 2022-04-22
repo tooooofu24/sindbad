@@ -1,15 +1,13 @@
 <?php
 
-namespace App\Http\Requests\v0;
+namespace App\Http\Requests\Api;
 
-use App\Consts\Consts;
-use App\Service\ModerateService;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Validation\Rule;
 
-class ApiSpotRequest extends FormRequest
+class ApiUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,18 +27,10 @@ class ApiSpotRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => [
-                'required',
-                'max:255',
-                // prefとnameの複合ユニーク
-                Rule::unique('spots')->where(function ($query) {
-                    $query->where('pref', $this->pref);
-                })
-            ],
-            'pref' => [
-                'required',
-                Rule::in(Consts::PREF_LIST),
-            ],
+            'name' => ['max:255'],
+            'icon' => ['nullable', 'image'],
+            'email' => ['nullable', 'email', Rule::unique('users', 'email')->whereNot('email', $this->user()->email)],
+            'password' => ['nullable', 'max:255'],
         ];
     }
 
@@ -52,8 +42,10 @@ class ApiSpotRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name' => 'スポット名',
-            'pref' => '都道府県',
+            'name' => '名前',
+            'icon' => 'アイコン画像',
+            'email' => 'メールアドレス',
+            'password' => 'パスワード',
         ];
     }
 
@@ -70,17 +62,5 @@ class ApiSpotRequest extends FormRequest
         throw new HttpResponseException(response()->json([
             'errors' => $validator->errors()->all(),
         ], 400));
-    }
-
-    /**
-     * バリデータインスタンスの設定
-     *
-     * @param  \Illuminate\Validation\Validator  $validator
-     * @return void
-     */
-    public function withValidator($validator)
-    {
-        $validator->after(function ($validator) {
-        });
     }
 }
