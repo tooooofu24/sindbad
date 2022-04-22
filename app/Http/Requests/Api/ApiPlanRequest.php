@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Requests\v0;
+namespace App\Http\Requests\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Validation\Rule;
 
-class ApiUserRequest extends FormRequest
+class ApiPlanRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,10 +27,12 @@ class ApiUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['max:255'],
-            'icon' => ['nullable', 'image'],
-            'email' => ['nullable', 'email', Rule::unique('users', 'email')->whereNot('email', $this->user()->email)],
-            'password' => ['nullable', 'max:255'],
+            'title' => ['required', 'max:255'],
+            'start_date_time' => ['required', 'date'],
+            'public_flag' => ['nullable'],
+            'is_editing' => ['nullable'],
+            'thumbnail' => ['nullable', 'image'],
+            'parent_id' => ['nullable', 'integer']
         ];
     }
 
@@ -42,10 +44,10 @@ class ApiUserRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name' => '名前',
-            'icon' => 'アイコン画像',
-            'email' => 'メールアドレス',
-            'password' => 'パスワード',
+            'image' => '写真',
+            'title' => 'タイトル',
+            'start_date_time' => '開始時間',
+            'public_flag' => '公開・非公開'
         ];
     }
 

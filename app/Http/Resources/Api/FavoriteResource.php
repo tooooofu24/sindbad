@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\v0;
+namespace App\Http\Resources\Api;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PublicUserResource extends JsonResource
+class FavoriteResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,8 +16,9 @@ class PublicUserResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name ?: '',
-            'icon_url' => $this->icon_url ?: '',
+            'created_at' => $this->created_at,
+            'user_id' => $this->user_id,
+            'plan' => new PlanResource($this->plan),
         ];
     }
 }

@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Http\Requests\v0;
+namespace App\Http\Requests\Api;
 
+use App\Consts\Consts;
+use App\Service\ModerateService;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Validation\Rule;
 
-class ApiPlanRequest extends FormRequest
+class ApiSpotRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,12 +29,18 @@ class ApiPlanRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required', 'max:255'],
-            'start_date_time' => ['required', 'date'],
-            'public_flag' => ['nullable'],
-            'is_editing' => ['nullable'],
-            'thumbnail' => ['nullable', 'image'],
-            'parent_id' => ['nullable', 'integer']
+            'name' => [
+                'required',
+                'max:255',
+                // prefとnameの複合ユニーク
+                Rule::unique('spots')->where(function ($query) {
+                    $query->where('pref', $this->pref);
+                })
+            ],
+            'pref' => [
+                'required',
+                Rule::in(Consts::PREF_LIST),
+            ],
         ];
     }
 
@@ -44,10 +52,8 @@ class ApiPlanRequest extends FormRequest
     public function attributes()
     {
         return [
-            'image' => '写真',
-            'title' => 'タイトル',
-            'start_date_time' => '開始時間',
-            'public_flag' => '公開・非公開'
+            'name' => 'スポット名',
+            'pref' => '都道府県',
         ];
     }
 
@@ -64,5 +70,17 @@ class ApiPlanRequest extends FormRequest
         throw new HttpResponseException(response()->json([
             'errors' => $validator->errors()->all(),
         ], 400));
+    }
+
+    /**
+     * バリデータインスタンスの設定
+     *
+     * @param  \Illuminate\Validation\Validator  $validator
+     * @return void
+     */
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+        });
     }
 }

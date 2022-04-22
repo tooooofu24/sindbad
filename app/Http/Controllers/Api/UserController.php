@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\v0;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\v0\ApiUserRequest;
-use App\Http\Resources\v0\PublicUserResource;
-use App\Http\Resources\v0\UserResource;
+use App\Http\Requests\Api\ApiUserRequest;
+use App\Http\Resources\Api\PublicUserResource;
+use App\Http\Resources\Api\UserResource;
 use App\Models\User;
 use App\Service\ImageService;
 use Illuminate\Http\Request;
@@ -55,9 +55,7 @@ class UserController extends Controller
     public function update(ApiUserRequest $request, $id)
     {
         $user = User::findOrFail($id);
-        if ($user->id !== $request->user()->id) {
-            return response('更新する権限がありません', 403)->header('Content-Type', 'text/plain');
-        }
+        $this->authorize('update', $user);
         if ($image = $request->file('icon')) {
             $imageService = new ImageService($image);
             $image_path = $imageService->save($folder = 'users', $file_name = $user->uid);
@@ -80,9 +78,7 @@ class UserController extends Controller
     public function destroy(Request $request, $id)
     {
         $user = User::findOrFail($id);
-        if ($user->id !== $request->user()->id) {
-            return response('削除する権限がありません', 403)->header('Content-Type', 'text/plain');
-        }
+        $this->authorize('delete', $user);
         $user->delete();
     }
 }

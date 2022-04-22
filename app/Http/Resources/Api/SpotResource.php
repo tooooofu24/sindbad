@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\v0;
+namespace App\Http\Resources\Api;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class TransportationResource extends JsonResource
+class SpotResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,6 +17,10 @@ class TransportationResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'converted_name' => $this->converted_name ?: '',
+            'thumbnail_url' => $this->thumbnail_url ?: '',
+            'pref' => $this->pref,
+            'count' => $this->count ?: 0,
         ];
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\v0;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\v0\ApiSpotRequest;
-use App\Http\Resources\v0\SpotResource;
+use App\Http\Requests\Api\ApiSpotRequest;
+use App\Http\Resources\Api\SpotResource;
 use App\Jobs\UpdateSpotImageJob;
 use App\Models\Spot;
 use App\Service\GooApiService;

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -71,10 +72,17 @@ class Plan extends Model
 
     public function deleteElements()
     {
-        Log::debug($this->planElements);
         foreach ($this->planElements as $planElement) {
             $planElement->delete();
         }
+    }
+
+    public function scopeWithAllRelations($query)
+    {
+        $query->with([
+            'user', 'planElements.spot', 'planElements.transportation', 'parentPlan.user'
+        ])
+            ->withCount(['favorites']);
     }
 
     public static function boot()

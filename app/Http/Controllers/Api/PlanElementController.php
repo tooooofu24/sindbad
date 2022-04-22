@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\v0;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\v0\ApiPlanElementRequest;
-use App\Http\Resources\v0\PlanElementResource;
+use App\Http\Requests\Api\ApiPlanElementRequest;
+use App\Http\Resources\Api\PlanElementResource;
 use App\Models\PlanElement;
 use Illuminate\Http\Request;
 
