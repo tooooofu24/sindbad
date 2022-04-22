@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\Plan;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Database\Eloquent\Model;
 
 class PlanPolicy
 {
@@ -51,8 +52,11 @@ class PlanPolicy
      * @param  \App\Models\Plan  $plan
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Plan $plan)
+    public function update(Model $user, Plan $plan)
     {
+        if ($user->isAdmin()) {
+            return true;
+        }
         return $plan->user_id == $user->id;
     }
 
@@ -63,8 +67,11 @@ class PlanPolicy
      * @param  \App\Models\Plan  $plan
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Plan $plan)
+    public function delete(Model $user, Plan $plan)
     {
+        if ($user->isAdmin()) {
+            return true;
+        }
         return $plan->user_id == $user->id;
     }
 

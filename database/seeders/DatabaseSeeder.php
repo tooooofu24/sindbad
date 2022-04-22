@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             SpotSeeder::class,
             // Favoriteは最後に作成
             FavoriteSeeder::class,
+            AdminSeeder::class,
         ]);
     }
 }

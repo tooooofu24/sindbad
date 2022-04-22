@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Database\Eloquent\Model;
 
 class UserPolicy
 {
@@ -50,8 +51,11 @@ class UserPolicy
      * @param  \App\Models\User  $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, User $model)
+    public function update(Model $user, User $model)
     {
+        if ($user->isAdmin()) {
+            return true;
+        }
         $user->id == $model->id;
     }
 
@@ -62,8 +66,11 @@ class UserPolicy
      * @param  \App\Models\User  $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, User $model)
+    public function delete(Model $user, User $model)
     {
+        if ($user->isAdmin()) {
+            return true;
+        }
         $user->id == $model->id;
     }
 

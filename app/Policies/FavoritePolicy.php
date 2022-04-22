@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\Favorite;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Database\Eloquent\Model;
 
 class FavoritePolicy
 {
@@ -62,8 +63,11 @@ class FavoritePolicy
      * @param  \App\Models\Favorite  $favorite
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Favorite $favorite)
+    public function delete(Model $user, Favorite $favorite)
     {
+        if ($user->isAdmin()) {
+            return true;
+        }
         $favorite->user_id == $user->id;
     }
 
