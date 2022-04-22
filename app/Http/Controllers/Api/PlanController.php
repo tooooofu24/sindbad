@@ -143,7 +143,8 @@ class PlanController extends Controller
     public function destroy(Request $request, $id)
     {
         $plan = Plan::withAllRelations()->findOrFail($id);
-        $this->authorize('destroy', $plan);
+        $this->authorize('delete', $plan);
         $plan->delete();
+        return ['message' => 'Success'];
     }
 }

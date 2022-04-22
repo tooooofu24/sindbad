@@ -23,6 +23,7 @@ class CreatePlansTable extends Migration
             $table->dateTime('start_date_time');
             $table->boolean('public_flag')->default(false);
             $table->boolean('is_editing')->default(false);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

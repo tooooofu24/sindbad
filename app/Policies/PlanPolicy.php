@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\Plan;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
 
 class PlanPolicy
 {
