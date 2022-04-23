@@ -4,7 +4,7 @@ namespace App\Policies;
 
 use App\Models\Favorite;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User;
 
 class FavoritePolicy
 {
@@ -13,10 +13,10 @@ class FavoritePolicy
     /**
      * Determine whether the user can view any models.
      *
-     * @param  \App\Models\Model  $user
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(Model $user)
+    public function viewAny(User $user)
     {
         //
     }
@@ -24,21 +24,21 @@ class FavoritePolicy
     /**
      * Determine whether the user can view the model.
      *
-     * @param  \App\Models\Model  $user
+     * @param  \App\Models\User  $user
      * @param  \App\Models\Favorite  $favorite
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(Model $user, Favorite $favorite)
+    public function view(User $user, Favorite $favorite)
     {
     }
 
     /**
      * Determine whether the user can create models.
      *
-     * @param  \App\Models\Model  $user
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(Model $user)
+    public function create(User $user)
     {
         //
     }
@@ -46,11 +46,11 @@ class FavoritePolicy
     /**
      * Determine whether the user can update the model.
      *
-     * @param  \App\Models\Model  $user
+     * @param  \App\Models\User  $user
      * @param  \App\Models\Favorite  $favorite
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(Model $user, Favorite $favorite)
+    public function update(User $user, Favorite $favorite)
     {
         //
     }
@@ -58,11 +58,11 @@ class FavoritePolicy
     /**
      * Determine whether the user can delete the model.
      *
-     * @param  \App\Models\Model  $user
+     * @param  \App\Models\User  $user
      * @param  \App\Models\Favorite  $favorite
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(Model $user, Favorite $favorite)
+    public function delete(User $user, Favorite $favorite)
     {
         if ($user->isAdmin()) {
             return true;
@@ -73,11 +73,11 @@ class FavoritePolicy
     /**
      * Determine whether the user can restore the model.
      *
-     * @param  \App\Models\Model  $user
+     * @param  \App\Models\User  $user
      * @param  \App\Models\Favorite  $favorite
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(Model $user, Favorite $favorite)
+    public function restore(User $user, Favorite $favorite)
     {
         //
     }
@@ -85,11 +85,11 @@ class FavoritePolicy
     /**
      * Determine whether the user can permanently delete the model.
      *
-     * @param  \App\Models\Model  $user
+     * @param  \App\Models\User  $user
      * @param  \App\Models\Favorite  $favorite
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(Model $user, Favorite $favorite)
+    public function forceDelete(User $user, Favorite $favorite)
     {
         //
     }

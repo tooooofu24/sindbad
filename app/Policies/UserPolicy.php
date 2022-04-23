@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User;
 
 class UserPolicy
 {
@@ -12,10 +12,10 @@ class UserPolicy
     /**
      * Determine whether the user can view any models.
      *
-     * @param  \App\Models\Model  $user
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(Model $user)
+    public function viewAny(User $user)
     {
         //
     }
@@ -23,11 +23,11 @@ class UserPolicy
     /**
      * Determine whether the user can view the model.
      *
-     * @param  \App\Models\Model  $user
-     * @param  \App\Models\Model  $model
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\User  $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(Model $user, Model $model)
+    public function view(User $user, User $model)
     {
         //
     }
@@ -35,10 +35,10 @@ class UserPolicy
     /**
      * Determine whether the user can create models.
      *
-     * @param  \App\Models\Model  $user
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(Model $user)
+    public function create(User $user)
     {
         //
     }
@@ -46,11 +46,11 @@ class UserPolicy
     /**
      * Determine whether the user can update the model.
      *
-     * @param  \App\Models\Model  $user
-     * @param  \App\Models\Model  $model
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\User  $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(Model $user, Model $model)
+    public function update(User $user, User $model)
     {
         if ($user->isAdmin()) {
             return true;
@@ -61,11 +61,11 @@ class UserPolicy
     /**
      * Determine whether the user can delete the model.
      *
-     * @param  \App\Models\Model  $user
-     * @param  \App\Models\Model  $model
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\User  $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(Model $user, Model $model)
+    public function delete(User $user, User $model)
     {
         if ($user->isAdmin()) {
             return true;
@@ -76,11 +76,11 @@ class UserPolicy
     /**
      * Determine whether the user can restore the model.
      *
-     * @param  \App\Models\Model  $user
-     * @param  \App\Models\Model  $model
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\User  $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(Model $user, Model $model)
+    public function restore(User $user, User $model)
     {
         //
     }
@@ -88,11 +88,11 @@ class UserPolicy
     /**
      * Determine whether the user can permanently delete the model.
      *
-     * @param  \App\Models\Model  $user
-     * @param  \App\Models\Model  $model
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\User  $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(Model $user, Model $model)
+    public function forceDelete(User $user, User $model)
     {
         //
     }

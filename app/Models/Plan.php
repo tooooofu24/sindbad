@@ -81,7 +81,10 @@ class Plan extends Model
 
     public function getUrlAttribute()
     {
-        if ($this->user_id == Auth::id() && !$this->public_flag) {
+        if ($this->public_flag) {
+            return route('plans.show', ['id' => $this->id]);
+        }
+        if ($this->hasPermission()) {
             return route('plans.show', ['id' => $this->id, 'uid' => $this->uid]);
         }
         return route('plans.show', ['id' => $this->id]);
@@ -101,6 +104,21 @@ class Plan extends Model
             'user', 'planElements.spot', 'planElements.transportation', 'parentPlan.user'
         ])
             ->withCount(['favorites']);
+    }
+
+    /**
+     * 権限を持っているかどうか
+     * @return bool
+     */
+    public function hasPermission(): bool
+    {
+        if (request()->user()->isAdmin()) {
+            return true;
+        }
+        if ($this->user_id == Auth::id()) {
+            return true;
+        }
+        return false;
     }
 
     public static function boot()

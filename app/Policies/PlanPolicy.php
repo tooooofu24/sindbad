@@ -4,8 +4,8 @@ namespace App\Policies;
 
 use App\Models\Plan;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Foundation\Auth\User;
+
 
 class PlanPolicy
 {
@@ -14,10 +14,10 @@ class PlanPolicy
     /**
      * Determine whether the user can view any models.
      *
-     * @param  \App\Models\Model  $user
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(Model $user)
+    public function viewAny(User $user)
     {
         //
     }
@@ -25,22 +25,25 @@ class PlanPolicy
     /**
      * Determine whether the user can view the model.
      *
-     * @param  \App\Models\Model  $user
+     * @param  \App\Models\User  $user
      * @param  \App\Models\Plan  $plan
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(Model $user, Plan $plan)
+    public function view(User $user, Plan $plan)
     {
+        if ($user->isAdmin()) {
+            return true;
+        }
         return $plan->public_flag == true || $plan->user_id == $user->id;
     }
 
     /**
      * Determine whether the user can create models.
      *
-     * @param  \App\Models\Model  $user
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(Model $user)
+    public function create(User $user)
     {
         //
     }
@@ -48,11 +51,11 @@ class PlanPolicy
     /**
      * Determine whether the user can update the model.
      *
-     * @param  \App\Models\Model  $user
+     * @param  \App\Models\User  $user
      * @param  \App\Models\Plan  $plan
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(Model $user, Plan $plan)
+    public function update(User $user, Plan $plan)
     {
         if ($user->isAdmin()) {
             return true;
@@ -63,11 +66,11 @@ class PlanPolicy
     /**
      * Determine whether the user can delete the model.
      *
-     * @param  \App\Models\Model  $user
+     * @param  \App\Models\User  $user
      * @param  \App\Models\Plan  $plan
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(Model $user, Plan $plan)
+    public function delete(User $user, Plan $plan)
     {
         if ($user->isAdmin()) {
             return true;
@@ -78,11 +81,11 @@ class PlanPolicy
     /**
      * Determine whether the user can restore the model.
      *
-     * @param  \App\Models\Model  $user
+     * @param  \App\Models\User  $user
      * @param  \App\Models\Plan  $plan
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(Model $user, Plan $plan)
+    public function restore(User $user, Plan $plan)
     {
         //
     }
@@ -90,11 +93,11 @@ class PlanPolicy
     /**
      * Determine whether the user can permanently delete the model.
      *
-     * @param  \App\Models\Model  $user
+     * @param  \App\Models\User  $user
      * @param  \App\Models\Plan  $plan
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(Model $user, Plan $plan)
+    public function forceDelete(User $user, Plan $plan)
     {
         //
     }

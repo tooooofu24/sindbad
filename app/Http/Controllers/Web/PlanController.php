@@ -16,7 +16,7 @@ class PlanController extends Controller
     {
         $plan = Plan::with([
             'planElements.spot', 'planElements.transportation', 'planElements.plan'
-        ])->findOrFail($id);
+        ])->withTrashed()->findOrFail($id);
 
         if (!$plan->public_flag && $request->uid != $plan->uid) {
             abort(404);
