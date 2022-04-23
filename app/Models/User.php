@@ -78,6 +78,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return false;
     }
 
+    public function isUser()
+    {
+        return true;
+    }
+
     public static function boot()
     {
         parent::boot();

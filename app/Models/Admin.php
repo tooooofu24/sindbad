@@ -15,4 +15,9 @@ class Admin extends Authenticatable
     {
         return true;
     }
+
+    public function isUser()
+    {
+        return false;
+    }
 }

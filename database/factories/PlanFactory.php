@@ -29,7 +29,7 @@ class PlanFactory extends Factory
             // 'thumbnail_url' => Spot::where('thumbnail_url', '<>', '')->inRandomOrder()->first()->thumbnail_url,
             'thumbnail_url' => null,
             'start_date_time' => $this->faker->dateTime(),
-            'public_flag' => true,
+            'public_flag' => $this->faker->boolean(),
             'parent_id' => $this->faker->boolean() ? $this->faker->numberBetween(1, 50) : null,
         ];
     }
