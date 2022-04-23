@@ -134,12 +134,10 @@ class Plan extends Model
             $plan->uid = $uid;
         });
         self::deleting(function (self $plan) {
-            $plan->deleteElements();
-            foreach ($plan->favorites as $favorite) {
-                $favorite->delete();
-            }
-            if ($plan->thumbnail_url)
-                Storage::disk('s3')->delete($plan->thumbnail_url);
+            // $plan->deleteElements();
+            // foreach ($plan->favorites as $favorite) {
+            //     $favorite->delete();
+            // }
         });
     }
 }
