@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\ReportResource;
 use App\Models\Report;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class ReportController extends Controller
 {
@@ -30,7 +31,9 @@ class ReportController extends Controller
     public function store(Request $request)
     {
         $report = new Report();
+        $report->user_id = $request->user()->id;
         $report->fill($request->all())->save();
+        Http::post('https://us-central1-sindbad-app-23f93.cloudfunctions.net/notifyReport'); // 通知を送る
         return new ReportResource($report);
     }
 

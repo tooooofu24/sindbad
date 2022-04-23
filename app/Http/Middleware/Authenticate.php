@@ -16,6 +16,7 @@ class Authenticate extends Middleware
     protected function redirectTo($request)
     {
         if (Route::is('api.*')) {
+            abort(401, 'Unauthorized');
             return route('api.unauthorized');
         }
     }
