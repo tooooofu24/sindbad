@@ -12,7 +12,7 @@ https://note.com/design_frk/n/n02542eda1da9
 
 ## 📚 API Docs
 APIの仕様書です  
-https://app.swaggerhub.com/apis-docs/tooooofu24/sindbad/0
+https://app.swaggerhub.com/apis-docs/tooooofu24/sindbad/1.0
 
 ## 🖥 Web Pages
 WEBで実装したものたちです。
