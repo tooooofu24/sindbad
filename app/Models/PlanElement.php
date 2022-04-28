@@ -47,7 +47,7 @@ class PlanElement extends Model
 
     public function plan()
     {
-        return $this->belongsTo(Plan::class);
+        return $this->belongsTo(Plan::class)->withTrashed();
     }
 
     public static function createFromRequest(array $dataArray, int $plan_id): void
