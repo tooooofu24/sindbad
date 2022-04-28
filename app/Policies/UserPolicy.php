@@ -55,7 +55,7 @@ class UserPolicy
         if ($user->isAdmin()) {
             return true;
         }
-        $user->id == $model->id;
+        return $user->id == $model->id;
     }
 
     /**
@@ -70,7 +70,7 @@ class UserPolicy
         if ($user->isAdmin()) {
             return true;
         }
-        $user->id == $model->id;
+        return $user->id == $model->id;
     }
 
     /**
