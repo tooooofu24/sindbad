@@ -61,7 +61,7 @@ try:
 
     #  Google検索の最初の画像をクリック
     try:
-        img_tags = WebDriverWait(driver, 10).until(
+        img_tags = WebDriverWait(driver, 5).until(
             EC.visibility_of_any_elements_located(
                 (By.CSS_SELECTOR, "#islmp img"))
         )
@@ -82,7 +82,8 @@ try:
 
         # 右側に表示されたimgタグを取得
         img = WebDriverWait(driver, 10).until(
-            EC.visibility_of_element_located((By.CSS_SELECTOR, "#islsp img"))
+            EC.visibility_of_element_located(
+                (By.CSS_SELECTOR, "#Sva75c > div > div > div.pxAole > div.tvh9oe.BIB1wf > c-wiz > div > div.OUZ5W > div.zjoqD > div.qdnLaf.isv-id > div > a > img"))
         )
 
         # httpsで始まるものを取得
@@ -99,7 +100,7 @@ try:
 
     print(img_url)
 
-except:
+except Exception as e:
     print("")
     if "driver" in locals():
         driver.quit()
