@@ -11,7 +11,6 @@ use App\Models\PlanElement;
 use App\Service\ImageService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 
 class PlanController extends Controller
 {
@@ -22,21 +21,22 @@ class PlanController extends Controller
      */
     public function index(Request $request)
     {
+        if ($request->is_mine) {
+            $plans = Plan::withAllRelations()
+                ->where('user_id', $request->user()->id)
+                ->latest();
+            $size = $request->size ?: 20;
+            return PlanResource::collection(
+                $plans->paginate($size)
+            );
+        }
+
         $plans = Plan::query()
             ->withAllRelations()
             ->whereNotIn('user_id', Auth::user()->blockUserIdList)
             ->where('public_flag', true)
             ->where('is_editing', false)
             ->latest();
-
-        if ($request->is_mine) {
-            $plans->where('user_id', $request->user()->id);
-            $plans->latest();
-            $size = $request->size ?: 20;
-            return PlanResource::collection(
-                $plans->paginate($size)
-            );
-        }
 
         // spotsのidでの絞り込み
         if (is_array($request->spots)) {
