@@ -1,3 +1,7 @@
+## Download Links
+- [iOS](https://apps.apple.com/jp/app/sindbad-%E5%85%B1%E6%9C%89%E3%81%A7%E3%81%8D%E3%82%8B%E6%97%85%E8%A1%8C%E8%A8%88%E7%94%BB%E3%82%A2%E3%83%97%E3%83%AA/id1618208505)
+- [Android](https://play.google.com/store/apps/details?id=com.sindbad_travel.sindbad)
+
 ## 🏰  Sindbad
 現在制作中のモバイルアプリのAPIをLaravelで実装しています。  
 旅行プランを作成、閲覧できるアプリで、現在リリースの準備をしています。  
